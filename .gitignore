@@ -6,3 +6,6 @@ __pycache__/
 .idea/
 .vscode/
 .DS_Store
+response.wav
+narrator_ref.wav
+voice-prompt1.wav
