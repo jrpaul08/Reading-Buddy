@@ -7,5 +7,7 @@ __pycache__/
 .vscode/
 .DS_Store
 response.wav
-narrator_ref.wav
-voice-prompt1.wav
+response_book.wav
+voice-prompts/
+test_results/
+debug_prompt.txt
