@@ -1,0 +1,115 @@
+[
+  {
+    "number": 1,
+    "summary": "Raskolnikov, a young former student living in extreme poverty in St. Petersburg, slips out of his filthy garret on a sweltering July evening. His thoughts are fragmented and obsessive — he is mentally rehearsing a plan he both desires and abhors, though its exact nature is not yet revealed. He makes his way to the apartment of Alyona Ivanovna, an elderly pawnbroker, under the pretense of pawning his father's silver watch. His real purpose is to scout the apartment — studying the layout, noting where she keeps her keys, observing that her sister Lizaveta sometimes lives with her. He leaves in a state of intense disgust and self-loathing, appalled that he is seriously considering whatever this plan is. To calm himself he stops into a tavern — his first time ever entering one — where he orders a beer, briefly feels relief, and notices a man nearby who looks like a retired government clerk.",
+    "characters": [
+      {
+        "name": "Raskolnikov",
+        "aliases": ["Rodion Romanovich Raskolnikov", "Rodya"],
+        "first_appearance": 1,
+        "description": "The protagonist. A young, exceptionally handsome former student living in extreme poverty in St. Petersburg. Highly intelligent and proud but psychologically tormented. Has been isolated and obsessive for weeks, mentally rehearsing a dark plan he cannot bring himself to name."
+      },
+      {
+        "name": "Alyona Ivanovna",
+        "aliases": ["the old woman", "the pawnbroker"],
+        "first_appearance": 1,
+        "description": "A small, withered, sharp-eyed pawnbroker of about sixty. Mistrustful and miserly. Lives alone except when her sister Lizaveta visits. Raskolnikov has visited her before to pawn items and is secretly studying her apartment and habits."
+      },
+      {
+        "name": "Lizaveta",
+        "aliases": [],
+        "first_appearance": 1,
+        "description": "Alyona Ivanovna's sister. Only briefly mentioned — Raskolnikov asks about her as he leaves, suggesting she is relevant to his plan. Implied to keep the pawnbroker's apartment clean."
+      }
+    ],
+    "key_events": [
+      "Raskolnikov sneaks out of his garret avoiding his landlady",
+      "He walks to Alyona Ivanovna's apartment for a rehearsal of his unnamed plan",
+      "He pawns his father's silver watch for a rouble and fifteen kopecks",
+      "He covertly studies the apartment layout and where she keeps her keys",
+      "He asks casually about Lizaveta before leaving",
+      "He leaves in a state of self-loathing and disgust at himself",
+      "He enters a tavern for the first time and notices a man resembling a retired clerk"
+    ],
+    "locations": [
+      "Raskolnikov's garret on S. Place",
+      "Alyona Ivanovna's apartment — fourth floor of a large building near the canal",
+      "Streets of St. Petersburg near the Hay Market",
+      "A tavern near Raskolnikov's lodging"
+    ],
+    "cultural_references": [
+      {
+        "term": "Pawning",
+        "explanation": "Leaving a personal item with a pawnbroker as collateral for a small cash loan. If the borrower cannot repay with interest by a set date, the pawnbroker keeps and sells the item. Common practice among the poor in Tsarist Russia."
+      },
+      {
+        "term": "Garret",
+        "explanation": "A small, cramped room directly under the roof of a building — the cheapest and most miserable lodging available. Raskolnikov's garret is described as more like a cupboard than a room."
+      },
+      {
+        "term": "Kopecks and roubles",
+        "explanation": "Russian currency. One rouble equals 100 kopecks. Alyona Ivanovna gives Raskolnikov one rouble and fifteen kopecks for his watch — an insultingly small amount that reflects both her miserliness and his desperation."
+      }
+    ]
+  },
+  {
+    "number": 2,
+    "summary": "Raskolnikov, exhausted and isolated after weeks of dark obsession, wanders into a tavern where he meets Marmeladov — a disgraced former government clerk and hopeless alcoholic. Marmeladov pours out his life story: his proud but sickly wife Katerina Ivanovna, his daughter Sonia who has been forced into prostitution to feed the family, and his own complete inability to stop drinking despite knowing the devastation it causes. He recently regained a government position, giving the family brief hope, but stole from them five days later to fund his drinking and has been living on a hay barge ever since. He even took thirty kopecks from Sonia that morning for drink. Raskolnikov helps the drunken man home, where Katerina Ivanovna drags Marmeladov by the hair while their hungry children watch in terror. Raskolnikov quietly leaves his last coins on the windowsill before slipping out, then immediately regrets it.",
+    "characters": [
+      {
+        "name": "Raskolnikov",
+        "aliases": ["Rodion Romanovich Raskolnikov", "Rodya"],
+        "first_appearance": 1,
+        "description": "The protagonist. A young, impoverished former student in St. Petersburg. Intelligent and proud but psychologically tormented. Has been in a dark, isolated state for weeks."
+      },
+      {
+        "name": "Marmeladov",
+        "aliases": ["Semyon Zaharovitch Marmeladov"],
+        "first_appearance": 2,
+        "description": "A middle-aged former government clerk. Eloquent and self-aware but a hopeless alcoholic who has destroyed his family through drinking. Deeply pitiable — he loves his family yet cannot stop hurting them."
+      },
+      {
+        "name": "Katerina Ivanovna",
+        "aliases": [],
+        "first_appearance": 2,
+        "description": "Marmeladov's wife. A proud, educated woman from a noble background, now living in desperate poverty. Suffers from consumption. Fiercely proud despite her circumstances, prone to volatile outbursts."
+      },
+      {
+        "name": "Sonia",
+        "aliases": ["Sofya Semyonovna", "Sonya"],
+        "first_appearance": 2,
+        "description": "Marmeladov's daughter from his first marriage. Gentle and self-sacrificing. Has been forced into prostitution to support the family. Lives separately due to her yellow ticket status."
+      }
+    ],
+    "key_events": [
+      "Raskolnikov meets Marmeladov in a tavern",
+      "Marmeladov recounts his family's poverty and Sonia's sacrifice",
+      "Marmeladov reveals he stole from his family and has been missing five days",
+      "Raskolnikov helps Marmeladov home",
+      "Katerina Ivanovna drags Marmeladov by the hair in front of the children",
+      "Raskolnikov leaves his last coins on the windowsill and slips away"
+    ],
+    "locations": [
+      "Tavern in St. Petersburg",
+      "Marmeladov's apartment at Amalia Lippevechsel's building"
+    ],
+    "cultural_references": [
+      {
+        "term": "Yellow ticket",
+        "explanation": "A government-issued document in Tsarist Russia that registered a woman as a prostitute. Holders were required to carry it instead of a regular passport, marking them permanently as social outcasts."
+      },
+      {
+        "term": "Titular counsellor",
+        "explanation": "A low-ranking position in the Tsarist civil service hierarchy. Respectable enough to carry social status but poorly paid — Marmeladov uses it to cling to a sense of dignity."
+      },
+      {
+        "term": "Kopecks and roubles",
+        "explanation": "Russian currency. One rouble equals 100 kopecks. Thirty kopecks was a very small amount — barely enough for a meal — making Marmeladov's theft from Sonia especially cruel."
+      },
+      {
+        "term": "Consumption",
+        "explanation": "Tuberculosis. A common and fatal disease in 19th century Russia, particularly among the poor. Katerina Ivanovna's coughing and flushed cheeks are classic symptoms."
+      }
+    ]
+  }
+]
