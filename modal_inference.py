@@ -2,6 +2,8 @@ import os
 
 import modal
 
+from prompt_utils import ANSWER_GENERATION_KWARGS, ANSWER_INSTRUCTION_SUFFIX, build_system_prompt
+
 app = modal.App("reading-buddy")
 
 MODEL_ID = "openbmb/MiniCPM-o-4_5"
@@ -32,7 +34,11 @@ image = (
         "soundfile",
         "librosa",
     )
-    .add_local_file("narrator_ref.wav", "/narrator_ref.wav")
+    .env({"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"})
+    .add_local_file("voice-prompts/narrator_ref.wav", "/narrator_ref.wav")
+    .add_local_file("book_utils.py", "/root/book_utils.py")
+    .add_local_file("prompt_utils.py", "/root/prompt_utils.py")
+    .add_local_dir("books", "/root/books")
 )
 
 NARRATOR_REF_PATH = "/narrator_ref.wav"
@@ -113,71 +119,18 @@ class ReadingCompanion:
         )
         print(f"[tokenizer load] {time.time() - t1:.1f}s")
 
-    @modal.method()
-    def answer_from_audio(self, audio_bytes: bytes) -> dict:
+    def _transcribe(self, audio_bytes: bytes):
         """
-        Purpose: Accepts raw audio bytes, transcribes the speaker's question, then
-        answers it. Two separate model calls are made so the transcription can be
-        verified independently — this is important because a bad transcription
-        will produce a bad answer regardless of model quality.
+        Purpose: Decode raw audio bytes to a mono 16kHz float32 array and
+        transcribe the speaker's question.
 
         Args:
             audio_bytes (bytes): Raw audio file content (WAV, M4A, MP3, etc.).
 
         Returns:
-            dict with two keys:
-                "question" (str): The model's transcription of what the speaker said.
-                "answer"   (str): The model's answer to the transcribed question.
-        """
-        import io
-        import time
-        import torch
-        import numpy as np
-        import soundfile as sf
-
-        audio_array, sample_rate = sf.read(io.BytesIO(audio_bytes))
-        if audio_array.ndim > 1:
-            audio_array = audio_array.mean(axis=1)
-        if sample_rate != 16000:
-            import librosa
-            audio_array = librosa.resample(audio_array.astype(np.float32), orig_sr=sample_rate, target_sr=16000)
-        audio_array = audio_array.astype(np.float32)
-
-        t0 = time.time()
-        with torch.inference_mode():
-            transcription = self.model.chat(
-                msgs=[{"role": "user", "content": [audio_array, "Transcribe exactly what the speaker is saying."]}],
-                tokenizer=self.tokenizer,
-                max_new_tokens=256,
-            )
-        print(f"[transcription] {time.time() - t0:.1f}s: {transcription}")
-
-        t1 = time.time()
-        with torch.inference_mode():
-            answer = self.model.chat(
-                msgs=[{"role": "user", "content": f"Answer this question: {transcription}"}],
-                tokenizer=self.tokenizer,
-                max_new_tokens=256,
-            )
-        print(f"[answer] {time.time() - t1:.1f}s")
-
-        return {"question": transcription, "answer": answer}
-
-    @modal.method()
-    def answer_spoken(self, audio_bytes: bytes) -> dict:
-        """
-        Purpose: Accepts raw audio bytes, transcribes the speaker's question, generates
-        a text answer, then converts that answer to speech using MiniCPM-o's zero-shot
-        TTS (voice cloning from a reference audio clip).
-
-        Args:
-            audio_bytes (bytes): Raw audio file content (WAV, M4A, MP3, etc.).
-
-        Returns:
-            dict with three keys:
-                "question"     (str):   The model's transcription of what the speaker said.
-                "answer_text"  (str):   The model's answer as plain text.
-                "answer_audio" (bytes): WAV audio bytes of the spoken answer.
+            tuple[str, np.ndarray]:
+                transcription (str): The model's transcription of what the speaker said.
+                audio_array (np.ndarray): The decoded mono 16kHz audio.
         """
         import io
         import time
@@ -202,14 +155,53 @@ class ReadingCompanion:
             )
         print(f"[transcription] {time.time() - t0:.1f}s: {transcription}")
 
+        return transcription, audio_array
+
+    @modal.method()
+    def answer_spoken(self, audio_bytes: bytes, book_name: str = None, chapter_number: int = None) -> dict:
+        """
+        Purpose: Accepts raw audio bytes, transcribes the speaker's question, generates
+        a text answer, then converts that answer to speech using MiniCPM-o's zero-shot
+        TTS (voice cloning from a reference audio clip).
+
+        Args:
+            audio_bytes (bytes): Raw audio file content (WAV, M4A, MP3, etc.).
+            book_name (str, optional): Book identifier (e.g. "crime_and_punishment").
+                If provided along with chapter_number, the answer is grounded in the
+                book's text up to that chapter using a spoiler-free system prompt.
+            chapter_number (int, optional): The reader's current chapter (1-indexed).
+                Required if book_name is provided.
+
+        Returns:
+            dict with three keys:
+                "question"     (str):   The model's transcription of what the speaker said.
+                "answer_text"  (str):   The model's answer as plain text.
+                "answer_audio" (bytes): WAV audio bytes of the spoken answer.
+        """
+        import time
+        import torch
+        import librosa
+
+        transcription, audio_array = self._transcribe(audio_bytes)
+
+        if book_name is not None:
+            from book_utils import describe_reading_context
+            context, source_label = describe_reading_context(book_name, chapter_number)
+            answer_msgs = [
+                {"role": "system", "content": build_system_prompt(context, source_label)},
+                {"role": "user", "content": f"{transcription}{ANSWER_INSTRUCTION_SUFFIX}"},
+            ]
+        else:
+            answer_msgs = [{"role": "user", "content": (
+                f"Answer this question in 3-5 sentences with helpful detail: {transcription}"
+            )}]
+
         t1 = time.time()
         with torch.inference_mode():
             answer_text = self.model.chat(
-                msgs=[{"role": "user", "content": (
-                    f"Answer this question in 3-5 sentences with helpful detail: {transcription}"
-                )}],
+                msgs=answer_msgs,
                 tokenizer=self.tokenizer,
-                max_new_tokens=256,
+                **ANSWER_GENERATION_KWARGS,
             )
         print(f"[text answer] {time.time() - t1:.1f}s: {answer_text}")
 
@@ -252,57 +244,49 @@ class ReadingCompanion:
         return {"question": transcription, "answer_text": answer_text, "answer_audio": audio_wav_bytes}
 
     @modal.method()
-    def generate_text(self, prompt: str) -> str:
+    def answer_text_questions(self, context: str, questions: list, source_label: str) -> list:
         """
-        Purpose: Generates a text response from a plain text prompt. Used for
-        testing the model directly or as a fallback when no audio input is present.
+        Purpose: Text-only batch testing helper. Given a hand-written context block
+        (e.g. a chapter summary or structured data) and a list of questions, runs
+        each question through the same prompt structure and decoding settings as
+        answer_spoken's text-answer step, with no audio transcription or TTS. Used
+        to compare alternative context representations (summaries, structured data)
+        against the standard chapter-text context.
 
         Args:
-            prompt (str): The user's question or instruction as plain text.
+            context (str): Hand-written context text (e.g. a summary of recent
+                chapters, or a structured block of characters/events).
+            questions (list[str]): Questions to ask, each evaluated independently
+                (no shared conversation history between questions).
+            source_label (str): Short description of the context's source, used
+                in the prompt header (e.g. "a summary of chapters 1-2 of Crime
+                and Punishment").
 
         Returns:
-            str: The model's text response.
+            list[dict]: One dict per question, each with keys:
+                "question" (str): The input question.
+                "answer"   (str): The model's text answer.
         """
         import time
         import torch
 
-        t0 = time.time()
-        with torch.inference_mode():
-            response = self.model.chat(
-                msgs=[{"role": "user", "content": prompt}],
-                tokenizer=self.tokenizer,
-                max_new_tokens=256,
-            )
-        print(f"[inference] {time.time() - t0:.1f}s")
-        return response
+        system_prompt = build_system_prompt(context, source_label)
 
+        results = []
+        for question in questions:
+            answer_msgs = [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": f"{question}{ANSWER_INSTRUCTION_SUFFIX}"},
+            ]
 
-@app.local_entrypoint()
-def main():
-    """
-    Purpose: Local test entrypoint for the spoken response pipeline.
-    Reads voice-prompt1.wav from the project root, sends it to answer_spoken,
-    prints the transcribed question and text answer, and saves the spoken
-    audio response to response.wav.
+            t0 = time.time()
+            with torch.inference_mode():
+                answer = self.model.chat(
+                    msgs=answer_msgs,
+                    tokenizer=self.tokenizer,
+                    **ANSWER_GENERATION_KWARGS,
+                )
+            print(f"[{time.time() - t0:.1f}s] Q: {question}\nA: {answer}\n")
+            results.append({"question": question, "answer": answer})
 
-    Args:
-        None
-
-    Returns:
-        None — results are printed to stdout and audio is saved to response.wav.
-
-    Usage:
-        modal run modal_inference.py
-    """
-    with open("voice-prompt1.wav", "rb") as f:
-        audio_bytes = f.read()
-
-    companion = ReadingCompanion()
-    result = companion.answer_spoken.remote(audio_bytes)
-
-    print(f"\nQuestion heard: {result['question']}")
-    print(f"\nAnswer: {result['answer_text']}")
-
-    with open("response.wav", "wb") as f:
-        f.write(result["answer_audio"])
-    print("\nAudio response saved to response.wav")
+        return results
