@@ -54,7 +54,7 @@ def _book_dir(book: str) -> Path:
         book (str): Book identifier (e.g., 'crime_and_punishment').
 
     Returns:
-        Path: Directory containing the book's chapters.json, summary_key_data.json, etc.
+        Path: Directory containing the book's chapters.json, book_chapter_context.json, etc.
 
     Raises:
         ValueError: If the book identifier is not recognized.
@@ -293,10 +293,10 @@ def describe_reading_context(book: str, chapter_number: int) -> tuple:
 
 def load_hybrid_context(book: str, chapter_numbers: List[int]) -> str:
     """
-    Build a context string from a book's hand-written summary_key_data.json
-    file, combining per-chapter prose summaries with a deduplicated
-    structured block of characters, key events, locations, and cultural
-    references for the requested chapters.
+    Build a context string from a book's book_chapter_context.json file,
+    combining per-chapter prose summaries with a deduplicated structured
+    block of characters, key events, locations, and cultural references
+    for the requested chapters.
 
     Args:
         book (str): Book identifier (e.g., 'crime_and_punishment').
@@ -307,9 +307,9 @@ def load_hybrid_context(book: str, chapter_numbers: List[int]) -> str:
 
     Raises:
         ValueError: If the book identifier is not recognized.
-        FileNotFoundError: If the book's summary_key_data.json doesn't exist.
+        FileNotFoundError: If the book's book_chapter_context.json doesn't exist.
     """
-    summary_path = _book_dir(book) / 'summary_key_data.json'
+    summary_path = _book_dir(book) / 'book_chapter_context.json'
 
     with open(summary_path, 'r', encoding='utf-8') as f:
         all_chapters = json.load(f)
@@ -370,7 +370,7 @@ def describe_hybrid_context(book: str, chapter_numbers: List[int]) -> tuple:
 
     Raises:
         ValueError: If the book identifier is not recognized.
-        FileNotFoundError: If the book's summary_key_data.json doesn't exist.
+        FileNotFoundError: If the book's book_chapter_context.json doesn't exist.
     """
     metadata = get_book_metadata(book)
     context = load_hybrid_context(book, chapter_numbers)
