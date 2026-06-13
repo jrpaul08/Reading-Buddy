@@ -1,0 +1,351 @@
+[
+  {
+    "name": "Rodion Romanovitch Raskolnikov",
+    "aliases": [
+      "Raskolnikov",
+      "Rodion",
+      "Rodion Romanovich Raskolnikov",
+      "Rodion Romanovich Raskolnikov (Raskolnikov)",
+      "Rodion Romanovitch",
+      "Rodya"
+    ],
+    "description": "A young, impoverished student struggling with severe financial and psychological issues. He is handsome but poorly dressed and often in a state of anxiety and indecision. Raskolnikov is haunted by an unnamed idea that he considers both terrifying and potentially transformative.",
+    "introduced_chapter": 1
+  },
+  {
+    "name": "Alyona Ivanovna",
+    "aliases": [],
+    "description": "An old, suspicious woman who runs a pawn shop in a dilapidated building. She is described as withered, sharp-eyed, and unfriendly, and she meticulously keeps track of her transactions and debts.",
+    "introduced_chapter": 1
+  },
+  {
+    "name": "Lizaveta Ivanovna",
+    "aliases": [
+      "Lizaveta"
+    ],
+    "description": "Alyona's sister, who is not present during Raskolnikov's visit. She is mentioned but does not appear in the chapter.",
+    "introduced_chapter": 1
+  },
+  {
+    "name": "Landlady",
+    "aliases": [],
+    "description": "A woman who provides Raskolnikov with a room, meals, and services. She lives on the floor below him and is owed money by Raskolnikov, whom he fears encountering.",
+    "introduced_chapter": 1
+  },
+  {
+    "name": "Drunkard",
+    "aliases": [],
+    "description": "A drunk man encountered by Raskolnikov on the street who insults him, causing Raskolnikov to feel self-conscious about his appearance.",
+    "introduced_chapter": 1
+  },
+  {
+    "name": "Retired Government Clerk",
+    "aliases": [],
+    "description": "A man observed by Raskolnikov in the tavern, appearing agitated and occasionally drinking from his pot.",
+    "introduced_chapter": 1
+  },
+  {
+    "name": "Semyon Zaharovitch Marmeladov",
+    "aliases": [
+      "Marmeladov",
+      "Semyon Zaharovitch"
+    ],
+    "description": "A former government clerk who has fallen into alcoholism and poverty. He is deeply remorseful for his actions and seeks understanding and forgiveness. His interactions with Raskolnikov reveal his complex relationship with his wife and daughter, highlighting themes of redemption and societal judgment.",
+    "introduced_chapter": 2
+  },
+  {
+    "name": "Katerina Ivanovna",
+    "aliases": [],
+    "description": "Marmeladov's wife, a former officer's daughter who is now ill and struggling to support her family. She is proud and quick-tempered, often lashing out at Marmeladov in frustration. Her condition worsens as the chapter progresses, adding to the family's distress.",
+    "introduced_chapter": 2
+  },
+  {
+    "name": "Sofya Semyonovna Marmeladov",
+    "aliases": [
+      "Marmeladov's daughter",
+      "Sofya Ivanovna (Sonia)",
+      "Sofya Semyonovna",
+      "Sofya Semyonovna (Sonia)",
+      "Sonia",
+      "Sonia Marmeladov",
+      "Sonya"
+    ],
+    "description": "Marmeladov's daughter, who has turned to prostitution to support her family. Despite her circumstances, she shows compassion and care for her father and stepmother, embodying themes of sacrifice and resilience.",
+    "introduced_chapter": 2
+  },
+  {
+    "name": "Andrey Semyonovitch Lebeziatnikov",
+    "aliases": [
+      "Lebeziatnikov"
+    ],
+    "description": "A character mentioned by Marmeladov as someone who has beaten Katerina Ivanovna and caused further hardship for the family. His actions highlight the societal pressures and injustices faced by the family.",
+    "introduced_chapter": 2
+  },
+  {
+    "name": "Amalia Fyodorovna Lippevechsel",
+    "aliases": [],
+    "description": "The landlord who rents a room to Marmeladov's family. She is portrayed as strict and unforgiving, particularly towards Sonia, emphasizing the societal stigma surrounding prostitution.",
+    "introduced_chapter": 2
+  },
+  {
+    "name": "Nastasya Nikiforovna",
+    "aliases": [
+      "Nastasya",
+      "Nastasya Petrovna"
+    ],
+    "description": "The cook and servant at Raskolnikov's residence. She is talkative and often intrusive, bringing him food and engaging him in conversation despite his apparent discomfort.",
+    "introduced_chapter": 3
+  },
+  {
+    "name": "Praskovya Pavlovna",
+    "aliases": [
+      "Pashenka"
+    ],
+    "description": "Raskolnikov's landlady who threatens to report him to the police for non-payment of rent and refusal to leave the premises.",
+    "introduced_chapter": 3
+  },
+  {
+    "name": "Avdotya Romanovna",
+    "aliases": [
+      "Dounia",
+      "Dunya",
+      "sister"
+    ],
+    "description": "Raskolnikov's sister who has been working as a governess and recently endured hardships at the Svidriga\u00eflovs' house. She is engaged to Pyotr Petrovitch Luzhin, which offers financial relief to the family.",
+    "introduced_chapter": 3
+  },
+  {
+    "name": "Pyotr Petrovitch Luzhin",
+    "aliases": [
+      "Luzhin",
+      "Mr. Luzhin",
+      "Pyotr Petrovich Luzhin",
+      "Pyotr Petrovitch"
+    ],
+    "description": "A wealthy and ambitious man who is engaged to Dounia. He is described as practical, somewhat conceited, and interested in marrying a woman of good reputation who has experienced poverty.",
+    "introduced_chapter": 3
+  },
+  {
+    "name": "Pulcheria Alexandrovna",
+    "aliases": [
+      "Mother",
+      "mother"
+    ],
+    "description": "Raskolnikov's mother, who wrote the letter informing him of Dounia's engagement. She is portrayed as loving but possibly manipulative, trying to convince Raskolnikov that the marriage is for his benefit. Her character is only mentioned through Raskolnikov's thoughts, but her influence is significant in shaping his current emotional state.",
+    "introduced_chapter": 4
+  },
+  {
+    "name": "Policeman",
+    "aliases": [],
+    "description": "A constable who intervenes when Raskolnikov confronts a gentleman who is attempting to take advantage of a drunken girl. The policeman attempts to help the girl but is ultimately thwarted by Raskolnikov's decision to abandon her. His character highlights the broader societal issues Raskolnikov is grappling with.",
+    "introduced_chapter": 4
+  },
+  {
+    "name": "Dmitri Prokofitch Razumihin",
+    "aliases": [
+      "Dmitri Prokofitch",
+      "Razumihin",
+      "Vrazumihin"
+    ],
+    "description": "Raskolnikov's old university friend, whom he briefly considers visiting but ultimately forgets about. Razumihin is described as a good-natured and intelligent individual, representing a potential source of support and understanding for Raskolnikov.",
+    "introduced_chapter": 4
+  },
+  {
+    "name": "Mikolka",
+    "aliases": [],
+    "description": "A character from Raskolnikov's dream, a drunkard who cruelly beats a weak horse to death. His actions symbolize the violence and cruelty that Raskolnikov is considering.",
+    "introduced_chapter": 5
+  },
+  {
+    "name": "Pokorev",
+    "aliases": [],
+    "description": "A student who mentions Alyona Ivanovna to Raskolnikov in a tavern, discussing her wealth and mistreatment of her sister Lizaveta. His conversation sparks Raskolnikov's thoughts about the morality of robbing Alyona.",
+    "introduced_chapter": 6
+  },
+  {
+    "name": "The Porter",
+    "aliases": [],
+    "description": "A minor character whose room Raskolnikov enters to steal an axe when he cannot retrieve it from the kitchen.",
+    "introduced_chapter": 6
+  },
+  {
+    "name": "Koch",
+    "aliases": [],
+    "description": "A visitor who arrives at Alyona's apartment after the murders, adding tension to the scene as he tries to gain entry.",
+    "introduced_chapter": 7
+  },
+  {
+    "name": "Young Man",
+    "aliases": [],
+    "description": "Another visitor who arrives with Koch and deduces that someone is inside the apartment, further complicating Raskolnikov's escape.",
+    "introduced_chapter": 7
+  },
+  {
+    "name": "Porter",
+    "aliases": [],
+    "description": "A man who delivers the summons from the police station to Raskolnikov. He is observant and notices Raskolnikov's unusual state but does not question him further.",
+    "introduced_chapter": 8
+  },
+  {
+    "name": "Head Clerk",
+    "aliases": [],
+    "description": "An official at the police station who handles Raskolnikov's summons for debt recovery. He is dismissive of Raskolnikov's condition and treats him with contempt.",
+    "introduced_chapter": 8
+  },
+  {
+    "name": "Ilya Petrovitch",
+    "aliases": [
+      "Assistant Superintendent (Ilya Petrovitch)"
+    ],
+    "description": "A stern and aggressive official at the police station who interrogates Raskolnikov and shows no sympathy for his condition. He is quick to anger and dismisses Raskolnikov's explanations.",
+    "introduced_chapter": 8
+  },
+  {
+    "name": "Nikodim Fomitch",
+    "aliases": [
+      "Superintendent (Nikodim Fomitch)"
+    ],
+    "description": "A more understanding official at the police station who tries to mediate between Raskolnikov and the Assistant Superintendent. He shows some concern for Raskolnikov's health but ultimately allows him to leave without further questioning.",
+    "introduced_chapter": 8
+  },
+  {
+    "name": "Zametov",
+    "aliases": [],
+    "description": "A police clerk who visited Raskolnikov's room during his illness. He is mentioned as a figure of authority and potential threat.",
+    "introduced_chapter": 10
+  },
+  {
+    "name": "Messenger",
+    "aliases": [],
+    "description": "A young man who delivers a remittance from Raskolnikov's mother. He is described as inquisitive and professional.",
+    "introduced_chapter": 10
+  },
+  {
+    "name": "Afanasy Ivanovitch Vahrushin",
+    "aliases": [
+      "Vahrushin"
+    ],
+    "description": "A person who facilitated the remittance from Raskolnikov's mother. He is mentioned as a significant figure in Raskolnikov's life.",
+    "introduced_chapter": 10
+  },
+  {
+    "name": "Dr. Zossimov",
+    "aliases": [
+      "Zossimov"
+    ],
+    "description": "A physician attending to Raskolnikov, Zossimov is characterized as self-important and somewhat tedious, despite his professional competence. He is skeptical of Razumihin's arguments regarding Nikolay's innocence and the legal proceedings.",
+    "introduced_chapter": 11
+  },
+  {
+    "name": "Nikolay Dementyev",
+    "aliases": [],
+    "description": "Accused of the murder of Alyona Ivanovna and her sister Lizaveta, Nikolay is described as a painter who found jewelry and lied about it, leading to his arrest and attempted suicide. Razumihin believes in his innocence.",
+    "introduced_chapter": 11
+  },
+  {
+    "name": "Afrosinya",
+    "aliases": [],
+    "description": "A woman who attempts suicide by jumping into the canal. She is rescued by a policeman and recognized by a passerby.",
+    "introduced_chapter": 13
+  },
+  {
+    "name": "Polenka",
+    "aliases": [],
+    "description": "Marmeladov's eldest daughter, who runs after Raskolnikov to give a message from Sonia. She is described as a child of ten who understands her mother's needs and tries to help.",
+    "introduced_chapter": 14
+  },
+  {
+    "name": "Porfiry Petrovitch",
+    "aliases": [
+      "Porfiry"
+    ],
+    "description": "A detective handling a murder investigation. Razumihin mentions that Porfiry is eager to meet Raskolnikov.",
+    "introduced_chapter": 18
+  },
+  {
+    "name": "Unknown Man",
+    "aliases": [],
+    "description": "A man who follows Sofya Semyonovna after she leaves Raskolnikov's apartment, intrigued by her mention of Raskolnikov. He learns that she lives nearby and decides to investigate further.",
+    "introduced_chapter": 18
+  },
+  {
+    "name": "Nikolay",
+    "aliases": [],
+    "description": "A minor character mentioned by Porfiry Petrovitch, who is suspected of involvement in a crime. Razumihin defends his innocence.",
+    "introduced_chapter": 19
+  },
+  {
+    "name": "Arkady Ivanovitch Svidrigailov",
+    "aliases": [
+      "Arkady Ivanovitch",
+      "Arkady Ivanovitch Svidriga\u00eflov",
+      "Mr. Svidriga\u00eflov",
+      "Stranger",
+      "Svidriga\u00eflov"
+    ],
+    "description": "Introduced at the end of the chapter, this stranger watches Raskolnikov closely after he wakes from a nightmare. His presence adds an ominous and unsettling element to the conclusion of the chapter.",
+    "introduced_chapter": 20
+  },
+  {
+    "name": "Marfa Petrovna",
+    "aliases": [],
+    "description": "Svidriga\u00eflov's deceased wife, whose ghost he claims to have seen multiple times since her death. She is also mentioned in the context of her will, which includes a bequest to Avdotya Romanovna.",
+    "introduced_chapter": 21
+  },
+  {
+    "name": "The man from underground",
+    "aliases": [],
+    "description": "A visitor who informs Porfiry about Raskolnikov's inquiries about the flat and blood stains. His presence and revelations provide crucial context for Raskolnikov's situation and contribute to the resolution of the immediate crisis.",
+    "introduced_chapter": 26
+  },
+  {
+    "name": "Amalia Ivanovna",
+    "aliases": [
+      "Ludwigovna"
+    ],
+    "description": "Amalia Ivanovna is the landlady of the apartment where Katerina Ivanovna and her family reside. She is portrayed as a figure of authority and pride, often clashing with Katerina Ivanovna over the management of the household and the conduct of the dinner. Her interactions with Katerina Ivanovna are marked by mutual disrespect and escalating conflict.",
+    "introduced_chapter": 28
+  },
+  {
+    "name": "Katia",
+    "aliases": [],
+    "description": "A young woman who sings and performs for Svidriga\u00eflov in the tavern. She is paid and leaves after performing.",
+    "introduced_chapter": 34
+  },
+  {
+    "name": "Philip",
+    "aliases": [],
+    "description": "A waiter at the tavern who serves Svidriga\u00eflov and others. He is described as obsequious and friendly with Svidriga\u00eflov.",
+    "introduced_chapter": 34
+  },
+  {
+    "name": "Kapernaumov children",
+    "aliases": [],
+    "description": "Four children under Sonia's care who are present during Svidriga\u00eflov's visit but quickly leave in terror.",
+    "introduced_chapter": 37
+  },
+  {
+    "name": "Fianc\u00e9e's parents",
+    "aliases": [],
+    "description": "The parents of Svidriga\u00eflov's fianc\u00e9e, who receive a large sum of money from him and are surprised by his midnight visit.",
+    "introduced_chapter": 37
+  },
+  {
+    "name": "Fianc\u00e9e",
+    "aliases": [],
+    "description": "Svidriga\u00eflov's fianc\u00e9e who receives fifteen thousand roubles from him and is left in a state of excitement and confusion after his visit.",
+    "introduced_chapter": 37
+  },
+  {
+    "name": "Achilles",
+    "aliases": [],
+    "description": "A gatekeeper at a large house who encounters Svidriga\u00eflov and witnesses his suicide attempt.",
+    "introduced_chapter": 37
+  },
+  {
+    "name": "Young girl",
+    "aliases": [],
+    "description": "A neglected child found by Svidriga\u00eflov in his hotel room, who falls asleep after he helps her. She appears to Svidriga\u00eflov in a disturbing dream.",
+    "introduced_chapter": 37
+  }
+]

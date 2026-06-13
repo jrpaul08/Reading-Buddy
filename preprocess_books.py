@@ -3,8 +3,8 @@ One-time book preprocessing pipeline for Reading Buddy.
 
 Uses an LLM (text-only) to generate per-chapter summaries and
 structured data (characters, key events, locations, cultural references)
-for each book, producing a summary_key_data.json matching the hand-written
-reference format already used by book_utils.load_hybrid_context.
+for each book, producing a book_chapter_context.json in the format
+consumed by book_utils.load_hybrid_context.
 
 This is a standalone utility, separate from the production modal_inference.py
 app and model.
@@ -15,6 +15,7 @@ Usage:
 
 import json
 import re
+import unicodedata
 from pathlib import Path
 
 import modal
@@ -46,7 +47,7 @@ image = (
 def build_summarization_prompt(chapter_text: str, chapter_number: int) -> str:
     """
     Build a prompt instructing the model to summarize a single chapter into
-    the structured JSON format used by summary_key_data.json.
+    the structured JSON format used by book_chapter_context.json.
 
     Args:
         chapter_text (str): Full text of the chapter to summarize.
@@ -131,7 +132,7 @@ Important rules:
 def parse_chapter_json(raw_response: str) -> dict:
     """
     Parse and validate a model response as chapter summary JSON matching the
-    summary_key_data.json schema.
+    book_chapter_context.json schema.
 
     Args:
         raw_response (str): Raw text returned by the model, which may
@@ -193,6 +194,244 @@ def parse_chapter_json(raw_response: str) -> dict:
             raise ValueError(f"Cultural reference '{cr.get('term')}' missing or invalid 'explanation' (expected string)")
 
     return data
+
+
+def _collect_character_names(data: list) -> dict:
+    """
+    Collect every unique character "name" appearing across all chapters,
+    along with the union of all "aliases" ever recorded for that name.
+
+    Args:
+        data (list[dict]): Per-chapter entries, each with a "characters" list.
+
+    Returns:
+        dict: Maps each unique character name to a sorted list of aliases
+            collected for that name across all chapters.
+    """
+    names = {}
+    for entry in data:
+        for c in entry["characters"]:
+            names.setdefault(c["name"], set()).update(c.get("aliases", []))
+    return {name: sorted(aliases) for name, aliases in names.items()}
+
+
+def build_canonicalization_prompt(character_map: dict) -> str:
+    """
+    Build a prompt asking the model to group character name variants (as
+    extracted independently per-chapter) by the actual person they refer to,
+    and assign one canonical name per person.
+
+    Args:
+        character_map (dict): Maps each unique character name to its
+            aliases, as returned by _collect_character_names.
+
+    Returns:
+        str: Complete prompt to send to the model.
+    """
+    entries = [{"name": name, "aliases": aliases} for name, aliases in character_map.items()]
+    entries_json = json.dumps(entries, indent=2)
+
+    return f"""The following is a list of characters extracted independently from each chapter of a novel, along with any aliases (nicknames, patronymics, titles, or alternate names) noted for them in that chapter. Because each chapter was processed separately, the SAME character may appear multiple times under different name variants (e.g. "Raskolnikov", "Rodion Romanovitch Raskolnikov", and "Rodya" might all refer to the same person).
+
+Your task: group these entries by the actual person they refer to, and choose ONE canonical name for each person — use their most complete and recognizable form (e.g. full name with surname, or the name used most often).
+
+Return a single JSON object mapping each "name" value below to its canonical name. Every name in the list below must appear as a key in your output. Two genuinely different characters must map to two different canonical names — do not merge distinct people just because they share a surname, title, or role.
+
+Characters:
+{entries_json}
+
+Return ONLY the JSON object mapping each input name to its canonical name. No preamble, explanation, or markdown code fences."""
+
+
+def parse_canonicalization_json(raw_response: str, expected_names: set) -> dict:
+    """
+    Parse and validate a model response as a character-name canonicalization
+    mapping.
+
+    Args:
+        raw_response (str): Raw text returned by the model, which may
+            include a <think>...</think> block and/or markdown code fences
+            around the JSON.
+        expected_names (set[str]): The set of character names that must
+            appear as keys in the returned mapping.
+
+    Returns:
+        dict: Maps each input character name to its canonical name.
+
+    Raises:
+        ValueError: If the response is not valid JSON or doesn't match the
+            expected schema. Names omitted from the mapping are not an
+            error — they simply keep their original name (see
+            apply_canonicalization's use of dict.get with a default).
+    """
+    text = re.sub(r"<think>.*?</think>", "", raw_response, flags=re.DOTALL).strip()
+
+    fence_match = re.search(r"```(?:json)?\s*\n(.*?)\n```", text, flags=re.DOTALL)
+    if fence_match:
+        text = fence_match.group(1).strip()
+
+    try:
+        mapping = json.loads(text)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Response is not valid JSON: {e}")
+
+    if not isinstance(mapping, dict):
+        raise ValueError(f"Expected a JSON object, got {type(mapping).__name__}")
+
+    for name, canonical in mapping.items():
+        if not isinstance(canonical, str):
+            raise ValueError(f"Mapping for '{name}' is not a string: {canonical!r}")
+
+    missing = expected_names - set(mapping.keys())
+    if missing:
+        print(f"[parse_canonicalization_json] model omitted {len(missing)} name(s) from its mapping "
+              f"(these will keep their original name): {sorted(missing)}")
+
+    return mapping
+
+
+def apply_canonicalization(data: list, mapping: dict) -> list:
+    """
+    Rewrite each chapter's "characters" list in place, replacing each
+    character's "name" with its canonical name (per `mapping`) and merging
+    "aliases" for characters that collapse onto the same canonical name
+    within a chapter.
+
+    Args:
+        data (list[dict]): Per-chapter entries, each with a "characters" list.
+        mapping (dict): Maps original character names to canonical names, as
+            returned by parse_canonicalization_json.
+
+    Returns:
+        list[dict]: The same `data` list, with "characters" rewritten in place.
+    """
+    for entry in data:
+        merged = {}
+        order = []
+        for c in entry["characters"]:
+            canonical = mapping.get(c["name"], c["name"])
+            aliases = set(c.get("aliases", []))
+            if c["name"] != canonical:
+                aliases.add(c["name"])
+            aliases.discard(canonical)
+
+            if canonical in merged:
+                merged[canonical]["aliases"] = sorted(set(merged[canonical]["aliases"]) | aliases)
+            else:
+                merged[canonical] = {"name": canonical, "aliases": sorted(aliases), "description": c["description"]}
+                order.append(canonical)
+
+        entry["characters"] = [merged[name] for name in order]
+
+    return data
+
+
+def _normalize_name(name: str) -> str:
+    """Strip diacritics and casing from a character name for fuzzy comparison
+    (e.g. "Svidrigailov" and "Svidrigaïlov" both normalize to "svidrigailov")."""
+    decomposed = unicodedata.normalize("NFKD", name)
+    return "".join(ch for ch in decomposed if not unicodedata.combining(ch)).casefold()
+
+
+def merge_near_duplicate_names(data: list) -> list:
+    """
+    Catch character names that the canonicalization pass left as near-duplicates
+    differing only by diacritics (e.g. the model dropped "ï" from "Svidrigaïlov"
+    when generating its mapping, leaving "Svidrigailov" and "Svidrigaïlov" as
+    separate canonical names). Groups current names by their diacritic-stripped
+    form and merges each group onto the name that best preserves accents.
+
+    Args:
+        data (list[dict]): Per-chapter entries, each with a "characters" list,
+            after an initial apply_canonicalization pass.
+
+    Returns:
+        list[dict]: The same `data` list, with any near-duplicate names merged.
+    """
+    groups = {}
+    for entry in data:
+        for c in entry["characters"]:
+            groups.setdefault(_normalize_name(c["name"]), set()).add(c["name"])
+
+    rename = {}
+    for names in groups.values():
+        if len(names) <= 1:
+            continue
+        canonical = max(names, key=lambda n: (any(ord(ch) > 127 for ch in n), len(n)))
+        for name in names:
+            if name != canonical:
+                rename[name] = canonical
+
+    if rename:
+        print(f"Merging {len(rename)} near-duplicate name(s) left after canonicalization: {rename}")
+        data = apply_canonicalization(data, rename)
+
+    return data
+
+
+def accumulate_aliases(data: list) -> list:
+    """
+    Make each character's "aliases" list cumulative across chapters: by
+    chapter N, a character's aliases include every alias ever recorded for
+    them in chapters 1..N (not just chapter N's own aliases). This lets
+    load_hybrid_context's "last chapter wins" dedup show the full set of
+    names a character has been called by up to that point.
+
+    Args:
+        data (list[dict]): Per-chapter entries, in chapter-number order,
+            each with a "characters" list of canonicalized characters.
+
+    Returns:
+        list[dict]: The same `data` list, with "aliases" rewritten in place.
+    """
+    seen_aliases = {}
+    for entry in sorted(data, key=lambda e: e["number"]):
+        for c in entry["characters"]:
+            running = seen_aliases.setdefault(c["name"], set())
+            running.update(c.get("aliases", []))
+            c["aliases"] = sorted(running)
+    return data
+
+
+def build_character_glossary(data: list) -> list:
+    """
+    Build a book-wide character glossary from canonicalized per-chapter data,
+    with one entry per unique character including the earliest chapter they
+    appear in.
+
+    Args:
+        data (list[dict]): Per-chapter entries (after canonicalization), each
+            with "number" and a "characters" list.
+
+    Returns:
+        list[dict]: One entry per character, each with "name", "aliases",
+            "description" (from the chapter where they first appear), and
+            "introduced_chapter", sorted by introduced_chapter.
+    """
+    glossary = {}
+    for entry in data:
+        for c in entry["characters"]:
+            name = c["name"]
+            if name not in glossary:
+                glossary[name] = {
+                    "name": name,
+                    "aliases": set(c["aliases"]),
+                    "description": c["description"],
+                    "introduced_chapter": entry["number"],
+                }
+            else:
+                glossary[name]["aliases"].update(c["aliases"])
+                glossary[name]["introduced_chapter"] = min(glossary[name]["introduced_chapter"], entry["number"])
+
+    return [
+        {
+            "name": g["name"],
+            "aliases": sorted(g["aliases"]),
+            "description": g["description"],
+            "introduced_chapter": g["introduced_chapter"],
+        }
+        for g in sorted(glossary.values(), key=lambda g: g["introduced_chapter"])
+    ]
 
 
 @app.cls(
@@ -313,7 +552,7 @@ class ChapterSummarizer:
     ) -> dict:
         """
         Purpose: Summarize a single chapter into the structured format used by
-        summary_key_data.json, retrying with sampling if the model's response
+        book_chapter_context.json, retrying with sampling if the model's response
         isn't valid JSON matching the expected schema.
 
         Args:
@@ -378,7 +617,7 @@ def process_book(
     """
     Purpose: Run the full preprocessing pipeline over a range of chapters,
     summarizing chapters in parallel (up to max_containers GPUs at once) and
-    writing results to a generated summary_key_data file as each chapter
+    writing results to a book_chapter_context.json file as each chapter
     completes.
 
     Args:
@@ -389,7 +628,7 @@ def process_book(
 
     Returns:
         None — results are written incrementally to
-        books/<book_name>/summary_key_data_generated.json and printed to
+        books/<book_name>/book_chapter_context.json and printed to
         stdout as each chapter completes.
 
     Usage:
@@ -402,7 +641,7 @@ def process_book(
     if end_chapter is None:
         end_chapter = metadata["total_chapters"]
 
-    output_path = Path(__file__).parent / "books" / book_name / "summary_key_data_generated.json"
+    output_path = Path(__file__).parent / "books" / book_name / "book_chapter_context.json"
 
     if output_path.exists():
         results = json.loads(output_path.read_text())
@@ -470,3 +709,70 @@ def test_summarize_chapter(chapter_number: int = 1):
     )
 
     print(json.dumps(result, indent=2))
+
+
+@app.local_entrypoint()
+def canonicalize_characters(book_name: str = "crime_and_punishment", max_retries: int = 3):
+    """
+    Purpose: Post-processing pass over book_chapter_context.json that
+    resolves character name variants (e.g. "Raskolnikov" vs "Rodion
+    Romanovitch Raskolnikov") into a single canonical name per person, then
+    builds a book-wide character glossary (characters.json) with the chapter
+    each character is first introduced.
+
+    Args:
+        book_name (str): Book identifier (e.g. "crime_and_punishment").
+        max_retries (int): Maximum number of generation attempts before
+            giving up on the canonicalization mapping.
+
+    Returns:
+        None — rewrites books/<book_name>/book_chapter_context.json
+        with canonicalized character names/aliases, and writes
+        books/<book_name>/characters.json.
+
+    Usage:
+        modal run preprocess_books.py::canonicalize_characters
+    """
+    book_dir = Path(__file__).parent / "books" / book_name
+    summary_path = book_dir / "book_chapter_context.json"
+    data = json.loads(summary_path.read_text())
+
+    character_map = _collect_character_names(data)
+    print(f"Found {len(character_map)} unique character name(s) across {len(data)} chapter(s)")
+
+    prompt = build_canonicalization_prompt(character_map)
+    expected_names = set(character_map.keys())
+
+    summarizer = ChapterSummarizer()
+    last_error = None
+    mapping = None
+    for attempt in range(max_retries):
+        raw = summarizer.generate.remote(
+            prompt,
+            max_new_tokens=4096,
+            enable_thinking=False,
+            do_sample=(attempt > 0),
+        )
+        try:
+            mapping = parse_canonicalization_json(raw, expected_names)
+            break
+        except ValueError as e:
+            last_error = e
+            print(f"[canonicalize_characters] attempt {attempt + 1} failed: {e}\nRaw response:\n{raw}")
+
+    if mapping is None:
+        raise ValueError(f"Failed to get valid canonicalization mapping after {max_retries} attempts: {last_error}")
+
+    renamed = {name: canonical for name, canonical in mapping.items() if name != canonical}
+    print(f"Canonicalized {len(renamed)} name variant(s): {renamed}")
+
+    data = apply_canonicalization(data, mapping)
+    data = merge_near_duplicate_names(data)
+    data = accumulate_aliases(data)
+    summary_path.write_text(json.dumps(data, indent=2))
+    print(f"Wrote canonicalized characters to {summary_path}")
+
+    glossary = build_character_glossary(data)
+    glossary_path = book_dir / "characters.json"
+    glossary_path.write_text(json.dumps(glossary, indent=2))
+    print(f"Wrote {len(glossary)} character(s) to {glossary_path}")

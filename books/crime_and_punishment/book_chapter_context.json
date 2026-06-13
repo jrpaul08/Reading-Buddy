@@ -4,8 +4,10 @@
     "summary": "On a hot July evening, a young man named Raskolnikov leaves his cramped, impoverished lodgings in S. Place and walks hesitantly towards K. Bridge. He avoids his landlady, fearing confrontation due to his mounting debts and deteriorating mental state. Raskolnikov reflects on his fears and indecision, questioning his ability to undertake a significant action despite his impoverished and isolated condition. He encounters a drunkard who insults him, causing him to clutch his worn-out hat in terror. Raskolnikov heads to a nearby house to pawn his watch, hoping to secure some funds. He meets Alyona Ivanovna, an old, suspicious woman who pawns items for a living. After a tense exchange, Raskolnikov receives less money than he hoped for and leaves, deeply troubled. On his way out, he learns that Alyona's sister, Lizaveta, is not present. Raskolnikov leaves the house in confusion and despair, contemplating the 'atrocious' idea that has been haunting him. He visits a tavern, drinks beer, and momentarily feels better, believing his troubles are merely physical. However, his relief is short-lived, and he remains unsettled, sensing that his newfound cheerfulness is not genuine.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov"
+        ],
         "description": "A young, impoverished student struggling with severe financial and psychological issues. He is handsome but poorly dressed and often in a state of anxiety and indecision. Raskolnikov is haunted by an unnamed idea that he considers both terrifying and potentially transformative."
       },
       {
@@ -14,8 +16,10 @@
         "description": "An old, suspicious woman who runs a pawn shop in a dilapidated building. She is described as withered, sharp-eyed, and unfriendly, and she meticulously keeps track of her transactions and debts."
       },
       {
-        "name": "Lizaveta",
-        "aliases": [],
+        "name": "Lizaveta Ivanovna",
+        "aliases": [
+          "Lizaveta"
+        ],
         "description": "Alyona's sister, who is not present during Raskolnikov's visit. She is mentioned but does not appear in the chapter."
       },
       {
@@ -63,13 +67,16 @@
     "summary": "In a crowded tavern, Raskolnikov, feeling a sudden desire for company after a month of isolation, finds himself intrigued by a retired clerk named Marmeladov. Marmeladov, visibly drunk and disheveled, initiates a conversation with Raskolnikov, introducing himself as a titular counsellor and expressing his belief that despite his appearance, Raskolnikov is educated and not accustomed to drinking. Marmeladov proceeds to share his life story, detailing his struggles with alcoholism, poverty, and his relationship with his wife, Katerina Ivanovna, and daughter, Sonia. He describes how he lost his job due to his drinking, leading to financial hardships and his wife's deteriorating health. Despite occasional moments of hope, such as when he briefly regained employment, Marmeladov's drinking resumed, causing further distress. He reveals that Sonia, to support the family, has resorted to prostitution. Marmeladov expresses deep remorse and seeks forgiveness, believing his actions deserve crucifixion. The scene shifts to Marmeladov's home, where Raskolnikov witnesses the dire conditions and Katerina Ivanovna's reaction upon seeing Marmeladov, who has squandered their remaining money on drink. Amidst chaos and accusations, Raskolnikov leaves, feeling conflicted and placing coins he had received earlier on the window for the family. As he walks away, he reflects on the moral implications of his thoughts and actions, questioning societal norms and the inherent nature of humanity.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov"
+        ],
         "description": "A young man struggling with isolation and a desire for companionship. He is intelligent and contemplative, often questioning societal norms and his own morality. His encounter with Marmeladov deeply affects him, prompting introspection about human nature and the consequences of actions."
       },
       {
-        "name": "Marmeladov",
+        "name": "Semyon Zaharovitch Marmeladov",
         "aliases": [
+          "Marmeladov",
           "Semyon Zaharovitch"
         ],
         "description": "A former government clerk who has fallen into alcoholism and poverty. He is deeply remorseful for his actions and seeks understanding and forgiveness. His interactions with Raskolnikov reveal his complex relationship with his wife and daughter, highlighting themes of redemption and societal judgment."
@@ -80,15 +87,18 @@
         "description": "Marmeladov's wife, a former officer's daughter who is now ill and struggling to support her family. She is proud and quick-tempered, often lashing out at Marmeladov in frustration. Her condition worsens as the chapter progresses, adding to the family's distress."
       },
       {
-        "name": "Sonia",
+        "name": "Sofya Semyonovna Marmeladov",
         "aliases": [
-          "Sofya Semyonovna"
+          "Sofya Semyonovna",
+          "Sonia"
         ],
         "description": "Marmeladov's daughter, who has turned to prostitution to support her family. Despite her circumstances, she shows compassion and care for her father and stepmother, embodying themes of sacrifice and resilience."
       },
       {
-        "name": "Lebeziatnikov",
-        "aliases": [],
+        "name": "Andrey Semyonovitch Lebeziatnikov",
+        "aliases": [
+          "Lebeziatnikov"
+        ],
         "description": "A character mentioned by Marmeladov as someone who has beaten Katerina Ivanovna and caused further hardship for the family. His actions highlight the societal pressures and injustices faced by the family."
       },
       {
@@ -132,13 +142,17 @@
     "summary": "The chapter opens with Raskolnikov waking up late after a restless night, feeling ill-tempered and isolated in his tiny, disheveled room. He is indifferent to the disorder around him, even finding it comforting. Nastasya, the cook and servant, wakes him up and brings him tea, suggesting he is starving. Raskolnikov requests food and learns that his landlady, Praskovya Pavlovna, intends to complain to the police about him due to unpaid rent and his refusal to vacate the premises. He dismisses her as a fool and decides to confront her later. Nastasya then mentions a letter from his mother, which excites Raskolnikov. After she leaves, he eagerly opens the letter, which reveals his sister Dounia's recent hardships and her engagement to Pyotr Petrovitch Luzhin. The letter describes Dounia's suffering at the Svidriga\u00eflovs' house, her eventual release, and her engagement, which promises financial stability for the family. Raskolnikov is deeply moved by the letter, initially crying but then becoming bitter and angry. He leaves his room, walking aimlessly and muttering to himself, appearing to strangers as if he were drunk.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov"
+        ],
         "description": "A troubled young man who has given up his university studies and lives in poverty. He is isolated, irritable, and deeply affected by his sister's situation. He is contemplating a significant change in his life."
       },
       {
-        "name": "Nastasya",
-        "aliases": [],
+        "name": "Nastasya Nikiforovna",
+        "aliases": [
+          "Nastasya"
+        ],
         "description": "The cook and servant at Raskolnikov's residence. She is talkative and often intrusive, bringing him food and engaging him in conversation despite his apparent discomfort."
       },
       {
@@ -147,8 +161,9 @@
         "description": "Raskolnikov's landlady who threatens to report him to the police for non-payment of rent and refusal to leave the premises."
       },
       {
-        "name": "Dounia",
+        "name": "Avdotya Romanovna",
         "aliases": [
+          "Dounia",
           "Dunya"
         ],
         "description": "Raskolnikov's sister who has been working as a governess and recently endured hardships at the Svidriga\u00eflovs' house. She is engaged to Pyotr Petrovitch Luzhin, which offers financial relief to the family."
@@ -181,34 +196,48 @@
     "characters": [
       {
         "name": "Rodion Romanovitch Raskolnikov",
-        "aliases": [],
+        "aliases": [
+          "Raskolnikov"
+        ],
         "description": "A troubled and introspective student who is deeply affected by his sister's impending marriage to Mr. Luzhin. He is angry and frustrated, believing the marriage is a betrayal and a mistake. Raskolnikov is struggling with feelings of powerlessness and guilt, and his thoughts are consumed by the potential consequences of his sister's decision. He is also haunted by memories of past events and the sacrifices his family has made for him."
       },
       {
-        "name": "Dounia",
+        "name": "Avdotya Romanovna",
         "aliases": [
-          "Avdotya Romanovna"
+          "Dounia",
+          "Dunya"
         ],
         "description": "Raskolnikov's sister who is about to marry Mr. Luzhin. She is described as someone who can endure a great deal, and Raskolnikov believes she is making a significant sacrifice for his sake. Dounia's character is only discussed through Raskolnikov's thoughts and reflections, but she plays a crucial role in driving the narrative and Raskolnikov's emotional state."
       },
       {
-        "name": "Mother",
-        "aliases": [],
+        "name": "Pulcheria Alexandrovna",
+        "aliases": [
+          "Mother"
+        ],
         "description": "Raskolnikov's mother, who wrote the letter informing him of Dounia's engagement. She is portrayed as loving but possibly manipulative, trying to convince Raskolnikov that the marriage is for his benefit. Her character is only mentioned through Raskolnikov's thoughts, but her influence is significant in shaping his current emotional state."
       },
       {
-        "name": "Mr. Luzhin",
-        "aliases": [],
+        "name": "Pyotr Petrovitch Luzhin",
+        "aliases": [
+          "Mr. Luzhin"
+        ],
         "description": "The man Dounia is engaged to marry. Raskolnikov views him negatively, suspecting him of being selfish and manipulative. Mr. Luzhin is described as a 'man of business' who seems kind but whose intentions Raskolnikov doubts. He is only mentioned through Raskolnikov's thoughts and reflections, but his presence looms large in the narrative."
       },
       {
-        "name": "Sonia Marmeladov",
-        "aliases": [],
+        "name": "Sofya Semyonovna Marmeladov",
+        "aliases": [
+          "Sofya Semyonovna",
+          "Sonia",
+          "Sonia Marmeladov"
+        ],
         "description": "A character mentioned in Raskolnikov's thoughts as an example of someone who has suffered greatly due to similar circumstances. She represents the potential future of Dounia if she marries Mr. Luzhin, serving as a cautionary tale in Raskolnikov's mind."
       },
       {
-        "name": "Marmeladov",
-        "aliases": [],
+        "name": "Semyon Zaharovitch Marmeladov",
+        "aliases": [
+          "Marmeladov",
+          "Semyon Zaharovitch"
+        ],
         "description": "A character mentioned in Raskolnikov's thoughts, known for his question about having nowhere to turn. He serves as a metaphor for the desperation and lack of options faced by Raskolnikov and others in similar situations."
       },
       {
@@ -217,8 +246,10 @@
         "description": "A constable who intervenes when Raskolnikov confronts a gentleman who is attempting to take advantage of a drunken girl. The policeman attempts to help the girl but is ultimately thwarted by Raskolnikov's decision to abandon her. His character highlights the broader societal issues Raskolnikov is grappling with."
       },
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Razumihin"
+        ],
         "description": "Raskolnikov's old university friend, whom he briefly considers visiting but ultimately forgets about. Razumihin is described as a good-natured and intelligent individual, representing a potential source of support and understanding for Raskolnikov."
       }
     ],
@@ -245,13 +276,17 @@
     "summary": "Raskolnikov contemplates visiting Razumihin for work but dismisses the idea, feeling it won't solve his problems. He walks around St. Petersburg, reflecting on his financial struggles and the recent events involving the Marmeladovs. He counts his money and finds he has thirty copecks, recalling giving forty-seven or fifty copecks to the Marmeladovs the previous day. He stops at a tavern, drinks vodka, and eats a pie. Afterward, he feels drowsy and heads home but stops at Petrovsky Ostrov, where he falls asleep. He has a disturbing dream about his childhood, witnessing a cart driver named Mikolka whipping a weak horse to death in a festive atmosphere. The dream leaves him shaken and questioning his own thoughts and plans. Upon waking, he prays for guidance and feels a sense of relief. However, as he crosses the Hay Market, he overhears a conversation between Lizaveta Ivanovna, the sister of the pawnbroker Alyona Ivanovna, and a huckster. Lizaveta mentions she will be away from home the next day at seven o'clock, leaving Alyona alone. This revelation deeply unsettles Raskolnikov, who returns home feeling that his fate is sealed and that he has no choice but to proceed with his planned actions.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov"
+        ],
         "description": "A troubled young man contemplating a drastic action. He is financially struggling and deeply conflicted about his plans. He is haunted by his thoughts and dreams, and his decision-making is influenced by his current state of mind."
       },
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Razumihin"
+        ],
         "description": "A friend of Raskolnikov's who is mentioned but does not appear in the chapter. Raskolnikov considers seeking his help but ultimately decides against it due to his current situation."
       },
       {
@@ -299,8 +334,10 @@
     "summary": "In this chapter, Raskolnikov learns about Alyona Ivanovna and her sister Lizaveta from overhearing a conversation in a tavern. The student Pokorev mentions Alyona Ivanovna as a wealthy pawnbroker who mistreats her sister Lizaveta, leading Raskolnikov to contemplate the morality of robbing and potentially killing Alyona to help others. Back at his apartment, Raskolnikov falls into a deep sleep, waking up only to eat a little and prepare for his planned robbery. He makes a noose to conceal an axe, retrieves a fake pledge, and attempts to retrieve the axe from the kitchen but finds Nastasya there. Desperate, he steals the axe from the porter's room. He then heads towards Alyona's apartment, contemplating the absurdity of his actions and the potential consequences. Upon reaching Alyona's apartment, he rings the bell and hears signs of her approaching the door.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov"
+        ],
         "description": "A troubled young man who contemplates committing a murder to prove a philosophical point about the morality of crime. He is deeply conflicted and superstitious, often questioning his own sanity and motives."
       },
       {
@@ -314,13 +351,17 @@
         "description": "A wealthy pawnbroker who is described as spiteful and miserly. She mistreats her sister Lizaveta and is the target of Raskolnikov's planned robbery."
       },
       {
-        "name": "Lizaveta",
-        "aliases": [],
+        "name": "Lizaveta Ivanovna",
+        "aliases": [
+          "Lizaveta"
+        ],
         "description": "The younger sister of Alyona Ivanovna, who works tirelessly for her sister and is often beaten and mistreated. She is described as tall and submissive."
       },
       {
-        "name": "Nastasya",
-        "aliases": [],
+        "name": "Nastasya Nikiforovna",
+        "aliases": [
+          "Nastasya"
+        ],
         "description": "Raskolnikov's landlady's servant who brings him food and tries to wake him up. She is unaware of Raskolnikov's plans."
       },
       {
@@ -355,8 +396,10 @@
     "summary": "The chapter opens with Raskolnikov attempting to enter Alyona Ivanovna's apartment, where he is met with suspicion. Fearing she will close the door, he forces it open, leading to a tense exchange. He claims to have brought a pledge but notices her mistrust. As their conversation continues, Raskolnikov grows increasingly agitated and nervous. He pulls out an axe hidden under his coat and strikes Alyona Ivanovna, killing her. After ensuring she is dead, he searches her body and finds a purse containing money and valuables. He then moves to search Alyona's bedroom, where he encounters Lizaveta, Alyona's sister, who has just arrived. Panicked, Raskolnikov kills Lizaveta as well. He then attempts to clean the axe and himself, but his anxiety grows as he hears visitors approaching. He tries to escape but is trapped when he realizes the door is unlocked. He hides in an empty flat as the visitors investigate, eventually managing to escape unnoticed. Raskolnikov returns home, exhausted and disoriented, and hides the axe in the porter's room before collapsing on his sofa, barely conscious.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov"
+        ],
         "description": "A troubled young man who plans a murder and carries it out, driven by a mix of desperation and a twisted theory of self-justification. His actions are marked by intense fear and guilt."
       },
       {
@@ -366,7 +409,9 @@
       },
       {
         "name": "Lizaveta Ivanovna",
-        "aliases": [],
+        "aliases": [
+          "Lizaveta"
+        ],
         "description": "Alyona's sister who arrives unexpectedly and is killed by Raskolnikov. Her presence complicates Raskolnikov's plan and adds to his panic."
       },
       {
@@ -406,13 +451,17 @@
     "summary": "The chapter opens with Raskolnikov lying on his sofa, deeply dazed and confused after a night of intense fear and delirium. He wakes up to the realization that it is past two o'clock in the morning, and he begins to panic, remembering the previous night's events. He meticulously searches his clothes for any signs of blood or evidence, cutting off frayed edges and removing items from his pockets, including a purse and trinkets stolen from the old woman's box. He hides these items in a hole under the wallpaper. Despite his efforts, he remains paranoid and continues to check his clothes for any traces of blood, eventually finding some on his sock and trouser pocket. He cuts out the stained parts and hides them, but his fever and delirium continue to cloud his judgment. He repeatedly tries to get up and leave to dispose of the evidence but fails due to his physical weakness and mental confusion. Eventually, he is awakened by Nastasya and the porter, who inform him of a summons from the police office. Raskolnikov, still in a state of delirium, struggles to comprehend the situation and prepares to go to the police station. On the way, he experiences extreme anxiety and paranoia, convinced that the police are searching for him. At the police station, he is relieved to learn that the summons is for a debt recovery, not related to the murder. However, his relief is short-lived as he overhears a discussion about a murder investigation that closely resembles his own actions. This triggers a severe panic attack, causing him to faint. Upon regaining consciousness, he is questioned briefly about his whereabouts the previous evening but manages to evade suspicion. He leaves the police station, fully aware that a search for evidence is imminent, and returns home, consumed by renewed terror.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov"
+        ],
         "description": "A troubled and delirious student who has committed a murder and is desperately trying to cover up his crime. He is plagued by paranoia and guilt, leading him to obsessively search his clothes for any signs of evidence. His mental state deteriorates throughout the chapter, culminating in a panic attack at the police station."
       },
       {
-        "name": "Nastasya",
-        "aliases": [],
+        "name": "Nastasya Nikiforovna",
+        "aliases": [
+          "Nastasya"
+        ],
         "description": "Raskolnikov's servant who is concerned about his health and well-being. She notices his odd behavior and attempts to help him by bringing tea and urging him to go to the police station."
       },
       {
@@ -426,13 +475,17 @@
         "description": "An official at the police station who handles Raskolnikov's summons for debt recovery. He is dismissive of Raskolnikov's condition and treats him with contempt."
       },
       {
-        "name": "Assistant Superintendent (Ilya Petrovitch)",
-        "aliases": [],
+        "name": "Ilya Petrovitch",
+        "aliases": [
+          "Assistant Superintendent (Ilya Petrovitch)"
+        ],
         "description": "A stern and aggressive official at the police station who interrogates Raskolnikov and shows no sympathy for his condition. He is quick to anger and dismisses Raskolnikov's explanations."
       },
       {
-        "name": "Superintendent (Nikodim Fomitch)",
-        "aliases": [],
+        "name": "Nikodim Fomitch",
+        "aliases": [
+          "Superintendent (Nikodim Fomitch)"
+        ],
         "description": "A more understanding official at the police station who tries to mediate between Raskolnikov and the Assistant Superintendent. He shows some concern for Raskolnikov's health but ultimately allows him to leave without further questioning."
       }
     ],
@@ -462,23 +515,31 @@
     "summary": "The chapter opens with Raskolnikov rushing to his room to retrieve items he had hidden in a hole under a paper in the corner. He finds eight articles, including two little boxes with earrings, four small leather cases, a chain, and something wrapped in newspaper that looks like a decoration. He conceals these items in his pockets and leaves his room, determined to dispose of them. He considers throwing them into the Ekaterininsky Canal but finds the location crowded and decides against it. He then contemplates the Neva but changes his mind again, deciding to hide the items somewhere isolated. He eventually finds a deserted courtyard with a stone shed and hides the items under a large stone. After burying the items, he experiences a moment of intense joy, believing he has successfully covered his tracks. However, his mood shifts as he walks, becoming increasingly agitated and resentful. He stops at the K---- Boulevard, recalling a previous encounter with a girl and a policeman, and feels a deep sense of disgust. He then visits Razumihin, his friend, who offers him a translation job. Raskolnikov accepts but later returns to give back the materials, refusing to explain his actions. On the Nikolaevsky Bridge, a coachman lashes him with a whip, and an elderly woman gives him twenty copecks. Raskolnikov throws the money into the Neva, symbolizing his detachment from his past. He wanders for hours, eventually returning home exhausted. Upon arriving, he is awakened by a loud commotion, recognizing the voice of Ilya Petrovitch, the assistant superintendent, beating the landlady. Raskolnikov is terrified and confused, unable to understand why Ilya Petrovitch would be there. Nastasya, the landlady's servant, confirms that no one was beating the landlady, attributing Raskolnikov's hallucinations to his fever. Raskolnikov remains in a state of terror and confusion, unable to sleep.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov"
+        ],
         "description": "The protagonist, a troubled young man who has stolen items and is struggling with guilt and paranoia. He is intelligent but increasingly unstable, showing signs of mental breakdown. His actions and thoughts are central to the plot."
       },
       {
         "name": "Ilya Petrovitch",
-        "aliases": [],
+        "aliases": [
+          "Assistant Superintendent (Ilya Petrovitch)"
+        ],
         "description": "The assistant superintendent who Raskolnikov believes is beating the landlady. He plays a significant role in Raskolnikov's paranoid delusions."
       },
       {
-        "name": "Nastasya",
-        "aliases": [],
+        "name": "Nastasya Nikiforovna",
+        "aliases": [
+          "Nastasya"
+        ],
         "description": "The landlady's servant who cares for Raskolnikov. She is attentive and concerned about his wellbeing, helping him despite his erratic behavior."
       },
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Razumihin"
+        ],
         "description": "Raskolnikov's friend who offers him a translation job. He is kind and tries to help Raskolnikov, but Raskolnikov is distant and refuses assistance."
       }
     ],
@@ -517,21 +578,24 @@
     "summary": "The chapter opens with Raskolnikov regaining partial consciousness during his illness, experiencing vivid hallucinations and memories. He recalls being surrounded by people who discuss his condition and occasionally threaten him. Nastasya, a caretaker, and a messenger from the merchant Shelopaev's office visit him. The messenger brings a remittance of thirty-five roubles from his mother, which Raskolnikov initially refuses to accept. Razumihin, a friend, arrives and insists that Raskolnikov sign for the money. Raskolnikov, confused and wary, eventually signs the document. Razumihin then arranges for soup and tea, and begins to recount the events that transpired while Raskolnikov was ill, including his interactions with the landlady Praskovya Pavlovna and the police clerk Zametov. Raskolnikov listens quietly, showing signs of distress and confusion. After Razumihin leaves, Raskolnikov becomes agitated, fearing that his secret might be known. He searches his room for clues but finds nothing incriminating. He resolves to escape but is hindered by his weakened state. Razumihin returns with new clothes and items for Raskolnikov, insisting on changing his linen despite Raskolnikov's protests. The chapter ends with Raskolnikov reflecting on his situation and the source of the money used to buy the new items, as a familiar-looking man enters the room.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov"
+        ],
         "description": "The protagonist, who has recently recovered from a severe illness. He is plagued by confusion, fear, and a sense of impending discovery. He struggles with the decision to escape and is wary of those around him."
       },
       {
-        "name": "Razumihin",
+        "name": "Dmitri Prokofitch Razumihin",
         "aliases": [
+          "Razumihin",
           "Vrazumihin"
         ],
         "description": "A close friend of Raskolnikov, Razumihin is a student and a gentleman. He is caring and persistent, determined to help Raskolnikov recover and rebuild his life. He moves into the same neighborhood and has developed a relationship with the landlady, Praskovya Pavlovna."
       },
       {
-        "name": "Nastasya",
+        "name": "Nastasya Nikiforovna",
         "aliases": [
-          "Nastasya Nikiforovna",
+          "Nastasya",
           "Nastasya Petrovna"
         ],
         "description": "A caretaker who looks after Raskolnikov during his illness. She is described as quick and attentive, though she sometimes teases Razumihin."
@@ -554,9 +618,9 @@
         "description": "A young man who delivers a remittance from Raskolnikov's mother. He is described as inquisitive and professional."
       },
       {
-        "name": "Vahrushin",
+        "name": "Afanasy Ivanovitch Vahrushin",
         "aliases": [
-          "Afanasy Ivanovitch Vahrushin"
+          "Vahrushin"
         ],
         "description": "A person who facilitated the remittance from Raskolnikov's mother. He is mentioned as a significant figure in Raskolnikov's life."
       }
@@ -585,23 +649,33 @@
     "summary": "The chapter opens with Razumihin and Zossimov discussing Raskolnikov's condition. Zossimov, a tall, fat man with a puffy, colorless face and wearing fashionable attire, is described as self-important despite efforts to conceal it. Razumihin informs Zossimov that Raskolnikov has regained consciousness but remains depressed. Zossimov checks Raskolnikov's pulse and discusses his diet, advising against certain foods. Razumihin mentions plans for a house-warming party and invites Zossimov, who declines due to prior commitments. Razumihin then introduces Zametov, a man he considers a friend despite taking bribes, and explains his involvement in helping a painter named Nikolay Dementyev, who is accused of a murder. Nastasya, Raskolnikov's caretaker, interrupts to mention the murder of Lizaveta, prompting Raskolnikov to recall details about her. Razumihin continues to recount Nikolay's story, detailing how he found jewelry and lied about it, leading to his arrest and attempted suicide. Razumihin argues that Nikolay is innocent based on his behavior and the circumstances of the crime, emphasizing the psychological impossibility of his guilt. Zossimov listens skeptically, questioning the evidence and the legal system's approach. The chapter concludes with Razumihin explaining his theory about the real murderer dropping the jewelry, and a stranger entering the room, interrupting their discussion.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov"
+        ],
         "description": "The protagonist, a young man who has recently fallen ill and is recovering under the care of Razumihin and Nastasya. He is described as depressed and unresponsive, showing signs of distress when reminded of the murder of Lizaveta."
       },
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Razumihin",
+          "Vrazumihin"
+        ],
         "description": "A close friend of Raskolnikov, Razumihin is described as passionate and determined to help Nikolay Dementyev, a painter accused of murder. He is portrayed as a busybody who believes in the innocence of Nikolay and is frustrated by the legal system's handling of the case."
       },
       {
-        "name": "Zossimov",
-        "aliases": [],
+        "name": "Dr. Zossimov",
+        "aliases": [
+          "Zossimov"
+        ],
         "description": "A physician attending to Raskolnikov, Zossimov is characterized as self-important and somewhat tedious, despite his professional competence. He is skeptical of Razumihin's arguments regarding Nikolay's innocence and the legal proceedings."
       },
       {
-        "name": "Nastasya",
-        "aliases": [],
+        "name": "Nastasya Nikiforovna",
+        "aliases": [
+          "Nastasya",
+          "Nastasya Petrovna"
+        ],
         "description": "Raskolnikov's caretaker, Nastasya is present during the conversation but mostly silent, only briefly mentioning the murder of Lizaveta."
       },
       {
@@ -615,8 +689,10 @@
         "description": "Accused of the murder of Alyona Ivanovna and her sister Lizaveta, Nikolay is described as a painter who found jewelry and lied about it, leading to his arrest and attempted suicide. Razumihin believes in his innocence."
       },
       {
-        "name": "Lizaveta",
-        "aliases": [],
+        "name": "Lizaveta Ivanovna",
+        "aliases": [
+          "Lizaveta"
+        ],
         "description": "Mentioned by Nastasya, Lizaveta was a woman who sold old clothes and was murdered along with Alyona Ivanovna. Raskolnikov recalls her presence in his life."
       },
       {
@@ -653,30 +729,41 @@
     "summary": "The chapter opens with Pyotr Petrovitch Luzhin, a gentleman no longer young and of a cautious and sour countenance, entering Raskolnikov's small, disheveled room. Luzhin is surprised by the conditions and initially attempts to intimidate Raskolnikov, who lies on a sofa, disheveled and pale. Luzhin introduces himself as Raskolnikov's fianc\u00e9 and expresses confusion at Raskolnikov's lack of awareness of their engagement. Raskolnikov, who has been ill and delirious, reacts with frustration and anger, calling Luzhin his fianc\u00e9 and expressing disbelief. Luzhin, despite his initial discomfort, begins to discuss his recent stay in Petersburg and his plans for the future, including finding lodgings for Raskolnikov's mother and sister. Razumihin, a friend of Raskolnikov's, interrupts frequently, challenging Luzhin's views on societal progress and practicality. Luzhin, feeling insulted, attempts to defend his stance but is met with further skepticism. The conversation shifts to the recent murder of an old pawnbroker, and Luzhin expresses concern about the rise in crime among the higher classes. Raskolnikov, growing increasingly agitated, accuses Luzhin of insulting his mother and threatens violence if Luzhin mentions her again. Luzhin leaves in anger, and Raskolnikov, left alone, demands to be left in peace. Razumihin and Zossimov, concerned for Raskolnikov's health, discuss his condition and the possibility that he is harboring a secret related to the murder. They decide to leave Raskolnikov alone, hoping he will recover soon.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov"
+        ],
         "description": "A former student who is currently ill and delirious, lying on a sofa in a disheveled room. He is agitated and confrontational, especially towards Luzhin, whom he believes to be his fianc\u00e9. He is suspected of harboring a secret related to a recent murder."
       },
       {
         "name": "Pyotr Petrovitch Luzhin",
         "aliases": [
-          "Luzhin"
+          "Luzhin",
+          "Mr. Luzhin"
         ],
         "description": "A middle-aged gentleman who is Raskolnikov's supposed fianc\u00e9. He is cautious, sour, and attempts to assert authority over Raskolnikov. He discusses his recent stay in Petersburg and his plans for the future, including finding lodgings for Raskolnikov's mother and sister. He is insulted by Raskolnikov and leaves in anger."
       },
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Razumihin",
+          "Vrazumihin"
+        ],
         "description": "A friend of Raskolnikov's who is nursing him back to health. He is bold, familiar, and challenges Luzhin's views on societal progress and practicality. He is concerned for Raskolnikov's health and well-being."
       },
       {
-        "name": "Zossimov",
-        "aliases": [],
+        "name": "Dr. Zossimov",
+        "aliases": [
+          "Zossimov"
+        ],
         "description": "A doctor who has recently examined Raskolnikov. He is calm and detached, often yawning and showing little interest in the conversation. He is concerned about Raskolnikov's mental state and suspects he is harboring a secret."
       },
       {
-        "name": "Nastasya",
-        "aliases": [],
+        "name": "Nastasya Nikiforovna",
+        "aliases": [
+          "Nastasya",
+          "Nastasya Petrovna"
+        ],
         "description": "A servant who tends to Raskolnikov. She offers him tea but is dismissed by him."
       }
     ],
@@ -717,18 +804,27 @@
     "summary": "Chapter 13 opens with Raskolnikov getting up after Dounia and Pulcheria Alexandrovna leave, latching the door, and dressing in new clothes. He takes the money left by Razumihin and leaves the apartment, slipping downstairs unnoticed. Outside, he walks towards the Hay Market, feeling a strange calm despite his recent delirium. He encounters a street musician and a girl singing for coins, giving her a five copeck piece. He then engages in conversation with a passerby about street music, but the man is unnerved by Raskolnikov's odd behavior and moves away. Raskolnikov continues his walk, eventually reaching a crowded area filled with peasants and beggars. He observes the chaos and considers entering into conversation but decides against it. He then visits a restaurant, where he meets Zametov and discusses various topics, including the murder of the pawnbroker woman. Raskolnikov's behavior becomes increasingly erratic, and he reveals his knowledge of the crime, causing Zametov to become alarmed. After leaving the restaurant, Raskolnikov encounters Razumihin, who confronts him about his disappearance. Raskolnikov refuses to return home and walks towards X---- Bridge, where he witnesses a woman attempting suicide by jumping into the canal. He watches as she is rescued and then decides to visit the pawnbroker's house, where he finds it undergoing renovation. He briefly explores the flat, feeling a mix of annoyance and nostalgia. Finally, he returns to the street and encounters a group of people discussing a carriage incident, deciding to investigate further.",
     "characters": [
       {
-        "name": "Rodion Romanovich Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion Romanovich Raskolnikov"
+        ],
         "description": "The protagonist, a former student suffering from mental and physical exhaustion. He is struggling with guilt and delusions related to a recent crime. His interactions with others reveal his unstable state of mind."
       },
       {
-        "name": "Nastasya",
-        "aliases": [],
+        "name": "Nastasya Nikiforovna",
+        "aliases": [
+          "Nastasya",
+          "Nastasya Petrovna"
+        ],
         "description": "Raskolnikov's landlady's servant. She is mentioned but does not appear in the chapter."
       },
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Razumihin",
+          "Vrazumihin"
+        ],
         "description": "A friend of Raskolnikov's who is concerned about his health and well-being. He confronts Raskolnikov about his disappearance and urges him to return home."
       },
       {
@@ -771,8 +867,11 @@
     "summary": "The chapter opens with a scene of chaos and commotion around a carriage accident in the middle of the road. A man, identified as Marmeladov, has been run over by a carriage and is severely injured, lying unconscious and covered in blood. Raskolnikov, recognizing Marmeladov, insists on having him taken to his home nearby. At Marmeladov's residence, Katerina Ivanovna, Marmeladov's wife, is initially unaware of the accident but soon learns of it and reacts with distress. She begins to organize efforts to save her husband, despite the chaos and the presence of curious onlookers. Raskolnikov helps by fetching a doctor and ensuring Marmeladov is properly attended to. As Marmeladov regains consciousness briefly, he requests a priest, and Katerina Ivanovna arranges for one to come. During this time, Raskolnikov promises financial assistance to the family. Marmeladov dies in the arms of his daughter, Sonia, who is in tattered clothing and makeup suggesting her profession as a prostitute. After Marmeladov's death, Raskolnikov leaves the scene, encountering Nikodim Fomitch, a police officer, who notices Raskolnikov is covered in blood. Raskolnikov reflects on the experience, feeling a renewed sense of life and strength. He encounters Polenka, Marmeladov's daughter, who runs after him to give a message from Sonia. Raskolnikov promises to visit the family again. Later, Raskolnikov visits Razumihin, who is hosting a gathering of friends and acquaintances. Razumihin is slightly intoxicated, and they discuss Raskolnikov's recent behavior and the suspicions surrounding him. Raskolnikov then returns home to find his mother and sister, who have unexpectedly arrived. Overwhelmed by the reunion, Raskolnikov faints, leading to further concern and care from his family and Razumihin.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion Romanovich Raskolnikov"
+        ],
         "description": "A troubled young man who recognizes Marmeladov and insists on having him taken to his home. He offers financial assistance to Marmeladov's family and later reflects on the experience, feeling a renewed sense of life and strength. He also encounters Polenka and promises to visit the family again."
       },
       {
@@ -781,13 +880,20 @@
         "description": "Marmeladov's wife, who is initially unaware of the accident but quickly organizes efforts to save her husband. She is distraught and overwhelmed by the situation, but manages to maintain composure and seek help."
       },
       {
-        "name": "Marmeladov",
-        "aliases": [],
+        "name": "Semyon Zaharovitch Marmeladov",
+        "aliases": [
+          "Marmeladov",
+          "Semyon Zaharovitch"
+        ],
         "description": "A government clerk who has been run over by a carriage and is severely injured. He is recognized by Raskolnikov and brought to his home, where he eventually dies in the arms of his daughter, Sonia."
       },
       {
-        "name": "Sonia",
-        "aliases": [],
+        "name": "Sofya Semyonovna Marmeladov",
+        "aliases": [
+          "Sofya Semyonovna",
+          "Sonia",
+          "Sonia Marmeladov"
+        ],
         "description": "Marmeladov's daughter, who arrives at the scene in tattered clothing and makeup, suggesting her profession as a prostitute. She is present during her father's final moments and holds him as he dies."
       },
       {
@@ -797,27 +903,40 @@
       },
       {
         "name": "Nikodim Fomitch",
-        "aliases": [],
+        "aliases": [
+          "Superintendent (Nikodim Fomitch)"
+        ],
         "description": "A police officer who encounters Raskolnikov after the accident and notices he is covered in blood. He is concerned about Raskolnikov's condition but does not press the issue."
       },
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Razumihin",
+          "Vrazumihin"
+        ],
         "description": "A friend of Raskolnikov who is hosting a gathering of friends and acquaintances when Raskolnikov visits. He is slightly intoxicated and discusses Raskolnikov's recent behavior and the suspicions surrounding him."
       },
       {
-        "name": "Nastasya",
-        "aliases": [],
+        "name": "Nastasya Nikiforovna",
+        "aliases": [
+          "Nastasya",
+          "Nastasya Petrovna"
+        ],
         "description": "A servant who informs Raskolnikov's mother and sister of his condition and whereabouts. She is present during their reunion with Raskolnikov."
       },
       {
         "name": "Pulcheria Alexandrovna",
-        "aliases": [],
+        "aliases": [
+          "Mother"
+        ],
         "description": "Raskolnikov's mother, who has unexpectedly arrived with his sister. She is worried about Raskolnikov's health and is relieved to see him, despite his fainting upon their reunion."
       },
       {
-        "name": "Dounia",
-        "aliases": [],
+        "name": "Avdotya Romanovna",
+        "aliases": [
+          "Dounia",
+          "Dunya"
+        ],
         "description": "Raskolnikov's sister, who has unexpectedly arrived with their mother. She is concerned about Raskolnikov's health and is relieved to see him, despite his fainting upon their reunion."
       }
     ],
@@ -848,35 +967,49 @@
     "summary": "The chapter opens with Raskolnikov sitting on a sofa, visibly agitated, as his mother, Pulcheria Alexandrovna, and sister, Avdotya Romanovna, arrive at his apartment. Raskolnikov waves off Razumihin's attempts to console his family, showing signs of extreme emotional distress. He insists that his mother and sister leave, expressing his wish for them to refuse Luzhin's proposal. His mother and sister are visibly distressed by his behavior, and Razumihin tries to convince them to leave, fearing that Raskolnikov might harm himself if left alone. Despite his initial reluctance, Razumihin successfully persuades Pulcheria Alexandrovna and Avdotya Romanovna to leave, promising to check on Raskolnikov frequently. As they depart, Razumihin becomes increasingly intoxicated and emotionally expressive, declaring his affection for Avdotya Romanovna and criticizing Luzhin's character. Upon reaching their lodgings, Pulcheria Alexandrovna and Avdotya Romanovna await Razumihin's return, who brings Dr. Zossimov to reassure them about Raskolnikov's condition. Zossimov confirms that Raskolnikov is recovering well and advises avoiding further stress. After Zossimov leaves, Razumihin and Zossimov discuss their feelings towards Avdotya Romanovna, leading to a heated argument between them. The chapter concludes with Razumihin reflecting on his actions and the potential consequences of his infatuation with Avdotya Romanovna.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion Romanovich Raskolnikov"
+        ],
         "description": "The protagonist, a troubled young man suffering from a severe mental and physical illness. He is distant and agitated towards his family, insisting they leave and refusing to accept Luzhin's proposal for his sister. His condition is a source of concern for his family and friends."
       },
       {
         "name": "Pulcheria Alexandrovna",
-        "aliases": [],
+        "aliases": [
+          "Mother"
+        ],
         "description": "Raskolnikov's mother, a caring and anxious woman who is deeply concerned about her son's health and well-being. She struggles with the decision to leave Raskolnikov alone but ultimately trusts Razumihin's judgment."
       },
       {
         "name": "Avdotya Romanovna",
         "aliases": [
-          "Dounia"
+          "Dounia",
+          "Dunya"
         ],
         "description": "Raskolnikov's sister, a strong-willed and beautiful woman who loves her brother deeply. She supports Razumihin's efforts to help Raskolnikov and is wary of Luzhin's intentions."
       },
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Razumihin",
+          "Vrazumihin"
+        ],
         "description": "A close friend of Raskolnikov, known for his boisterous and passionate nature. He plays a crucial role in managing the situation with Raskolnikov's family, ensuring their safety and providing support."
       },
       {
-        "name": "Luzhin",
-        "aliases": [],
+        "name": "Pyotr Petrovitch Luzhin",
+        "aliases": [
+          "Luzhin",
+          "Mr. Luzhin"
+        ],
         "description": "A suitor for Avdotya Romanovna, described negatively by Raskolnikov and Razumihin. His character is criticized for being manipulative and unsuitable for Avdotya Romanovna."
       },
       {
         "name": "Dr. Zossimov",
-        "aliases": [],
+        "aliases": [
+          "Zossimov"
+        ],
         "description": "A medical professional attending to Raskolnikov, who provides reassurance to his family about his condition. He maintains a professional demeanor despite Razumihin's attempts to involve him in personal matters."
       }
     ],
@@ -904,37 +1037,48 @@
     "summary": "The chapter opens with Razumihin waking up at eight o'clock, feeling troubled and serious about the previous day's events. He reflects on his behavior, particularly his drunkenness and criticism of Avdotya Romanovna's fianc\u00e9, Luzhin, recognizing his actions as base and shameful. Despite his self-deprecating thoughts, Razumihin decides to confront the situation and prepare for his meeting with the sisters. He meticulously dresses and cleans himself, emphasizing his determination to present himself properly despite his inner turmoil. Zossimov visits Razumihin, discussing Raskolnikov's condition and the potential impact of Luzhin's involvement. Razumihin then heads to Raskolnikov's lodgings, where he meets Pulcheria Alexandrovna and Avdotya Romanovna, who are anxiously awaiting him. The sisters, particularly Avdotya, treat Razumihin with unexpected kindness and respect, which surprises him. They inquire about Raskolnikov's state and Razumihin provides a detailed account of his recent behavior and illness, emphasizing his suspicion and mood swings. The conversation shifts to Luzhin, with Razumihin expressing his disapproval of the man. Pulcheria Alexandrovna shares Luzhin's letter, expressing concern about his upcoming visit and the conditions he sets for it. Razumihin advises the sisters to follow Avdotya's lead, suggesting that Raskolnikov should be present during Luzhin's visit. The chapter concludes with the sisters deciding to visit Raskolnikov themselves, with Razumihin accompanying them. They encounter the landlady's suspicious gaze as they approach Raskolnikov's room, setting the stage for further interactions.",
     "characters": [
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Razumihin",
+          "Vrazumihin"
+        ],
         "description": "A close friend of Raskolnikov, Razumihin is deeply troubled by his past behavior and seeks redemption. He is honest and concerned about Raskolnikov's well-being, showing a mix of self-criticism and determination."
       },
       {
         "name": "Pulcheria Alexandrovna",
-        "aliases": [],
+        "aliases": [
+          "Mother"
+        ],
         "description": "Raskolnikov's mother, Pulcheria is anxious and worried about her son's condition. She is protective of her family and seeks guidance from Razumihin on how to handle the situation with Luzhin."
       },
       {
         "name": "Avdotya Romanovna",
         "aliases": [
-          "Dounia"
+          "Dounia",
+          "Dunya"
         ],
         "description": "Avdotya is Raskolnikov's sister and is engaged to Luzhin. She treats Razumihin with unexpected kindness and respect, showing a strong sense of dignity and resolve."
       },
       {
-        "name": "Zossimov",
-        "aliases": [],
+        "name": "Dr. Zossimov",
+        "aliases": [
+          "Zossimov"
+        ],
         "description": "A doctor who visits Razumihin, Zossimov discusses Raskolnikov's condition and expresses concerns about the impact of Luzhin's involvement. He is professional and concerned about Raskolnikov's mental health."
       },
       {
         "name": "Pyotr Petrovitch Luzhin",
         "aliases": [
-          "Luzhin"
+          "Luzhin",
+          "Mr. Luzhin"
         ],
         "description": "Luzhin is Avdotya's fianc\u00e9 and a source of tension due to his perceived unsuitability and his recent behavior towards Raskolnikov. His letter to the sisters creates additional anxiety."
       },
       {
         "name": "Praskovya Pavlovna",
-        "aliases": [],
+        "aliases": [
+          "Pashenka"
+        ],
         "description": "Raskolnikov's landlady, Praskovya is mentioned in passing but plays a role in the background of the story, particularly in relation to Raskolnikov's past behavior."
       }
     ],
@@ -965,13 +1109,17 @@
     "summary": "The chapter opens with Dr. Zossimov entering Raskolnikov's room, declaring that Raskolnikov is almost well. Raskolnikov, pale and listless, greets his mother and sister, Pulcheria Alexandrovna and Dounia, respectively. Despite his apparent recovery, Raskolnikov remains distant and guarded, showing signs of inner turmoil. Zossimov advises Raskolnikov to focus on work and a definite goal to aid his recovery, but Raskolnikov's response is tinged with mockery. Pulcheria Alexandrovna thanks Zossimov for his care and mentions that Marfa Petrovna Svidrigailov has recently died, suggesting that her husband Luzhin may have caused her death. Raskolnikov reacts with indifference, but his sister Dounia expresses concern about Luzhin's character. The conversation shifts to Raskolnikov's past romantic interests, and he reminisces about a former love interest, describing her as sickly and unattractive. However, his thoughts are interrupted by a sudden realization that he has lied to his family, leading to a moment of distress. To escape the tension, Raskolnikov brings up the topic of Dounia's impending marriage to Luzhin, expressing his disapproval and threatening to sever ties if she proceeds. Dounia defends her decision, stating that she is marrying for her own benefit and not out of charity. The argument escalates, with Raskolnikov accusing Dounia of selling herself for money and Luzhin of being a scoundrel. Dounia becomes upset, and Raskolnikov's reaction causes his mother to worry about his health. Dounia suggests showing Raskolnikov Luzhin's letter, which Raskolnikov reads with a mix of surprise and disdain, criticizing Luzhin's writing style and implying that Luzhin's intentions are manipulative. The chapter concludes with Raskolnikov agreeing to attend the meeting with Luzhin, despite his reservations, and the family deciding to invite Razumihin to the meeting as well.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion Romanovich Raskolnikov"
+        ],
         "description": "The protagonist, a young man recovering from a mental breakdown. He is distant and guarded, showing signs of inner turmoil and a tendency to mock authority figures. His relationship with his family is strained due to his recent behavior and his disapproval of his sister's engagement."
       },
       {
         "name": "Pulcheria Alexandrovna",
         "aliases": [
+          "Mother",
           "mother"
         ],
         "description": "Raskolnikov's mother, deeply concerned about her son's health and well-being. She is affectionate and protective, but also somewhat naive and easily influenced by others' opinions."
@@ -980,23 +1128,33 @@
         "name": "Avdotya Romanovna",
         "aliases": [
           "Dounia",
+          "Dunya",
           "sister"
         ],
         "description": "Raskolnikov's sister, engaged to Pyotr Petrovich Luzhin. She is strong-willed and determined, standing firm in her decision to marry Luzhin despite her brother's objections. She is also caring and tries to reconcile with her brother."
       },
       {
         "name": "Dr. Zossimov",
-        "aliases": [],
+        "aliases": [
+          "Zossimov"
+        ],
         "description": "A young doctor attending to Raskolnikov. He is enthusiastic about Raskolnikov's recovery and offers medical advice, but struggles to maintain a professional distance from his patient."
       },
       {
-        "name": "Pyotr Petrovich Luzhin",
-        "aliases": [],
+        "name": "Pyotr Petrovitch Luzhin",
+        "aliases": [
+          "Luzhin",
+          "Mr. Luzhin",
+          "Pyotr Petrovich Luzhin"
+        ],
         "description": "Dounia's fianc\u00e9, described as a wealthy and ambitious lawyer. He is portrayed negatively by Raskolnikov, who suspects him of ulterior motives and manipulative behavior."
       },
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Razumihin",
+          "Vrazumihin"
+        ],
         "description": "A friend of Raskolnikov's, invited to the meeting with Luzhin. He is supportive of Raskolnikov and tries to ease the tension between him and his family."
       }
     ],
@@ -1024,31 +1182,44 @@
     "summary": "In a room filled with Raskolnikov, his mother Pulcheria Alexandrovna, his sister Dounia, and Razumihin, a young girl named Sofya Semyonovna Marmeladov unexpectedly enters. Raskolnikov recognizes her as the daughter of the man he witnessed being run over the previous day. Sofya is visibly nervous and shy, and Raskolnikov, despite his initial surprise, invites her to sit down. He explains to his family that she is there on behalf of Katerina Ivanovna, who is asking for Raskolnikov to attend a service and funeral lunch. Sofya speaks hesitantly, explaining that Katerina Ivanovna is arranging a modest funeral due to limited funds. Raskolnikov watches her closely, noting her youthful appearance and kind demeanor. After a brief conversation, Raskolnikov's mother and sister leave, with Dounia expressing concern about Raskolnikov's health. Outside, Pulcheria Alexandrovna expresses unease about Sofya's presence, believing her to be a source of trouble. Meanwhile, Raskolnikov and Razumihin discuss the possibility of Raskolnikov visiting Porfiry Petrovitch, who is handling a murder investigation. They decide to visit Porfiry together. As they leave, Raskolnikov asks Sofya for her address, and she leaves hurriedly, feeling overwhelmed. An unknown man follows her, intrigued by her mention of Raskolnikov. He learns that she lives nearby and decides to investigate further. Back at Raskolnikov's apartment, Razumihin continues to tease Raskolnikov about his excitement, leading to a playful argument. They then proceed to Porfiry's office, where they are heard laughing as they enter.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion Romanovich Raskolnikov"
+        ],
         "description": "A troubled young man who recently witnessed a man being run over. He is visited by his family and Sofya Semyonovna Marmeladov. He is concerned about his possessions being pawned and discusses visiting Porfiry Petrovitch with Razumihin."
       },
       {
         "name": "Pulcheria Alexandrovna",
-        "aliases": [],
+        "aliases": [
+          "Mother",
+          "mother"
+        ],
         "description": "Raskolnikov's mother, who is relieved to be reunited with her son but expresses concern about his health and the presence of Sofya Semyonovna."
       },
       {
-        "name": "Dounia",
+        "name": "Avdotya Romanovna",
         "aliases": [
-          "Avdotya Romanovna"
+          "Dounia",
+          "Dunya",
+          "sister"
         ],
         "description": "Raskolnikov's sister, who is worried about her brother's health and tries to reassure their mother about the situation with Sofya Semyonovna."
       },
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Razumihin",
+          "Vrazumihin"
+        ],
         "description": "A friend of Raskolnikov's who is excited about the possibility of Raskolnikov meeting Porfiry Petrovitch. He teases Raskolnikov about his behavior and accompanies him to Porfiry's office."
       },
       {
         "name": "Sofya Semyonovna Marmeladov",
         "aliases": [
-          "Sonia"
+          "Sofya Semyonovna",
+          "Sonia",
+          "Sonia Marmeladov"
         ],
         "description": "The daughter of the man Raskolnikov witnessed being run over. She is shy and nervous but speaks on behalf of Katerina Ivanovna, asking Raskolnikov to attend a service and funeral lunch. She is followed by an unknown man after leaving Raskolnikov's apartment."
       },
@@ -1093,8 +1264,11 @@
     "summary": "The chapter opens with Raskolnikov entering Porfiry Petrovitch's room, followed closely by Razumihin. Raskolnikov's laughter at Razumihin's expense sets a tense atmosphere, exacerbated when Razumihin reacts violently by breaking a table. Porfiry Petrovitch, amused by the scene, quotes a line about the cost of broken furniture to the Crown. Raskolnikov attempts to introduce himself formally but is interrupted by Razumihin's antics. Zametov, another character present, seems surprised by the situation. Raskolnikov notices Zametov's presence and feels uneasy about it. Porfiry Petrovitch, despite his jovial demeanor, asks Raskolnikov about his business, which involves reclaiming personal items from a pawnbroker. Raskolnikov explains his situation, trying to avoid revealing his financial state. Porfiry Petrovitch, however, presses him for details, causing Raskolnikov to feel increasingly uncomfortable. Razumihin, unaware of the tension, continues to interject, mentioning Raskolnikov's recent erratic behavior and hospitalization. Porfiry Petrovitch uses this information to further probe Raskolnikov, asking about his whereabouts and activities on a specific night. Raskolnikov, growing angrier, deflects the questions and attempts to change the subject. The conversation shifts to a discussion about crime and social theory, with Porfiry Petrovitch and Razumihin debating the influence of environment on criminal behavior. Raskolnikov, sensing a trap, engages in the debate, presenting his controversial theory that 'extraordinary' individuals have the right to commit crimes for the greater good. Porfiry Petrovitch, seemingly impressed, pushes Raskolnikov to elaborate on his beliefs, leading to a heated exchange. The discussion eventually circles back to Raskolnikov's personal circumstances, with Porfiry Petrovitch insinuating that Raskolnikov might fit his own theory. Raskolnikov, feeling cornered, leaves the room, followed by Razumihin, who is oblivious to the underlying tension. As they exit, Porfiry Petrovitch asks Raskolnikov about painters he might have seen on a specific night, a question that unnerves Raskolnikov. The chapter ends with Raskolnikov and Razumihin leaving the building, both silent and somber, with Raskolnikov visibly relieved to be away from Porfiry Petrovitch's questioning.",
     "characters": [
       {
-        "name": "Rodion Romanovich Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion Romanovich Raskolnikov"
+        ],
         "description": "The protagonist, a former student struggling financially and psychologically. He is intelligent, brooding, and deeply troubled. His interactions with Porfiry Petrovitch reveal his paranoia and fear of being discovered. He is accompanied by Razumihin, who is unaware of the tension between Raskolnikov and Porfiry Petrovitch."
       },
       {
@@ -1104,12 +1278,17 @@
       },
       {
         "name": "Dmitri Prokofitch Razumihin",
-        "aliases": [],
+        "aliases": [
+          "Razumihin",
+          "Vrazumihin"
+        ],
         "description": "Raskolnikov's friend and roommate, who is supportive and caring towards him. He is unaware of the tension between Raskolnikov and Porfiry Petrovitch and often unwittingly aids Porfiry Petrovitch's investigation."
       },
       {
         "name": "Nikodim Fomitch",
-        "aliases": [],
+        "aliases": [
+          "Superintendent (Nikodim Fomitch)"
+        ],
         "description": "A minor character mentioned by Porfiry Petrovitch, who has encountered Raskolnikov recently. He provides background information on Raskolnikov's recent behavior."
       },
       {
@@ -1151,18 +1330,26 @@
     "summary": "The chapter opens with Razumihin and Raskolnikov discussing Raskolnikov's encounter with Porfiry and Zametov, with Razumihin expressing disbelief and frustration at the police's suspicions. Raskolnikov argues that the police's behavior indicates they lack concrete evidence against him. As they approach Bakaleyev\u2019s lodgings, Razumihin insists on accompanying Raskolnikov, but Raskolnikov abruptly leaves him to go home alone. Upon returning to his apartment, Raskolnikov checks the hole in the wall where he hid the items from the murder, finding nothing. Outside, a porter points him out to a stranger who then follows Raskolnikov, accusing him of being a murderer. Shocked and disoriented, Raskolnikov returns home, where he lies on the sofa, overwhelmed by guilt and paranoia. He reflects on his actions, questioning his motives and the consequences of his crime. Later, Razumihin visits, finding Raskolnikov pretending to be asleep. Raskolnikov experiences a vivid nightmare where he re-enacts the murder, only to wake up to find a stranger named Arkady Ivanovitch Svidriga\u00eflov watching him intently.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion Romanovich Raskolnikov"
+        ],
         "description": "The protagonist, a former student who committed a murder and is now dealing with intense guilt and paranoia. He is intelligent but struggling with mental health issues and the aftermath of his crime."
       },
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Razumihin",
+          "Vrazumihin"
+        ],
         "description": "A close friend of Raskolnikov, Razumihin is supportive and concerned for Raskolnikov's wellbeing. He tries to defend Raskolnikov against the police's suspicions and is persistent in his efforts to help his friend."
       },
       {
-        "name": "Porfiry",
-        "aliases": [],
+        "name": "Porfiry Petrovitch",
+        "aliases": [
+          "Porfiry"
+        ],
         "description": "A detective investigating the murder, Porfiry is portrayed as cunning and manipulative. Though not physically present, his influence is significant in the chapter as Raskolnikov and Razumihin discuss his behavior and intentions."
       },
       {
@@ -1176,9 +1363,10 @@
         "description": "A minor character who points Raskolnikov out to a stranger, setting off a chain of events that further unsettles Raskolnikov."
       },
       {
-        "name": "Stranger",
+        "name": "Arkady Ivanovitch Svidrigailov",
         "aliases": [
-          "Arkady Ivanovitch Svidriga\u00eflov"
+          "Arkady Ivanovitch Svidriga\u00eflov",
+          "Stranger"
         ],
         "description": "Introduced at the end of the chapter, this stranger watches Raskolnikov closely after he wakes from a nightmare. His presence adds an ominous and unsettling element to the conclusion of the chapter."
       }
@@ -1207,18 +1395,26 @@
     "characters": [
       {
         "name": "Rodion Romanovitch Raskolnikov",
-        "aliases": [],
+        "aliases": [
+          "Raskolnikov",
+          "Rodion Romanovich Raskolnikov"
+        ],
         "description": "The protagonist of the novel, Raskolnikov is a troubled intellectual who is visited by Svidriga\u00eflov. He is skeptical of Svidriga\u00eflov's intentions and dismisses his claims about ghosts and Marfa Petrovna's will."
       },
       {
-        "name": "Arkady Ivanovitch Svidriga\u00eflov",
-        "aliases": [],
+        "name": "Arkady Ivanovitch Svidrigailov",
+        "aliases": [
+          "Arkady Ivanovitch Svidriga\u00eflov",
+          "Stranger"
+        ],
         "description": "A wealthy and controversial figure, Svidriga\u00eflov visits Raskolnikov to discuss his sister, Avdotya Romanovna, and offers to help her financially. He also discusses his belief in ghosts and his past with Marfa Petrovna."
       },
       {
         "name": "Avdotya Romanovna",
         "aliases": [
-          "Dunya"
+          "Dounia",
+          "Dunya",
+          "sister"
         ],
         "description": "Raskolnikov's sister, who is engaged to Mr. Luzhin. Svidriga\u00eflov mentions her in his conversation with Raskolnikov and offers to give her money to help break off her engagement."
       },
@@ -1229,12 +1425,19 @@
       },
       {
         "name": "Pyotr Petrovitch Luzhin",
-        "aliases": [],
+        "aliases": [
+          "Luzhin",
+          "Mr. Luzhin",
+          "Pyotr Petrovich Luzhin"
+        ],
         "description": "Avdotya Romanovna's fianc\u00e9, whom Svidriga\u00eflov criticizes and suggests is unsuitable for her. Svidriga\u00eflov offers to help Avdotya Romanovna break off the engagement."
       },
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Razumihin",
+          "Vrazumihin"
+        ],
         "description": "A friend of Raskolnikov's who encounters Svidriga\u00eflov as he leaves Raskolnikov's apartment."
       }
     ],
@@ -1262,40 +1465,56 @@
     "summary": "The chapter opens with Raskolnikov and Razumihin hurrying to Bakaleyev's apartment to meet Luzhin before he arrives. On their way, Raskolnikov expresses his fear of Svidriga\u00eflov, who recently attended his sister Dounia's mother's funeral. Razumihin suggests they guard Dounia from Svidriga\u00eflov. Upon arriving, they discuss Razumihin's encounter with Porfiry and Zametov, where he threatened violence but ultimately decided to mystify them further. They enter Luzhin's apartment together, where Luzhin, Dounia, and Raskolnikov's mother, Pulcheria Alexandrovna, are present. Luzhin, feeling slighted, attempts to maintain decorum but is visibly upset. The conversation shifts to Marfa Petrovna's death and Svidriga\u00eflov's arrival in Petersburg. Luzhin warns of Svidriga\u00eflov's past misconduct and his potential threat to Dounia. Raskolnikov reveals that Svidriga\u00eflov visited him earlier and plans to meet Dounia. Luzhin becomes increasingly agitated, demanding an explanation for his previous insult and insisting on Raskolnikov's absence during discussions. Dounia insists on resolving the conflict and offers to judge between Luzhin and her brother. Luzhin escalates the argument, accusing Dounia of trivializing his importance. Raskolnikov intervenes, accusing Luzhin of slander and insensitivity. Luzhin, feeling cornered, threatens to leave and never return, but Dounia dismisses him angrily. Razumihin and Raskolnikov hold Luzhin back from retaliating, and Luzhin leaves with intense hatred towards Raskolnikov, believing he is responsible for the situation.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion Romanovich Raskolnikov"
+        ],
         "description": "The protagonist, a troubled young man who fears Svidriga\u00eflov and is protective of his sister Dounia. He is involved in a tense confrontation with Luzhin and Razumihin."
       },
       {
-        "name": "Razumihin",
+        "name": "Dmitri Prokofitch Razumihin",
         "aliases": [
-          "Dmitri Prokofitch"
+          "Dmitri Prokofitch",
+          "Razumihin",
+          "Vrazumihin"
         ],
         "description": "A friend of Raskolnikov, who tries to mediate between Raskolnikov and Luzhin. He is supportive of Dounia and protective of Raskolnikov."
       },
       {
-        "name": "Luzhin",
+        "name": "Pyotr Petrovitch Luzhin",
         "aliases": [
+          "Luzhin",
+          "Mr. Luzhin",
+          "Pyotr Petrovich Luzhin",
           "Pyotr Petrovitch"
         ],
         "description": "A suitor of Dounia who becomes increasingly agitated and confrontational during the meeting. He feels slighted and demands explanations and apologies."
       },
       {
-        "name": "Dounia",
+        "name": "Avdotya Romanovna",
         "aliases": [
-          "Avdotya Romanovna"
+          "Dounia",
+          "Dunya",
+          "sister"
         ],
         "description": "Raskolnikov's sister, engaged to Luzhin. She is caught between her brother and her fianc\u00e9 and tries to resolve the conflict."
       },
       {
         "name": "Pulcheria Alexandrovna",
-        "aliases": [],
+        "aliases": [
+          "Mother",
+          "mother"
+        ],
         "description": "Raskolnikov's mother, who is supportive of her son and daughter but is also caught in the middle of the conflict."
       },
       {
-        "name": "Svidriga\u00eflov",
+        "name": "Arkady Ivanovitch Svidrigailov",
         "aliases": [
-          "Arkady Ivanovitch"
+          "Arkady Ivanovitch",
+          "Arkady Ivanovitch Svidriga\u00eflov",
+          "Stranger",
+          "Svidriga\u00eflov"
         ],
         "description": "A landowner who previously harassed Dounia and is now in Petersburg. He is feared by Raskolnikov and considered a threat to Dounia."
       }
@@ -1329,33 +1548,47 @@
     "characters": [
       {
         "name": "Pyotr Petrovitch Luzhin",
-        "aliases": [],
+        "aliases": [
+          "Luzhin",
+          "Mr. Luzhin",
+          "Pyotr Petrovich Luzhin",
+          "Pyotr Petrovitch"
+        ],
         "description": "A wealthy and ambitious man who attempts to marry Dounia despite rumors about his past. He is arrogant, vain, and deeply hurt when Dounia rejects his proposal. He plans to reconcile with Dounia the next day."
       },
       {
-        "name": "Dounia",
+        "name": "Avdotya Romanovna",
         "aliases": [
-          "Avdotya Romanovna"
+          "Dounia",
+          "Dunya",
+          "sister"
         ],
         "description": "Dounia is the sister of Raskolnikov and daughter of Pulcheria Alexandrovna. She is virtuous, educated, and initially tempted by Luzhin's wealth but ultimately rejects his proposal due to his arrogance and past rumors. She feels guilty and remorseful after the rejection."
       },
       {
         "name": "Pulcheria Alexandrovna",
-        "aliases": [],
+        "aliases": [
+          "Mother",
+          "mother"
+        ],
         "description": "Dounia and Raskolnikov's mother, who is relieved by Luzhin's departure but still in shock. She is supportive of her children and appreciates the financial relief provided by Marfa Petrovna's legacy."
       },
       {
-        "name": "Raskolnikov",
+        "name": "Rodion Romanovitch Raskolnikov",
         "aliases": [
+          "Raskolnikov",
           "Rodion",
+          "Rodion Romanovich Raskolnikov",
           "Rodya"
         ],
         "description": "Raskolnikov is Dounia's brother and a complex character who is initially instrumental in rejecting Luzhin's proposal. He becomes increasingly distant and mysterious towards the end of the chapter, expressing a need for solitude and leaving abruptly."
       },
       {
-        "name": "Razumihin",
+        "name": "Dmitri Prokofitch Razumihin",
         "aliases": [
-          "Dmitri Prokofitch"
+          "Dmitri Prokofitch",
+          "Razumihin",
+          "Vrazumihin"
         ],
         "description": "A friend of Raskolnikov who is delighted by the rejection of Luzhin's proposal. He proposes a business venture to the group and takes on the role of protector and support system for Dounia and Pulcheria Alexandrovna after Raskolnikov's departure."
       },
@@ -1387,13 +1620,22 @@
     "summary": "Raskolnikov visits Sonia at her residence on the canal bank, an old green house of three storeys. Upon entering her room, he notices her weakened state and begins to discuss her living conditions and the hardships faced by her family, particularly Katerina Ivanovna and her children. Sonia expresses her deep affection for Katerina despite her mental instability and frequent illnesses. Raskolnikov then questions Sonia about her financial struggles and her thoughts on ending her life due to the unbearable circumstances. He suggests that she might end up in a madhouse or succumb to depravity if she continues her current path. Raskolnikov then asks Sonia about her religious beliefs and insists she read the story of Lazarus from the Bible. Sonia, visibly distressed, reluctantly reads the passage, which deeply moves her. Afterward, Raskolnikov reveals his intention to abandon his family and proposes that they leave together, suggesting they share a similar fate. Sonia, shocked and confused, rejects his proposal. Raskolnikov leaves, leaving Sonia in a state of confusion and fear. Mr. Svidriga\u00eflov, who had been eavesdropping from an adjacent empty room, listens to the entire conversation and prepares to continue listening in the future.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion",
+          "Rodion Romanovich Raskolnikov",
+          "Rodya"
+        ],
         "description": "A troubled young man who visits Sonia to discuss her life and his own plans. He is deeply concerned about Sonia's well-being and proposes a radical solution to their shared misfortunes."
       },
       {
-        "name": "Sonia",
-        "aliases": [],
+        "name": "Sofya Semyonovna Marmeladov",
+        "aliases": [
+          "Sofya Semyonovna",
+          "Sonia",
+          "Sonia Marmeladov"
+        ],
         "description": "A young woman living in poverty who cares for her family, especially her stepmother Katerina Ivanovna and her children. She is deeply religious and struggles with her situation."
       },
       {
@@ -1402,8 +1644,14 @@
         "description": "Sonia's stepmother, who is mentally unstable and suffers from consumption. She relies heavily on Sonia for support."
       },
       {
-        "name": "Mr. Svidriga\u00eflov",
-        "aliases": [],
+        "name": "Arkady Ivanovitch Svidrigailov",
+        "aliases": [
+          "Arkady Ivanovitch",
+          "Arkady Ivanovitch Svidriga\u00eflov",
+          "Mr. Svidriga\u00eflov",
+          "Stranger",
+          "Svidriga\u00eflov"
+        ],
         "description": "A mysterious figure who eavesdrops on Raskolnikov and Sonia's conversation from an adjacent empty room. He shows interest in their discussion."
       }
     ],
@@ -1433,13 +1681,20 @@
     "summary": "The chapter opens with Raskolnikov arriving at the department of the investigation of criminal causes to meet Porfiry Petrovitch. Surprised by the long wait and the casual treatment, Raskolnikov begins to suspect that Porfiry Petrovitch might not have any real interest in him. Upon entering Porfiry Petrovitch's office, Raskolnikov notices Porfiry's nervous behavior and becomes increasingly suspicious. Porfiry attempts to engage Raskolnikov in conversation, using seemingly irrelevant topics to gauge his reaction. Raskolnikov, growing frustrated and fearful, demands to know if he is suspected of the murders. Porfiry continues to evade a direct answer, instead discussing his investigative methods and the psychological impact on suspects. Raskolnikov's nerves fray, leading to a heated exchange where he threatens Porfiry. Porfiry, maintaining a calm demeanor, offers Raskolnikov water and suggests he is overreacting due to his illness. He then reveals that he knows about Raskolnikov's visit to the apartment and his inquiries about blood, causing Raskolnikov to become even more agitated. Porfiry continues to provoke Raskolnikov, suggesting that if he were guilty, he would claim insanity rather than insisting on his sanity. Raskolnikov, driven to the brink, accuses Porfiry of lying and mocking him. Porfiry then reveals a 'surprise' behind a locked door, leading Raskolnikov to rush towards it, only to find it locked. The chapter ends with Raskolnikov accusing Porfiry of trying to provoke him into revealing guilt, and Porfiry listening at the door as if expecting someone to arrive.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion",
+          "Rodion Romanovich Raskolnikov",
+          "Rodya"
+        ],
         "description": "The protagonist, a student who is suspected of murdering an old woman and her sister. He is paranoid, nervous, and confrontational, especially towards Porfiry Petrovitch. His mental state is deteriorating, and he is struggling with the guilt of his actions."
       },
       {
         "name": "Porfiry Petrovitch",
-        "aliases": [],
+        "aliases": [
+          "Porfiry"
+        ],
         "description": "The chief investigator in charge of the murder case. He is cunning, manipulative, and uses psychological tactics to unsettle Raskolnikov. He seems to know more than he lets on, and his true intentions remain unclear."
       }
     ],
@@ -1469,13 +1724,20 @@
     "summary": "In this chapter, Raskolnikov recalls a chaotic scene that unfolds in Porfiry Petrovitch's office. The chapter begins with increasing noise outside the door, leading to Porfiry becoming annoyed and ordering whoever is outside to wait. However, a prisoner named Nikolay is brought in despite Porfiry's instructions. Nikolay, pale and determined, kneels down and confesses to being the murderer of Alyona Ivanovna and her sister Lizaveta Ivanovna. This shocking admission leaves everyone stunned, including Raskolnikov, who is present in the room. Porfiry interrogates Nikolay further, asking about the murder weapon and confirming that Nikolay acted alone. After dismissing the uninvited spectators, Porfiry attempts to dismiss Raskolnikov, but Raskolnikov, regaining his composure, sarcastically remarks on Porfiry's eagerness to get rid of him. As Raskolnikov leaves, Porfiry runs after him, hinting at future meetings and questioning Raskolnikov about his intentions. Back at home, Raskolnikov reflects on the implications of Nikolay's confession and his encounter with Porfiry, feeling a mix of confusion and relief. He decides to visit Katerina Ivanovna's funeral, but as he prepares to leave, he is startled by the unexpected appearance of a man who visited him the previous day. This man, who had been eavesdropping on Porfiry's conversation with Raskolnikov, confesses to having wronged Raskolnikov by informing Porfiry about Raskolnikov's inquiries about the flat and blood stains. The man's revelation clarifies the situation, leaving Raskolnikov more confident and determined to confront his fears. The chapter ends with Raskolnikov descending the stairs, smiling maliciously at the realization that he can now fight back against his perceived injustices.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion",
+          "Rodion Romanovich Raskolnikov",
+          "Rodya"
+        ],
         "description": "The protagonist, a troubled and complex individual who is under suspicion for a crime. He is intelligent but struggling with inner turmoil and guilt. His interactions with Porfiry and others reveal his nervous temperament and tendency to compromise himself."
       },
       {
         "name": "Porfiry Petrovitch",
-        "aliases": [],
+        "aliases": [
+          "Porfiry"
+        ],
         "description": "The head of the detective department, known for his psychological tactics and keen insight. He interrogates Raskolnikov and Nikolay, displaying a mix of frustration and amusement. His methods are designed to unsettle and manipulate suspects."
       },
       {
@@ -1515,18 +1777,29 @@
     "characters": [
       {
         "name": "Pyotr Petrovitch Luzhin",
-        "aliases": [],
+        "aliases": [
+          "Luzhin",
+          "Mr. Luzhin",
+          "Pyotr Petrovich Luzhin",
+          "Pyotr Petrovitch"
+        ],
         "description": "A wealthy and ambitious man who recently faced a setback in his plans to marry Dounia. He is vain, manipulative, and resentful of his current situation. He seeks to regain control and influence through strategic actions and conversations."
       },
       {
         "name": "Andrey Semyonovitch Lebeziatnikov",
-        "aliases": [],
+        "aliases": [
+          "Lebeziatnikov"
+        ],
         "description": "A young, idealistic, and somewhat naive man who lives with Luzhin. He is passionate about progressive ideas and frequently discusses them with Luzhin, often irritating Luzhin with his enthusiasm and perceived naivety."
       },
       {
-        "name": "Sofya Semyonovna (Sonia)",
+        "name": "Sofya Semyonovna Marmeladov",
         "aliases": [
-          "Marmeladov's daughter"
+          "Marmeladov's daughter",
+          "Sofya Semyonovna",
+          "Sofya Semyonovna (Sonia)",
+          "Sonia",
+          "Sonia Marmeladov"
         ],
         "description": "The daughter of the deceased Marmeladov, Sonia is a shy and reserved young woman who lives with her family in poverty. Luzhin invites her to his room to offer financial assistance to her family, showing a mix of genuine concern and ulterior motives."
       },
@@ -1536,8 +1809,12 @@
         "description": "The widow of Marmeladov, Katerina Ivanovna is organizing a funeral dinner for her late husband. She is described as spending lavishly despite her family's dire financial situation."
       },
       {
-        "name": "Dounia",
-        "aliases": [],
+        "name": "Avdotya Romanovna",
+        "aliases": [
+          "Dounia",
+          "Dunya",
+          "sister"
+        ],
         "description": "Luzhin's intended bride, whose rejection of his proposal is the catalyst for the events in the chapter. She is not physically present but is a significant figure in Luzhin's reflections and actions."
       }
     ],
@@ -1578,8 +1855,14 @@
         "description": "Katerina Ivanovna is Marmeladov's widow, known for her pride and vanity. She is struggling financially but insists on hosting a memorial dinner for her husband, driven by a need to assert her dignity and status. She is quick to anger and prone to fits of coughing, which worsens during the dinner. Her interactions with Amalia Ivanovna and other guests are marked by sharp words and confrontations."
       },
       {
-        "name": "Sonia",
-        "aliases": [],
+        "name": "Sofya Semyonovna Marmeladov",
+        "aliases": [
+          "Marmeladov's daughter",
+          "Sofya Semyonovna",
+          "Sofya Semyonovna (Sonia)",
+          "Sonia",
+          "Sonia Marmeladov"
+        ],
         "description": "Sonia is Marmeladov's daughter and Katerina Ivanovna's stepdaughter. She is present at the dinner but remains distant and anxious, aware of the tension and potential consequences of the dinner. She tries to appease Katerina Ivanovna and avoid further conflict."
       },
       {
@@ -1590,15 +1873,24 @@
         "description": "Amalia Ivanovna is the landlady of the apartment where Katerina Ivanovna and her family reside. She is portrayed as a figure of authority and pride, often clashing with Katerina Ivanovna over the management of the household and the conduct of the dinner. Her interactions with Katerina Ivanovna are marked by mutual disrespect and escalating conflict."
       },
       {
-        "name": "Raskolnikov",
+        "name": "Rodion Romanovitch Raskolnikov",
         "aliases": [
-          "Rodion Romanovitch"
+          "Raskolnikov",
+          "Rodion",
+          "Rodion Romanovich Raskolnikov",
+          "Rodion Romanovitch",
+          "Rodya"
         ],
         "description": "Raskolnikov is a lodger in the apartment and a friend of Katerina Ivanovna's family. He attends the dinner and listens to Katerina Ivanovna's complaints about the absentees and the behavior of the guests. His presence provides a focal point for Katerina Ivanovna's venting of frustration."
       },
       {
         "name": "Pyotr Petrovitch Luzhin",
-        "aliases": [],
+        "aliases": [
+          "Luzhin",
+          "Mr. Luzhin",
+          "Pyotr Petrovich Luzhin",
+          "Pyotr Petrovitch"
+        ],
         "description": "Luzhin is a wealthy and influential lodger who does not attend the dinner. He is mentioned frequently by Katerina Ivanovna, who expresses disappointment in his absence and hope for his future assistance. His eventual appearance at the end of the chapter serves to temporarily resolve the conflict."
       }
     ],
@@ -1634,13 +1926,23 @@
     "characters": [
       {
         "name": "Pyotr Petrovitch Luzhin",
-        "aliases": [],
+        "aliases": [
+          "Luzhin",
+          "Mr. Luzhin",
+          "Pyotr Petrovich Luzhin",
+          "Pyotr Petrovitch"
+        ],
         "description": "A serious businessman who falsely accuses Sonia of theft to harm Raskolnikov's reputation and estrange him from his family. He is portrayed as cunning and manipulative."
       },
       {
-        "name": "Sofya Ivanovna (Sonia)",
+        "name": "Sofya Semyonovna Marmeladov",
         "aliases": [
-          "Sofya Semyonovna"
+          "Marmeladov's daughter",
+          "Sofya Ivanovna (Sonia)",
+          "Sofya Semyonovna",
+          "Sofya Semyonovna (Sonia)",
+          "Sonia",
+          "Sonia Marmeladov"
         ],
         "description": "A young woman accused of theft by Luzhin. She is innocent but is wrongly accused and subjected to public humiliation. She is defended by Katerina Ivanovna and eventually cleared of the charges."
       },
@@ -1651,17 +1953,28 @@
       },
       {
         "name": "Amalia Ivanovna",
-        "aliases": [],
+        "aliases": [
+          "Ludwigovna"
+        ],
         "description": "The landlady of the lodging who evicts Katerina Ivanovna after the commotion caused by Luzhin's accusations. She is portrayed as strict and unforgiving."
       },
       {
-        "name": "Rodion Romanovich Raskolnikov (Raskolnikov)",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion",
+          "Rodion Romanovich Raskolnikov",
+          "Rodion Romanovich Raskolnikov (Raskolnikov)",
+          "Rodion Romanovitch",
+          "Rodya"
+        ],
         "description": "A central figure who exposes Luzhin's scheme to frame Sonia. He is portrayed as intelligent and principled, willing to stand up for justice."
       },
       {
-        "name": "Lebeziatnikov",
-        "aliases": [],
+        "name": "Andrey Semyonovitch Lebeziatnikov",
+        "aliases": [
+          "Lebeziatnikov"
+        ],
         "description": "A witness who clears Sonia's name by revealing that Luzhin had slipped the money into her pocket. He is portrayed as honest and observant."
       }
     ],
@@ -1688,14 +2001,26 @@
     "summary": "Raskolnikov visits Sonia to confess his crime, having previously defended her against Luzhin. Upon arriving at Sonia's lodging, he finds her distressed and begins to discuss Luzhin's intentions and the recent events at Katerina Ivanovna's home. Sonia expresses concern for Katerina Ivanovna and the children, but Raskolnikov insists she stay with him. He then shifts to discussing Luzhin's potential prosecution of Sonia, revealing that Lebeziatnikov and himself prevented this. Raskolnikov then poses a hypothetical moral dilemma to Sonia, asking her to choose between Luzhin's life and Katerina Ivanovna's, which unsettles her. He then attempts to confess his crime, initially hesitating and showing signs of fear and guilt. Sonia senses his distress and tries to comfort him, but Raskolnikov's emotions become intense, and he struggles to articulate his confession. He finally reveals that he killed Lizaveta accidentally while intending to kill the old woman, causing Sonia immense shock and sorrow. Raskolnikov then explains his philosophical justification for the murder, describing his belief in the necessity of power and his desire to prove his superiority over others. Sonia urges him to confess publicly and repent, but Raskolnikov resists, arguing that he cannot return to his family and that he will continue to resist the authorities. He informs Sonia that the police are pursuing him but believes he can evade arrest. The conversation ends with Raskolnikov feeling burdened by Sonia's love and deciding not to see her in prison, despite her insistence. The chapter concludes with Lebeziatnikov knocking on the door, interrupting their conversation.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion",
+          "Rodion Romanovich Raskolnikov",
+          "Rodion Romanovich Raskolnikov (Raskolnikov)",
+          "Rodion Romanovitch",
+          "Rodya"
+        ],
         "description": "A troubled student who has committed a murder and seeks redemption through confession. He is deeply conflicted about his actions and their implications, struggling with guilt, philosophy, and the desire for absolution. His interactions with Sonia reveal his complex inner turmoil and his inability to fully reconcile with his past."
       },
       {
-        "name": "Sonia",
+        "name": "Sofya Semyonovna Marmeladov",
         "aliases": [
-          "Sofya Semyonovna"
+          "Marmeladov's daughter",
+          "Sofya Ivanovna (Sonia)",
+          "Sofya Semyonovna",
+          "Sofya Semyonovna (Sonia)",
+          "Sonia",
+          "Sonia Marmeladov"
         ],
         "description": "A young woman who cares deeply for Raskolnikov and is devoted to helping him. She is compassionate and self-sacrificing, willing to support Raskolnikov even as he confesses his crimes. Her relationship with Raskolnikov is central to the chapter, as she tries to guide him towards redemption and understanding."
       },
@@ -1705,13 +2030,20 @@
         "description": "A widow whose family Raskolnikov and Sonia are concerned about. She is mentioned in the chapter as being in a difficult situation, and Sonia worries about her welfare."
       },
       {
-        "name": "Luzhin",
-        "aliases": [],
+        "name": "Pyotr Petrovitch Luzhin",
+        "aliases": [
+          "Luzhin",
+          "Mr. Luzhin",
+          "Pyotr Petrovich Luzhin",
+          "Pyotr Petrovitch"
+        ],
         "description": "A wealthy suitor of Katerina Ivanovna who is described as having malicious intentions towards Sonia and Katerina Ivanovna's family. His actions are a source of tension in the chapter, particularly in Raskolnikov's discussions with Sonia."
       },
       {
-        "name": "Lebeziatnikov",
-        "aliases": [],
+        "name": "Andrey Semyonovitch Lebeziatnikov",
+        "aliases": [
+          "Lebeziatnikov"
+        ],
         "description": "A friend of Raskolnikov who appears briefly at the end of the chapter, interrupting Raskolnikov and Sonia's conversation. His presence signals the encroachment of external concerns on their private discussion."
       }
     ],
@@ -1739,20 +2071,34 @@
     "summary": "In Chapter 31, Lebeziatnikov visits Raskolnikov to inform him about Katerina Ivanovna's erratic behavior and her intention to take her children to the streets to beg. Upon hearing this, Sonia rushes out to confront Katerina Ivanovna, followed by Raskolnikov and Lebeziatnikov. They find Katerina Ivanovna attempting to turn her children into street performers, causing a commotion in the streets. Raskolnikov tries to persuade Katerina Ivanovna to return home, but she refuses, insisting on her dignity and the necessity of providing for her children. During this scene, Katerina Ivanovna collapses, bleeding from her chest due to her advanced tuberculosis. Sonia and others manage to bring her back to Sonia's room, where she dies shortly after, leaving her children in Sonia's care. Meanwhile, Raskolnikov encounters Svidriga\u00eflov, who offers to take care of Katerina Ivanovna's children and provides financial support to Sonia. Svidriga\u00eflov reveals that he has been observing Raskolnikov and expresses interest in becoming friends with him, much to Raskolnikov's discomfort.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion",
+          "Rodion Romanovich Raskolnikov",
+          "Rodion Romanovich Raskolnikov (Raskolnikov)",
+          "Rodion Romanovitch",
+          "Rodya"
+        ],
         "description": "A deeply troubled young man who is struggling with his conscience and health. He is visited by Lebeziatnikov and encounters Svidriga\u00eflov, who offers to help Katerina Ivanovna's children."
       },
       {
-        "name": "Sonia",
+        "name": "Sofya Semyonovna Marmeladov",
         "aliases": [
-          "Sofya Semyonovna"
+          "Marmeladov's daughter",
+          "Sofya Ivanovna (Sonia)",
+          "Sofya Semyonovna",
+          "Sofya Semyonovna (Sonia)",
+          "Sonia",
+          "Sonia Marmeladov"
         ],
         "description": "A compassionate woman who cares for Katerina Ivanovna's children. She is distressed by Katerina Ivanovna's actions and attempts to intervene."
       },
       {
-        "name": "Lebeziatnikov",
-        "aliases": [],
+        "name": "Andrey Semyonovitch Lebeziatnikov",
+        "aliases": [
+          "Lebeziatnikov"
+        ],
         "description": "A friend of Raskolnikov who informs him about Katerina Ivanovna's behavior and accompanies him to the scene."
       },
       {
@@ -1761,15 +2107,23 @@
         "description": "A desperate and delusional woman who takes her children to the streets to beg, believing it is necessary to maintain her dignity and provide for her children."
       },
       {
-        "name": "Dounia",
+        "name": "Avdotya Romanovna",
         "aliases": [
-          "Avdotya Romanovna"
+          "Dounia",
+          "Dunya",
+          "sister"
         ],
         "description": "Raskolnikov's sister who visits him briefly, expressing concern and offering support."
       },
       {
-        "name": "Svidriga\u00eflov",
-        "aliases": [],
+        "name": "Arkady Ivanovitch Svidrigailov",
+        "aliases": [
+          "Arkady Ivanovitch",
+          "Arkady Ivanovitch Svidriga\u00eflov",
+          "Mr. Svidriga\u00eflov",
+          "Stranger",
+          "Svidriga\u00eflov"
+        ],
         "description": "A mysterious and wealthy man who offers to take care of Katerina Ivanovna's children and provides financial support to Sonia."
       }
     ],
@@ -1798,22 +2152,46 @@
     "characters": [
       {
         "name": "Rodion Romanovitch Raskolnikov",
-        "aliases": [],
+        "aliases": [
+          "Raskolnikov",
+          "Rodion",
+          "Rodion Romanovich Raskolnikov",
+          "Rodion Romanovich Raskolnikov (Raskolnikov)",
+          "Rodion Romanovitch",
+          "Rodya"
+        ],
         "description": "The protagonist, a student struggling with guilt and paranoia following a murder he committed. He is deeply troubled and seeks clarity and escape from his mental state."
       },
       {
-        "name": "Svidriga\u00eflov",
-        "aliases": [],
+        "name": "Arkady Ivanovitch Svidrigailov",
+        "aliases": [
+          "Arkady Ivanovitch",
+          "Arkady Ivanovitch Svidriga\u00eflov",
+          "Mr. Svidriga\u00eflov",
+          "Stranger",
+          "Svidriga\u00eflov"
+        ],
         "description": "A wealthy and enigmatic figure who has made threatening remarks to Raskolnikov and is causing him significant distress. He is involved in arranging Katerina Ivanovna's children's welfare and plans to meet Raskolnikov again."
       },
       {
-        "name": "Sofya Semyonovna (Sonia)",
-        "aliases": [],
+        "name": "Sofya Semyonovna Marmeladov",
+        "aliases": [
+          "Marmeladov's daughter",
+          "Sofya Ivanovna (Sonia)",
+          "Sofya Semyonovna",
+          "Sofya Semyonovna (Sonia)",
+          "Sonia",
+          "Sonia Marmeladov"
+        ],
         "description": "A young woman who is close to Raskolnikov and has been affected by Katerina Ivanovna's death. She is preparing for the funeral and avoids communicating with Raskolnikov."
       },
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Dmitri Prokofitch",
+          "Razumihin",
+          "Vrazumihin"
+        ],
         "description": "A friend of Raskolnikov who is concerned about his well-being and believes he might be involved in a political conspiracy. He visits Raskolnikov to check on him and discusses his sister and mother's welfare."
       },
       {
@@ -1823,7 +2201,9 @@
       },
       {
         "name": "Porfiry Petrovitch",
-        "aliases": [],
+        "aliases": [
+          "Porfiry"
+        ],
         "description": "A detective who has been investigating the murder case and has a psychological theory about Raskolnikov. He unexpectedly visits Raskolnikov, causing further tension."
       }
     ],
@@ -1855,13 +2235,22 @@
     "summary": "In the opening scene, Porfiry Petrovitch visits Raskolnikov, lighting a cigarette and expressing his addiction to tobacco despite its negative health effects. He mentions a previous visit to Raskolnikov's apartment, where he entered without permission due to the open door. Raskolnikov grows increasingly gloomy as Porfiry begins to explain his actions and suspicions. Porfiry admits to searching Raskolnikov's room unofficially and discusses his suspicions based on rumors and coincidences, including Raskolnikov's article and behavior during an office visit. He describes his belief that Raskolnikov is guilty and explains his methods of investigation, including psychological tactics and the use of Nikolay as a potential scapegoat. Raskolnikov remains skeptical and defensive throughout. Porfiry then directly accuses Raskolnikov of murdering the old woman, causing Raskolnikov to react with shock and denial. Porfiry insists on his certainty, leading to a tense silence. Porfiry then offers Raskolnikov a chance to confess, arguing that it would be beneficial for both of them. He warns Raskolnikov about the consequences of imprisonment and encourages him to embrace life and redemption. Raskolnikov considers Porfiry's words but ultimately rejects the offer, expressing his disdain for the idea of confession. The conversation ends with Porfiry advising Raskolnikov to write a note if he contemplates suicide, and Porfiry leaves. Raskolnikov waits until Porfiry is gone before leaving his apartment himself.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion",
+          "Rodion Romanovich Raskolnikov",
+          "Rodion Romanovich Raskolnikov (Raskolnikov)",
+          "Rodion Romanovitch",
+          "Rodya"
+        ],
         "description": "The protagonist of the novel, Raskolnikov is a complex and troubled individual who is suspected of murder. He is intelligent, brooding, and deeply conflicted about his actions and their moral implications."
       },
       {
         "name": "Porfiry Petrovitch",
-        "aliases": [],
+        "aliases": [
+          "Porfiry"
+        ],
         "description": "A detective investigating the murder of the old woman, Porfiry is cunning and manipulative. He believes Raskolnikov is guilty and uses psychological tactics to try to elicit a confession."
       },
       {
@@ -1870,8 +2259,12 @@
         "description": "A potential suspect in the murder case, Nikolay is described as a young, impressionable man who has been influenced by religious beliefs and artistic tendencies. He is considered by Porfiry as a possible scapegoat."
       },
       {
-        "name": "Razumihin",
-        "aliases": [],
+        "name": "Dmitri Prokofitch Razumihin",
+        "aliases": [
+          "Dmitri Prokofitch",
+          "Razumihin",
+          "Vrazumihin"
+        ],
         "description": "A friend of Raskolnikov, Razumihin is concerned about Raskolnikov's wellbeing and has been discussing the case with him. He is mentioned by Porfiry as someone who believes Nikolay is guilty."
       }
     ],
@@ -1900,12 +2293,25 @@
     "characters": [
       {
         "name": "Rodion Romanovitch Raskolnikov",
-        "aliases": [],
+        "aliases": [
+          "Raskolnikov",
+          "Rodion",
+          "Rodion Romanovich Raskolnikov",
+          "Rodion Romanovich Raskolnikov (Raskolnikov)",
+          "Rodion Romanovitch",
+          "Rodya"
+        ],
         "description": "The protagonist, a morally fatigued and anxious man who suspects Svidriga\u00eflov of having designs on his sister, Dounia. He warns Svidriga\u00eflov that he will kill him if he harms Dounia."
       },
       {
-        "name": "Arkady Ivanovitch Svidriga\u00eflov",
-        "aliases": [],
+        "name": "Arkady Ivanovitch Svidrigailov",
+        "aliases": [
+          "Arkady Ivanovitch",
+          "Arkady Ivanovitch Svidriga\u00eflov",
+          "Mr. Svidriga\u00eflov",
+          "Stranger",
+          "Svidriga\u00eflov"
+        ],
         "description": "A former cavalry officer and card-sharper, Svidriga\u00eflov is a mysterious figure who directs Raskolnikov to a tavern and engages him in conversation about vice and his past. He admits to having designs on Dounia."
       },
       {
@@ -1919,9 +2325,11 @@
         "description": "A waiter at the tavern who serves Svidriga\u00eflov and others. He is described as obsequious and friendly with Svidriga\u00eflov."
       },
       {
-        "name": "Dounia",
+        "name": "Avdotya Romanovna",
         "aliases": [
-          "Avdotya Romanovna"
+          "Dounia",
+          "Dunya",
+          "sister"
         ],
         "description": "Raskolnikov's sister, who is suspected by Raskolnikov to be a target of Svidriga\u00eflov's designs. Mentioned but not present."
       }
@@ -1950,13 +2358,26 @@
     "summary": "In a restaurant, Svidriga\u00eflov recounts his past to Raskolnikov, detailing his tumultuous marriage to Marfa Petrovna, a wealthy widow who loved him despite his infidelity. He describes a contract they had, allowing him freedom with maidservants in exchange for his fidelity to her. Svidriga\u00eflov then shifts focus to his interactions with Dounia, Raskolnikov's sister, whom he admires for her chastity and purity. He reveals his initial attraction to her was purely physical, but he also felt a deeper connection due to her attempts to reform him. However, his crude behavior and inappropriate advances led to a falling out. Svidriga\u00eflov confesses he proposed marriage to Dounia, offering her money to run away with him, but she rejected him. He then discusses his current plans to marry a sixteen-year-old girl named Sonia, describing her as innocent and pure, contrasting sharply with his previous encounters. Raskolnikov grows increasingly suspicious of Svidriga\u00eflov's intentions towards his sister and confronts him about his designs. Svidriga\u00eflov denies any malicious intent but admits to having designs nonetheless. The conversation escalates, with Svidriga\u00eflov becoming increasingly intoxicated and aggressive. He mentions providing for Katerina Ivanovna's children, revealing a softer side. The chapter concludes with Svidriga\u00eflov walking out of the restaurant, seemingly preoccupied and uneasy, while Raskolnikov follows him, deeply suspicious of his motives.",
     "characters": [
       {
-        "name": "Svidriga\u00eflov",
-        "aliases": [],
+        "name": "Arkady Ivanovitch Svidrigailov",
+        "aliases": [
+          "Arkady Ivanovitch",
+          "Arkady Ivanovitch Svidriga\u00eflov",
+          "Mr. Svidriga\u00eflov",
+          "Stranger",
+          "Svidriga\u00eflov"
+        ],
         "description": "A wealthy, complex man with a history of infidelity and questionable morals. He is currently pursuing a marriage with a young girl named Sonia and has shown interest in Raskolnikov's sister, Dounia. He is described as charming but also manipulative and potentially dangerous."
       },
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion",
+          "Rodion Romanovich Raskolnikov",
+          "Rodion Romanovich Raskolnikov (Raskolnikov)",
+          "Rodion Romanovitch",
+          "Rodya"
+        ],
         "description": "The protagonist, who is wary of Svidriga\u00eflov's intentions towards his sister. He is suspicious and confrontational, especially as Svidriga\u00eflov becomes increasingly intoxicated and aggressive."
       },
       {
@@ -1965,15 +2386,24 @@
         "description": "Svidriga\u00eflov's deceased wife, a wealthy and passionate woman who loved him despite his infidelity. She had a contract with Svidriga\u00eflov allowing him some freedoms in exchange for his fidelity."
       },
       {
-        "name": "Dounia",
+        "name": "Avdotya Romanovna",
         "aliases": [
-          "Avdotya Romanovna"
+          "Dounia",
+          "Dunya",
+          "sister"
         ],
         "description": "Raskolnikov's sister, admired by Svidriga\u00eflov for her chastity and purity. She rejected Svidriga\u00eflov's advances and proposals, maintaining her distance from him."
       },
       {
-        "name": "Sonia",
-        "aliases": [],
+        "name": "Sofya Semyonovna Marmeladov",
+        "aliases": [
+          "Marmeladov's daughter",
+          "Sofya Ivanovna (Sonia)",
+          "Sofya Semyonovna",
+          "Sofya Semyonovna (Sonia)",
+          "Sonia",
+          "Sonia Marmeladov"
+        ],
         "description": "A sixteen-year-old girl whom Svidriga\u00eflov plans to marry. He describes her as innocent and pure, contrasting her with his previous encounters."
       },
       {
@@ -2013,25 +2443,46 @@
     "summary": "In Chapter 36, Raskolnikov confronts Svidriga\u00eflov, accusing him of harboring designs on his sister Dounia. Despite Svidriga\u00eflov's attempts to deflect, Raskolnikov insists on following him to his apartment to seek out Sofya Semyonovna. However, Svidriga\u00eflov reveals that Sofya Semyonovna is not at home and offers to take Raskolnikov to the Islands instead. Disgusted, Raskolnikov leaves, only to encounter Dounia shortly after. Svidriga\u00eflov approaches Dounia, suggesting they meet privately to discuss something important. Initially hesitant, Dounia agrees to follow him to his apartment, where he claims to have evidence that Raskolnikov is a murderer. Shocked and disbelieving, Dounia listens as Svidriga\u00eflov describes Raskolnikov's confession to Sofya Semyonovna. Dounia becomes increasingly agitated, eventually pulling out a revolver and threatening to shoot Svidriga\u00eflov if he advances. After a tense standoff, Svidriga\u00eflov offers her the key to leave, which she accepts. Svidriga\u00eflov remains at the window, watching her leave, before examining the revolver and deciding to keep it.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion",
+          "Rodion Romanovich Raskolnikov",
+          "Rodion Romanovich Raskolnikov (Raskolnikov)",
+          "Rodion Romanovitch",
+          "Rodya"
+        ],
         "description": "The protagonist of the novel, Raskolnikov is a conflicted and troubled young man who is suspected of murder. He is deeply suspicious of Svidriga\u00eflov and confronts him about his intentions towards his sister, Dounia."
       },
       {
-        "name": "Svidriga\u00eflov",
-        "aliases": [],
+        "name": "Arkady Ivanovitch Svidrigailov",
+        "aliases": [
+          "Arkady Ivanovitch",
+          "Arkady Ivanovitch Svidriga\u00eflov",
+          "Mr. Svidriga\u00eflov",
+          "Stranger",
+          "Svidriga\u00eflov"
+        ],
         "description": "A wealthy and mysterious man with a dubious reputation, Svidriga\u00eflov is known for his manipulative behavior and interest in Dounia. He claims to have evidence that Raskolnikov is a murderer and tries to manipulate Dounia into helping him save Raskolnikov."
       },
       {
-        "name": "Dounia",
+        "name": "Avdotya Romanovna",
         "aliases": [
-          "Avdotya Romanovna"
+          "Dounia",
+          "Dunya",
+          "sister"
         ],
         "description": "Raskolnikov's sister, Dounia is a virtuous and principled woman who is initially skeptical of Svidriga\u00eflov's claims but becomes increasingly desperate and confrontational when faced with his accusations against her brother."
       },
       {
-        "name": "Sofya Semyonovna",
+        "name": "Sofya Semyonovna Marmeladov",
         "aliases": [
+          "Marmeladov's daughter",
+          "Sofya Ivanovna (Sonia)",
+          "Sofya Semyonovna",
+          "Sofya Semyonovna (Sonia)",
+          "Sonia",
+          "Sonia Marmeladov",
           "Sonya"
         ],
         "description": "A character mentioned in the chapter, Sofya Semyonovna is a woman who Raskolnikov has confided in about his crimes. She is not present in the chapter but is central to Svidriga\u00eflov's claims against Raskolnikov."
@@ -2059,13 +2510,27 @@
     "summary": "The chapter opens with Svidriga\u00eflov spending the evening visiting various lowly establishments, including a pleasure garden where he pays for entrance and resolves a dispute among clerks. He leaves the garden around six o'clock, drenched by a sudden storm, and heads home. Upon arriving, he locks himself in, retrieves his money, and tears up some documents. He then decides not to change his clothes and instead visits Sonia, who is caring for four children. He informs her of his possible departure to America and makes arrangements for her financial security, giving her three 5-per-cent bonds worth three thousand roubles. Sonia accepts the money reluctantly, and Svidriga\u00eflov departs, leaving her in a state of confusion and worry. Later that night, Svidriga\u00eflov visits his fianc\u00e9e's parents, giving her fifteen thousand roubles and explaining his urgent departure. The family is surprised but grateful, and Svidriga\u00eflov leaves them in a state of excitement and speculation. He then checks into a small hotel, where he encounters a drunken man berating another man. Svidriga\u00eflov finds a room and, despite feeling feverish, attempts to sleep. During the night, he is disturbed by a mouse and then discovers a young girl hiding in the room. He helps her, but later wakes up in shock, believing the girl had transformed into a depraved adult. Realizing it was a nightmare, he writes a note in his notebook, takes his revolver, and leaves the hotel. Walking through the streets, he contemplates his suicide plan, eventually deciding to commit the act in front of a gatekeeper named Achilles. He pulls the trigger, ending the chapter.",
     "characters": [
       {
-        "name": "Arkady Ivanovitch Svidriga\u00eflov",
-        "aliases": [],
+        "name": "Arkady Ivanovitch Svidrigailov",
+        "aliases": [
+          "Arkady Ivanovitch",
+          "Arkady Ivanovitch Svidriga\u00eflov",
+          "Mr. Svidriga\u00eflov",
+          "Stranger",
+          "Svidriga\u00eflov"
+        ],
         "description": "A wealthy and enigmatic man who is planning to leave Petersburg and possibly commit suicide. He shows concern for Sonia and his fianc\u00e9e, but his actions and intentions are unclear and unsettling."
       },
       {
-        "name": "Sofya Semyonovna (Sonia)",
-        "aliases": [],
+        "name": "Sofya Semyonovna Marmeladov",
+        "aliases": [
+          "Marmeladov's daughter",
+          "Sofya Ivanovna (Sonia)",
+          "Sofya Semyonovna",
+          "Sofya Semyonovna (Sonia)",
+          "Sonia",
+          "Sonia Marmeladov",
+          "Sonya"
+        ],
         "description": "A young woman taking care of four children. She receives a significant amount of money from Svidriga\u00eflov, whom she seems to know from previous interactions."
       },
       {
@@ -2125,28 +2590,53 @@
     "summary": "In the evening, Raskolnikov, dressed in tattered and rain-soaked clothes, heads to his mother's and sister's apartment in Bakaleyev\u2019s house. Despite his hesitation, he decides to visit them. Upon arrival, Pulcheria Alexandrovna, his mother, welcomes him with joy and relief, unaware of his recent struggles. Raskolnikov, overwhelmed by emotions, briefly discusses his article in a magazine, expressing mixed feelings about his work. He then asks his mother if she will continue loving him despite any future troubles, assuring her of his love and remorse for past perceived cruelty. Pulcheria Alexandrovna embraces him, sensing his distress. Raskolnikov, feeling a rare moment of tenderness, confesses his love and guilt, promising to return. He then leaves, instructing his mother to pray for him. Meanwhile, Dounia, his sister, awaits him at his lodgings, having spent the day with Sofya Semyonovna. Upon seeing Raskolnikov, she expresses relief that he did not attempt suicide. Raskolnikov, exhausted and conflicted, reveals his thoughts of ending his life but ultimately deciding against it due to pride. He acknowledges his actions as a 'crime,' but rationalizes them as necessary for societal progress. Dounia, distressed, urges him to face his consequences bravely. Raskolnikov, determined to turn himself in, bids farewell to Dounia, giving her a portrait of his deceased landlady's daughter as a token of his past confidences. He leaves, feeling ashamed of his behavior towards Dounia but also resentful of society's judgment. The chapter concludes with Raskolnikov reflecting on his impending fate and questioning the purpose of his suffering.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion",
+          "Rodion Romanovich Raskolnikov",
+          "Rodion Romanovich Raskolnikov (Raskolnikov)",
+          "Rodion Romanovitch",
+          "Rodya"
+        ],
         "description": "A young intellectual struggling with inner turmoil and guilt over a past action. He visits his mother and sister to confess his feelings and prepare to turn himself in, showing a mix of pride and self-loathing."
       },
       {
         "name": "Pulcheria Alexandrovna",
-        "aliases": [],
+        "aliases": [
+          "Mother",
+          "mother"
+        ],
         "description": "Raskolnikov's mother, who is overjoyed to see her son after a long absence. She is supportive and loving, though somewhat naive about her son's true state of mind."
       },
       {
-        "name": "Dounia",
-        "aliases": [],
+        "name": "Avdotya Romanovna",
+        "aliases": [
+          "Dounia",
+          "Dunya",
+          "sister"
+        ],
         "description": "Raskolnikov's sister, who is deeply concerned about her brother's well-being. She waits for him at his lodgings and tries to support him emotionally."
       },
       {
-        "name": "Sofya Semyonovna",
-        "aliases": [],
+        "name": "Sofya Semyonovna Marmeladov",
+        "aliases": [
+          "Marmeladov's daughter",
+          "Sofya Ivanovna (Sonia)",
+          "Sofya Semyonovna",
+          "Sofya Semyonovna (Sonia)",
+          "Sonia",
+          "Sonia Marmeladov",
+          "Sonya"
+        ],
         "description": "A friend of Dounia's who is also worried about Raskolnikov and spends the day with Dounia, hoping to see him."
       },
       {
-        "name": "Nastasya",
-        "aliases": [],
+        "name": "Nastasya Nikiforovna",
+        "aliases": [
+          "Nastasya",
+          "Nastasya Petrovna"
+        ],
         "description": "A servant who notices Raskolnikov's arrival at his lodgings, though she does not play a significant role in the narrative."
       }
     ],
@@ -2177,28 +2667,55 @@
     "summary": "The chapter opens with Raskolnikov visiting Sonia's room in the evening, finding her in a state of anxiety and distress. Dounia, Sonia's friend, had earlier visited Sonia, and the two had become close, sharing their fears and hopes. Dounia leaves, and Sonia worries about Raskolnikov's potential suicide. Raskolnikov arrives, and despite his initial calm demeanor, Sonia senses his inner turmoil. He speaks of going to the 'explosive lieutenant,' Ilya Petrovitch, and expresses his frustration with the world around him. He takes two crosses from Sonia, one of cypress wood and one of copper, symbolizing his acceptance of his fate. Raskolnikov's behavior becomes increasingly erratic, and he leaves abruptly, leaving Sonia distraught. He walks through the streets, contemplating his actions and the consequences of his crime. He stops at the Hay Market, where he kneels and kisses the ground, confessing his sins to himself. Sonia follows him and watches from a distance. Raskolnikov then heads to the police station, where he encounters Ilya Petrovitch and learns of Svidriga\u00eflov's suicide. This news deeply affects Raskolnikov, who returns to the Hay Market, where he sees Sonia again. He then returns to the police station, where he finally confesses his crimes to Ilya Petrovitch. The chapter ends with Raskolnikov's arrest and Sonia's continued support, as she prepares to follow him to Siberia.",
     "characters": [
       {
-        "name": "Raskolnikov",
-        "aliases": [],
+        "name": "Rodion Romanovitch Raskolnikov",
+        "aliases": [
+          "Raskolnikov",
+          "Rodion",
+          "Rodion Romanovich Raskolnikov",
+          "Rodion Romanovich Raskolnikov (Raskolnikov)",
+          "Rodion Romanovitch",
+          "Rodya"
+        ],
         "description": "The protagonist, a conflicted and troubled young man who has committed a murder and is grappling with his guilt and the consequences of his actions. He is intelligent but also deeply flawed, struggling with his pride and sense of self-worth."
       },
       {
-        "name": "Sonia",
-        "aliases": [],
+        "name": "Sofya Semyonovna Marmeladov",
+        "aliases": [
+          "Marmeladov's daughter",
+          "Sofya Ivanovna (Sonia)",
+          "Sofya Semyonovna",
+          "Sofya Semyonovna (Sonia)",
+          "Sonia",
+          "Sonia Marmeladov",
+          "Sonya"
+        ],
         "description": "A compassionate and devoted young woman who cares deeply for Raskolnikov. She is a prostitute but maintains a strong moral compass and offers Raskolnikov spiritual guidance and support."
       },
       {
-        "name": "Dounia",
-        "aliases": [],
+        "name": "Avdotya Romanovna",
+        "aliases": [
+          "Dounia",
+          "Dunya",
+          "sister"
+        ],
         "description": "Raskolnikov's sister, who is concerned for her brother's wellbeing and has recently become close friends with Sonia. She is a source of support for both Raskolnikov and Sonia."
       },
       {
         "name": "Ilya Petrovitch",
-        "aliases": [],
+        "aliases": [
+          "Assistant Superintendent (Ilya Petrovitch)"
+        ],
         "description": "The 'explosive lieutenant' who works at the police station. He is portrayed as somewhat jovial and talkative, and he plays a crucial role in the final scene where Raskolnikov confesses his crimes."
       },
       {
-        "name": "Svidriga\u00eflov",
-        "aliases": [],
+        "name": "Arkady Ivanovitch Svidrigailov",
+        "aliases": [
+          "Arkady Ivanovitch",
+          "Arkady Ivanovitch Svidriga\u00eflov",
+          "Mr. Svidriga\u00eflov",
+          "Stranger",
+          "Svidriga\u00eflov"
+        ],
         "description": "A wealthy and mysterious man who has recently committed suicide. His death is mentioned in the chapter and serves as a catalyst for Raskolnikov's final decision to confess."
       }
     ],
