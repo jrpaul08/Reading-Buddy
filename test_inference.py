@@ -7,8 +7,8 @@ Usage:
     modal run test_inference.py::check_truncation
     modal run test_inference.py::check_prompt
     modal run test_inference.py::test_context_qa
-    modal run test_inference.py::main
     modal run test_inference.py::test_book
+    modal run test_inference.py::test_book_hybrid
 """
 
 import json
@@ -130,9 +130,10 @@ def check_prompt():
 @app.local_entrypoint()
 def test_context_qa(save_results: bool = False):
     """
-    Purpose: Local entrypoint to test a hand-written summary + structured-data
-    context for chapters 1-2 of "Crime and Punishment" against a fixed list of
-    questions, using the text-only inference pipeline (no audio, no TTS).
+    Purpose: Local entrypoint to test the generated hybrid (summary +
+    structured-data) context for chapters 1-2 of "Crime and Punishment"
+    against a fixed list of questions, using the text-only inference pipeline
+    (no audio, no TTS).
     Prints each question alongside its answer, and optionally writes the same
     results to a timestamped JSON file under test_results/ so runs can be
     compared later.
@@ -186,41 +187,10 @@ def test_context_qa(save_results: bool = False):
 
 
 @app.local_entrypoint()
-def main():
-    """
-    Purpose: Local test entrypoint for the spoken response pipeline.
-    Reads voice-prompts/voice-prompt1.wav, sends it to answer_spoken,
-    prints the transcribed question and text answer, and saves the spoken
-    audio response to response.wav.
-
-    Args:
-        None
-
-    Returns:
-        None — results are printed to stdout and audio is saved to response.wav.
-
-    Usage:
-        modal run test_inference.py::main
-    """
-    with open("voice-prompts/voice-prompt1.wav", "rb") as f:
-        audio_bytes = f.read()
-
-    companion = ReadingCompanion()
-    result = companion.answer_spoken.remote(audio_bytes)
-
-    print(f"\nQuestion heard: {result['question']}")
-    print(f"\nAnswer: {result['answer_text']}")
-
-    with open("response.wav", "wb") as f:
-        f.write(result["answer_audio"])
-    print("\nAudio response saved to response.wav")
-
-
-@app.local_entrypoint()
 def test_book(chapter_number: int = 7, audio_file: str = "voice-prompts/voice-prompt-ch7.wav"):
     """
     Purpose: Local test entrypoint for the book-grounded spoken response pipeline.
-    Reads the given audio file, sends it to answer_spoken along with book context
+    Reads the given audio file, sends it to run_s2s_pipeline along with book context
     for "crime_and_punishment" up to the given chapter, prints the transcribed
     question and text answer, and saves the spoken audio response to
     response_book.wav.
@@ -242,7 +212,45 @@ def test_book(chapter_number: int = 7, audio_file: str = "voice-prompts/voice-pr
         audio_bytes = f.read()
 
     companion = ReadingCompanion()
-    result = companion.answer_spoken.remote(audio_bytes, book_name="crime_and_punishment", chapter_number=chapter_number)
+    result = companion.run_s2s_pipeline.remote(audio_bytes, book_name="crime_and_punishment", chapter_number=chapter_number)
+
+    print(f"\nQuestion heard: {result['question']}")
+    print(f"\nAnswer: {result['answer_text']}")
+
+    with open("response_book.wav", "wb") as f:
+        f.write(result["answer_audio"])
+    print("\nAudio response saved to response_book.wav")
+
+
+@app.local_entrypoint()
+def test_book_hybrid(chapter_number: int = 2, audio_file: str = "voice-prompts/voice-prompt-ch7.wav"):
+    """
+    Purpose: Local test entrypoint for the book-grounded spoken response pipeline
+    using the hybrid (summary + structured data) context from
+    book_chapter_context.json, instead of raw chapter text. Useful for checking
+    spoiler prevention: e.g. asking a question whose answer is revealed in a later
+    chapter, while only providing context for earlier chapters.
+
+    Args:
+        chapter_number (int): The reader's current chapter (1-indexed). Context
+            includes chapters 1 through this chapter, inclusive. Defaults to 2.
+        audio_file (str): Path to the input audio file. Defaults to
+            "voice-prompts/voice-prompt-ch7.wav".
+
+    Returns:
+        None — results are printed to stdout and audio is saved to response_book.wav.
+
+    Usage:
+        modal run test_inference.py::test_book_hybrid
+        modal run test_inference.py::test_book_hybrid --chapter-number 7 --audio-file voice-prompts/voice-prompt-ch7.wav
+    """
+    chapters = list(range(1, chapter_number + 1))
+
+    with open(audio_file, "rb") as f:
+        audio_bytes = f.read()
+
+    companion = ReadingCompanion()
+    result = companion.run_s2s_pipeline.remote(audio_bytes, book_name="crime_and_punishment", chapter_numbers=chapters)
 
     print(f"\nQuestion heard: {result['question']}")
     print(f"\nAnswer: {result['answer_text']}")

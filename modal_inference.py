@@ -35,13 +35,13 @@ image = (
         "librosa",
     )
     .env({"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"})
-    .add_local_file("voice-prompts/narrator_ref.wav", "/narrator_ref.wav")
+    .add_local_file("voice-prompts/narrator-voice.wav", "/narrator-voice.wav")
     .add_local_file("book_utils.py", "/root/book_utils.py")
     .add_local_file("prompt_utils.py", "/root/prompt_utils.py")
     .add_local_dir("books", "/root/books")
 )
 
-NARRATOR_REF_PATH = "/narrator_ref.wav"
+NARRATOR_REF_PATH = "/narrator-voice.wav"
 
 
 @app.cls(
@@ -119,7 +119,7 @@ class ReadingCompanion:
         )
         print(f"[tokenizer load] {time.time() - t1:.1f}s")
 
-    def _transcribe(self, audio_bytes: bytes):
+    def _transcribe(self, audio_bytes: bytes) -> str:
         """
         Purpose: Decode raw audio bytes to a mono 16kHz float32 array and
         transcribe the speaker's question.
@@ -128,9 +128,7 @@ class ReadingCompanion:
             audio_bytes (bytes): Raw audio file content (WAV, M4A, MP3, etc.).
 
         Returns:
-            tuple[str, np.ndarray]:
-                transcription (str): The model's transcription of what the speaker said.
-                audio_array (np.ndarray): The decoded mono 16kHz audio.
+            str: The model's transcription of what the speaker said.
         """
         import io
         import time
@@ -155,22 +153,25 @@ class ReadingCompanion:
             )
         print(f"[transcription] {time.time() - t0:.1f}s: {transcription}")
 
-        return transcription, audio_array
+        return transcription
 
     @modal.method()
-    def answer_spoken(self, audio_bytes: bytes, book_name: str = None, chapter_number: int = None) -> dict:
+    def run_s2s_pipeline(self, audio_bytes: bytes, book_name: str, chapter_number: int = None, chapter_numbers: list = None) -> dict:
         """
         Purpose: Accepts raw audio bytes, transcribes the speaker's question, generates
-        a text answer, then converts that answer to speech using MiniCPM-o's zero-shot
-        TTS (voice cloning from a reference audio clip).
+        a book-grounded text answer using a spoiler-free system prompt, then converts
+        that answer to speech using MiniCPM-o's zero-shot TTS (voice cloning from a
+        reference audio clip).
 
         Args:
             audio_bytes (bytes): Raw audio file content (WAV, M4A, MP3, etc.).
-            book_name (str, optional): Book identifier (e.g. "crime_and_punishment").
-                If provided along with chapter_number, the answer is grounded in the
-                book's text up to that chapter using a spoiler-free system prompt.
+            book_name (str): Book identifier (e.g. "crime_and_punishment").
             chapter_number (int, optional): The reader's current chapter (1-indexed).
-                Required if book_name is provided.
+                If set (and chapter_numbers is not), uses the raw chapter text up to
+                this chapter via describe_reading_context.
+            chapter_numbers (list[int], optional): Chapter numbers to include via
+                describe_hybrid_context (book_chapter_context.json summaries/structured
+                data), e.g. [1, 2]. Takes precedence over chapter_number if both are set.
 
         Returns:
             dict with three keys:
@@ -182,19 +183,19 @@ class ReadingCompanion:
         import torch
         import librosa
 
-        transcription, audio_array = self._transcribe(audio_bytes)
+        transcription = self._transcribe(audio_bytes)
 
-        if book_name is not None:
+        if chapter_numbers is not None:
+            from book_utils import describe_hybrid_context
+            context, source_label = describe_hybrid_context(book_name, chapter_numbers)
+        else:
             from book_utils import describe_reading_context
             context, source_label = describe_reading_context(book_name, chapter_number)
-            answer_msgs = [
-                {"role": "system", "content": build_system_prompt(context, source_label)},
-                {"role": "user", "content": f"{transcription}{ANSWER_INSTRUCTION_SUFFIX}"},
-            ]
-        else:
-            answer_msgs = [{"role": "user", "content": (
-                f"Answer this question in 3-5 sentences with helpful detail: {transcription}"
-            )}]
+
+        answer_msgs = [
+            {"role": "system", "content": build_system_prompt(context, source_label)},
+            {"role": "user", "content": f"{transcription}{ANSWER_INSTRUCTION_SUFFIX}"},
+        ]
 
         t1 = time.time()
         with torch.inference_mode():
@@ -206,12 +207,7 @@ class ReadingCompanion:
         print(f"[text answer] {time.time() - t1:.1f}s: {answer_text}")
 
         # Reference audio determines the cloned voice for the spoken response.
-        # Use the project's narrator reference clip if present, else fall back to
-        # the speaker's own (resampled) voice.
-        if os.path.exists(NARRATOR_REF_PATH):
-            ref_audio, _ = librosa.load(NARRATOR_REF_PATH, sr=16000, mono=True)
-        else:
-            ref_audio = audio_array
+        ref_audio, _ = librosa.load(NARRATOR_REF_PATH, sr=16000, mono=True)
 
         sys_msg = {
             "role": "system",
@@ -249,7 +245,7 @@ class ReadingCompanion:
         Purpose: Text-only batch testing helper. Given a hand-written context block
         (e.g. a chapter summary or structured data) and a list of questions, runs
         each question through the same prompt structure and decoding settings as
-        answer_spoken's text-answer step, with no audio transcription or TTS. Used
+        run_s2s_pipeline's text-answer step, with no audio transcription or TTS. Used
         to compare alternative context representations (summaries, structured data)
         against the standard chapter-text context.
 

@@ -5,7 +5,7 @@ knowledge of where context comes from (see book_utils.py for that).
 """
 
 # Shared decoding settings for book-grounded text answers (used by both
-# answer_spoken and answer_text_questions).
+# run_s2s_pipeline and answer_text_questions).
 #
 # - num_beams=1, do_sample=False: model.chat() defaults to num_beams=3, which
 #   roughly triples KV-cache/activation memory and OOMs even with a capped
