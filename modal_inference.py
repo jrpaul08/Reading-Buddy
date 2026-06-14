@@ -1,6 +1,7 @@
 import os
 
 import modal
+from fastapi import File, Form, UploadFile
 
 from prompt_utils import ANSWER_GENERATION_KWARGS, ANSWER_INSTRUCTION_SUFFIX, build_system_prompt
 
@@ -33,6 +34,8 @@ image = (
         "Pillow",
         "soundfile",
         "librosa",
+        "fastapi",
+        "python-multipart",
     )
     .env({"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"})
     .add_local_file("voice-prompts/narrator-voice.wav", "/narrator-voice.wav")
@@ -238,6 +241,54 @@ class ReadingCompanion:
             audio_wav_bytes = f.read()
 
         return {"question": transcription, "answer_text": answer_text, "answer_audio": audio_wav_bytes}
+
+    @modal.fastapi_endpoint(method="POST")
+    async def s2s_endpoint(
+        self,
+        audio: UploadFile = File(...),
+        book_id: str = Form(...),
+        book_title: str = Form(...),
+        author: str = Form(...),
+        chapter: int = Form(...),
+    ):
+        """
+        Purpose: Public HTTP endpoint wrapping run_s2s_pipeline. Accepts a
+        multipart/form-data POST with an audio file and book context fields,
+        runs the full speech-to-speech pipeline, and returns the spoken
+        answer as a WAV file.
+
+        Args:
+            audio (UploadFile): Uploaded audio file (the listener's question).
+            book_id (str): Book identifier (e.g. "crime_and_punishment"),
+                matching a key in book_utils.AVAILABLE_BOOKS.
+            book_title (str): Book title. Not used by the pipeline (derived
+                from book_id internally) — accepted for frontend convenience.
+            author (str): Book author. Not used by the pipeline — accepted
+                for frontend convenience.
+            chapter (int): The reader's current chapter (1-indexed).
+
+        Returns:
+            fastapi.Response: WAV audio bytes of the spoken answer, with
+            media type "audio/wav". On invalid book_id/chapter, returns a
+            400 JSON error response instead.
+        """
+        from fastapi import Response
+        from fastapi.responses import JSONResponse
+
+        # book_title/author are accepted but unused — run_s2s_pipeline derives
+        # both from book_id via book_utils.AVAILABLE_BOOKS.
+        del book_title, author
+
+        audio_bytes = await audio.read()
+
+        try:
+            result = self.run_s2s_pipeline.local(
+                audio_bytes, book_name=book_id, chapter_number=chapter
+            )
+        except ValueError as e:
+            return JSONResponse(status_code=400, content={"error": str(e)})
+
+        return Response(content=result["answer_audio"], media_type="audio/wav")
 
     @modal.method()
     def answer_text_questions(self, context: str, questions: list, source_label: str) -> list:
