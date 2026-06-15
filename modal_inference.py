@@ -134,11 +134,24 @@ class ReadingCompanion:
             str: The model's transcription of what the speaker said.
         """
         import io
+        import subprocess
         import time
         import torch
         import numpy as np
         import librosa
         import soundfile as sf
+
+        # Browser MediaRecorder uploads arrive as WebM (EBML container,
+        # magic bytes 0x1A45DFA3), which soundfile can't read. Transcode to
+        # WAV via ffmpeg first; WAV/other formats soundfile already supports
+        # are passed through unchanged.
+        if audio_bytes[:4] == b"\x1a\x45\xdf\xa3":
+            audio_bytes = subprocess.run(
+                ["ffmpeg", "-i", "pipe:0", "-f", "wav", "pipe:1"],
+                input=audio_bytes,
+                capture_output=True,
+                check=True,
+            ).stdout
 
         audio_array, sample_rate = sf.read(io.BytesIO(audio_bytes))
         if audio_array.ndim > 1:
@@ -194,6 +207,8 @@ class ReadingCompanion:
         else:
             from book_utils import describe_reading_context
             context, source_label = describe_reading_context(book_name, chapter_number)
+
+        print(f"[run_s2s_pipeline] chapter_number={chapter_number!r} chapter_numbers={chapter_numbers!r} context length: {len(context)} chars")
 
         answer_msgs = [
             {"role": "system", "content": build_system_prompt(context, source_label)},
@@ -275,15 +290,40 @@ class ReadingCompanion:
         from fastapi import Response
         from fastapi.responses import JSONResponse
 
+        print(f"[s2s_endpoint] audio: {audio!r} (filename={audio.filename!r}, content_type={audio.content_type!r})")
+        print(f"[s2s_endpoint] book_id: {book_id!r} (type={type(book_id)})")
+        print(f"[s2s_endpoint] book_title: {book_title!r} (type={type(book_title)})")
+        print(f"[s2s_endpoint] author: {author!r} (type={type(author)})")
+        print(f"[s2s_endpoint] chapter: {chapter!r} (type={type(chapter)})")
+
         # book_title/author are accepted but unused — run_s2s_pipeline derives
         # both from book_id via book_utils.AVAILABLE_BOOKS.
         del book_title, author
+
+        from book_utils import describe_hybrid_context
+
+        chapter_numbers = list(range(1, chapter + 1))
+        context, source_label = describe_hybrid_context(book_id, chapter_numbers)
+        system_prompt = build_system_prompt(context, source_label)
+
+        import datetime
+
+        debug_log_path = os.path.join(MODEL_DIR, "s2s_debug.log")
+        with open(debug_log_path, "a") as f:
+            f.write(f"\n===== {datetime.datetime.now().isoformat()} =====\n")
+            f.write(f"book_id: {book_id!r}\n")
+            f.write(f"chapter: {chapter!r}\n")
+            f.write(f"context length: {len(context)} chars\n")
+            f.write(f"context head (first 500 chars):\n{context[:500]!r}\n")
+            f.write(f"context tail (last 500 chars):\n{context[-500:]!r}\n")
+            f.write(f"system prompt:\n{system_prompt}\n")
+        vol.commit()
 
         audio_bytes = await audio.read()
 
         try:
             result = self.run_s2s_pipeline.local(
-                audio_bytes, book_name=book_id, chapter_number=chapter
+                audio_bytes, book_name=book_id, chapter_numbers=chapter_numbers
             )
         except ValueError as e:
             return JSONResponse(status_code=400, content={"error": str(e)})
