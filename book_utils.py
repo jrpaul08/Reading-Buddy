@@ -36,11 +36,11 @@ AVAILABLE_BOOKS = {
         'folder': 'the_count_of_monte_cristo',
         'description': '117 chapters across 5 volumes'
     },
-    'the_iliad': {
-        'title': 'The Iliad',
-        'author': 'Homer',
-        'folder': 'the_iliad',
-        'description': '24 books of epic poetry'
+    'pride_and_prejudice': {
+        'title': 'Pride and Prejudice',
+        'author': 'Jane Austen',
+        'folder': 'pride_and_prejudice',
+        'description': '61 chapters across 3 volumes'
     }
 }
 
