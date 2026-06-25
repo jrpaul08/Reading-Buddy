@@ -7,6 +7,8 @@ Usage:
     modal run test_inference.py::check_truncation
     modal run test_inference.py::check_prompt
     modal run test_inference.py::test_context_qa
+    modal run test_inference.py::test_text
+    modal run test_inference.py::test_chapter4_qa
     modal run test_inference.py::test_book
     modal run test_inference.py::test_book_hybrid
 """
@@ -184,6 +186,108 @@ def test_context_qa(save_results: bool = False):
                 indent=2,
             )
         print(f"\nSaved results to {output_path}")
+
+
+@app.local_entrypoint()
+def test_text(
+    book_name: str = "crime_and_punishment",
+    chapter_number: int = 4,
+    questions: str = "",
+):
+    """
+    Purpose: Flexible text-only inference test. Builds hybrid context for
+    the given book up to the given chapter and runs one or more questions
+    through the text answer pipeline, printing each Q&A clearly labelled.
+    No audio, no TTS.
+
+    Args:
+        book_name (str): Book identifier (e.g. "crime_and_punishment",
+            "the_idiot", "the_count_of_monte_cristo"). Defaults to
+            "crime_and_punishment".
+        chapter_number (int): The reader's current chapter (1-indexed).
+            Context includes chapters 1 through this chapter. Defaults to 4.
+        questions (str): Questions separated by | (pipe). If omitted, a
+            default set of general questions is used.
+
+    Returns:
+        None — results are printed to stdout.
+
+    Usage:
+        modal run test_inference.py::test_text
+        modal run test_inference.py::test_text --book-name the_idiot --chapter-number 6
+        modal run test_inference.py::test_text --book-name crime_and_punishment --chapter-number 7 --questions "Who is Sonya?|What is the significance of the axe?"
+    """
+    from book_utils import describe_hybrid_context
+
+    chapter_numbers = list(range(1, chapter_number + 1))
+    context, source_label = describe_hybrid_context(book_name, chapter_numbers)
+
+    if questions:
+        question_list = [q.strip() for q in questions.split("|") if q.strip()]
+    else:
+        question_list = [
+            "Who are the main characters introduced so far?",
+            "Where does the story take place?",
+            "What is the central conflict or situation?",
+            "What has happened most recently in the story?",
+        ]
+
+    print(f"\nBook: {book_name} | Chapters 1-{chapter_number} | {len(question_list)} question(s)\n")
+
+    companion = ReadingCompanion()
+    results = companion.answer_text_questions.remote(
+        context=context,
+        questions=question_list,
+        source_label=source_label,
+    )
+
+    for r in results:
+        print(f"Q: {r['question']}")
+        print(f"A: {r['answer']}\n")
+
+
+@app.local_entrypoint()
+def test_chapter4_qa():
+    """
+    Purpose: Quick text-only inference test using the hybrid (summary +
+    structured-data) context for chapters 1-4 of "Crime and Punishment"
+    against a fixed list of questions, using the text-only inference pipeline
+    (no audio, no TTS).
+
+    Args:
+        None
+
+    Returns:
+        None — results are printed to stdout, each question clearly
+        labelled alongside its full response.
+
+    Usage:
+        modal run test_inference.py::test_chapter4_qa
+    """
+    from book_utils import describe_hybrid_context
+
+    book_name = "crime_and_punishment"
+    context, source_label = describe_hybrid_context(book_name, [1, 2, 3, 4])
+
+    questions = [
+        "Who is Marmeladov?",
+        "what is said on the letter to Raskolnikov?",
+        "who is Raskolnikov's sister",
+        "Who is Sonia and what has happened to her?",
+        "Where does this story take place",
+        "what does destitute mean?",
+    ]
+
+    companion = ReadingCompanion()
+    results = companion.answer_text_questions.remote(
+        context=context,
+        questions=questions,
+        source_label=source_label,
+    )
+
+    for r in results:
+        print(f"\nQ: {r['question']}")
+        print(f"A: {r['answer']}")
 
 
 @app.local_entrypoint()
