@@ -48,7 +48,7 @@ NARRATOR_REF_PATH = "/narrator-voice.wav"
 
 
 @app.cls(
-    gpu="A100-40GB",
+    gpu="H100",
     image=image,
     secrets=[modal.Secret.from_name("huggingface-secret")],
     volumes={MODEL_DIR: vol},
