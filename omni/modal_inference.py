@@ -40,7 +40,7 @@ image = (
     .env({"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"})
     .add_local_file("voice-prompts/narrator-voice.wav", "/narrator-voice.wav")
     .add_local_file("book_utils.py", "/root/book_utils.py")
-    .add_local_file("prompt_utils.py", "/root/prompt_utils.py")
+    .add_local_file("omni/prompt_utils.py", "/root/prompt_utils.py")
     .add_local_dir("books", "/root/books")
 )
 

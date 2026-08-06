@@ -4,13 +4,13 @@ app, image, and ReadingCompanion class from modal_inference.py so these
 register on the same app, without cluttering the production module.
 
 Usage:
-    modal run test_inference.py::check_truncation
-    modal run test_inference.py::check_prompt
-    modal run test_inference.py::test_context_qa
-    modal run test_inference.py::test_text
-    modal run test_inference.py::test_chapter4_qa
-    modal run test_inference.py::test_book
-    modal run test_inference.py::test_book_hybrid
+    modal run omni/test_inference.py::check_truncation
+    modal run omni/test_inference.py::check_prompt
+    modal run omni/test_inference.py::test_context_qa
+    modal run omni/test_inference.py::test_text
+    modal run omni/test_inference.py::test_chapter4_qa
+    modal run omni/test_inference.py::test_book
+    modal run omni/test_inference.py::test_book_hybrid
 """
 
 import json
@@ -104,7 +104,7 @@ def check_truncation():
         None — results are printed to stdout.
 
     Usage:
-        modal run test_inference.py::check_truncation
+        modal run omni/test_inference.py::check_truncation
     """
     print(inspect_chat_truncation.remote())
 
@@ -123,7 +123,7 @@ def check_prompt():
         None — results are printed to stdout.
 
     Usage:
-        modal run test_inference.py::check_prompt
+        modal run omni/test_inference.py::check_prompt
     """
     result = check_prompt_size.remote("crime_and_punishment", 7)
     print(result)
@@ -149,15 +149,15 @@ def test_context_qa(save_results: bool = False):
         save_results is True.
 
     Usage:
-        modal run test_inference.py::test_context_qa
-        modal run test_inference.py::test_context_qa --save-results
+        modal run omni/test_inference.py::test_context_qa
+        modal run omni/test_inference.py::test_context_qa --save-results
     """
     from book_utils import describe_hybrid_context
 
     book_name = "crime_and_punishment"
     context, source_label = describe_hybrid_context(book_name, [1, 2])
 
-    questions_path = Path(__file__).parent / "books" / book_name / "test_questions.json"
+    questions_path = Path(__file__).parent.parent / "books" / book_name / "test_questions.json"
     with open(questions_path) as f:
         questions = json.load(f)
 
@@ -175,7 +175,7 @@ def test_context_qa(save_results: bool = False):
     if save_results:
         import datetime
 
-        output_dir = Path(__file__).parent / "test_results"
+        output_dir = Path(__file__).parent.parent / "test_results"
         output_dir.mkdir(exist_ok=True)
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         output_path = output_dir / f"context_qa_{timestamp}.json"
@@ -213,9 +213,9 @@ def test_text(
         None — results are printed to stdout.
 
     Usage:
-        modal run test_inference.py::test_text
-        modal run test_inference.py::test_text --book-name the_idiot --chapter-number 6
-        modal run test_inference.py::test_text --book-name crime_and_punishment --chapter-number 7 --questions "Who is Sonya?|What is the significance of the axe?"
+        modal run omni/test_inference.py::test_text
+        modal run omni/test_inference.py::test_text --book-name the_idiot --chapter-number 6
+        modal run omni/test_inference.py::test_text --book-name crime_and_punishment --chapter-number 7 --questions "Who is Sonya?|What is the significance of the axe?"
     """
     from book_utils import describe_hybrid_context
 
@@ -262,7 +262,7 @@ def test_chapter4_qa():
         labelled alongside its full response.
 
     Usage:
-        modal run test_inference.py::test_chapter4_qa
+        modal run omni/test_inference.py::test_chapter4_qa
     """
     from book_utils import describe_hybrid_context
 
@@ -308,9 +308,9 @@ def test_book(chapter_number: int = 7, audio_file: str = "voice-prompts/voice-pr
         None — results are printed to stdout and audio is saved to response_book.wav.
 
     Usage:
-        modal run test_inference.py::test_book
-        modal run test_inference.py::test_book --chapter-number 4
-        modal run test_inference.py::test_book --chapter-number 2 --audio-file voice-prompts/voice-prompt-ch2.wav
+        modal run omni/test_inference.py::test_book
+        modal run omni/test_inference.py::test_book --chapter-number 4
+        modal run omni/test_inference.py::test_book --chapter-number 2 --audio-file voice-prompts/voice-prompt-ch2.wav
     """
     with open(audio_file, "rb") as f:
         audio_bytes = f.read()
@@ -345,8 +345,8 @@ def test_book_hybrid(chapter_number: int = 2, audio_file: str = "voice-prompts/v
         None — results are printed to stdout and audio is saved to response_book.wav.
 
     Usage:
-        modal run test_inference.py::test_book_hybrid
-        modal run test_inference.py::test_book_hybrid --chapter-number 7 --audio-file voice-prompts/voice-prompt-ch7.wav
+        modal run omni/test_inference.py::test_book_hybrid
+        modal run omni/test_inference.py::test_book_hybrid --chapter-number 7 --audio-file voice-prompts/voice-prompt-ch7.wav
     """
     chapters = list(range(1, chapter_number + 1))
 
