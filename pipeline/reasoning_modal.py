@@ -129,3 +129,41 @@ class ReasoningEngine:
             "dtype": dtype,
             "num_params": num_params,
         }
+
+    @modal.method()
+    def ask(self, question: str) -> str:
+        """
+        Purpose: Part 2 sanity check for raw text generation. Sends a plain
+        question straight to Qwen with no system prompt, no book context —
+        just proving the tokenize -> generate -> decode chain works and
+        produces a coherent answer, before Part 3/4 add real prompt
+        structure and book-grounded context on top.
+
+        Args:
+            question (str): A plain question, e.g. "What is the capital
+                of France?".
+
+        Returns:
+            str: The model's answer.
+        """
+        messages = [{"role": "user", "content": question}]
+
+        inputs = self.tokenizer.apply_chat_template(
+            messages,
+            add_generation_prompt=True,
+            return_tensors="pt",
+            return_dict=True,
+        ).to("cuda")
+
+        import torch
+
+        with torch.inference_mode():
+            output_ids = self.model.generate(
+                **inputs,
+                max_new_tokens=200,
+            )
+
+        new_tokens = output_ids[0][inputs["input_ids"].shape[1]:]
+
+        answer = self.tokenizer.decode(new_tokens, skip_special_tokens=True)
+        return answer
