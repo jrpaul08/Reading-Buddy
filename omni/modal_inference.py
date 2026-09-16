@@ -258,6 +258,26 @@ class ReadingCompanion:
         return {"question": transcription, "answer_text": answer_text, "answer_audio": audio_wav_bytes}
 
     @modal.fastapi_endpoint(method="POST")
+    async def warmup_endpoint(self):
+        """
+        Purpose: Lightweight endpoint to force the model onto a warm
+        container ahead of time, without doing any real work. Calling any
+        method on this class triggers @modal.enter() (model download/load)
+        if the container is cold — this endpoint exists purely to be that
+        trigger cheaply, so a frontend can call it as soon as a reading
+        session starts (e.g. on "Begin Reading") and have the model likely
+        already warm by the time the reader asks their first question.
+
+        Args:
+            None
+
+        Returns:
+            dict: {"status": "ready"} once the container (and therefore the
+            model) is loaded and able to serve requests.
+        """
+        return {"status": "ready"}
+
+    @modal.fastapi_endpoint(method="POST")
     async def s2s_endpoint(
         self,
         audio: UploadFile = File(...),
