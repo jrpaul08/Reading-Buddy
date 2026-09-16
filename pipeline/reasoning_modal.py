@@ -38,6 +38,7 @@ image = (
         "safetensors",
     )
     .env({"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"})
+    .add_local_file("pipeline/modal_app.py", "/root/modal_app.py")
 )
 
 
