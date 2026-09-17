@@ -6,7 +6,11 @@ incrementally alongside pipeline/reasoning_modal.py.
 Usage:
     modal run pipeline/test_inference.py::check_load
     modal run pipeline/test_inference.py::ask_question
+    modal run pipeline/test_inference.py::test_book
 """
+
+import json
+from pathlib import Path
 
 from reasoning_modal import app, ReasoningEngine
 
@@ -63,3 +67,58 @@ def ask_question(question: str = "What is the capital of France?"):
 
     print(f"\nQ: {question}")
     print(f"A: {answer}")
+
+
+@app.local_entrypoint()
+def test_book(
+    book_name: str = "crime_and_punishment",
+    chapter_number: int = 4,
+    questions: str = "",
+):
+    """
+    Purpose: Part 4 sanity check — the first real, book-grounded test.
+    Builds hybrid context (summary + structured data) for the given book
+    up to the given chapter, then answers one or more questions using the
+    real spoiler-prevention system prompt and generation settings. Mirrors
+    omni/test_inference.py's test_text, so results can be compared
+    directly against the omni model's answers to the same questions.
+
+    Args:
+        book_name (str): Book identifier, e.g. "crime_and_punishment".
+        chapter_number (int): The reader's current chapter (1-indexed).
+            Context includes chapters 1 through this chapter. Defaults to 4.
+        questions (str): Questions separated by | (pipe). If omitted,
+            falls back to the full list in
+            books/<book_name>/test_questions.json — the same file
+            omni/test_inference.py's test_context_qa reads, so editing
+            that one list improves test coverage for both models at once.
+
+    Returns:
+        None — results are printed to stdout.
+
+    Usage:
+        modal run pipeline/test_inference.py::test_book
+        modal run pipeline/test_inference.py::test_book --chapter-number 7 --questions "Who is Sonya?|What is the axe for?"
+    """
+    from book_utils import describe_hybrid_context
+
+    chapter_numbers = list(range(1, chapter_number + 1))
+    context, source_label = describe_hybrid_context(book_name, chapter_numbers)
+
+    if questions:
+        question_list = [q.strip() for q in questions.split("|") if q.strip()]
+    else:
+        questions_path = Path(__file__).parent.parent / "books" / book_name / "test_questions.json"
+        with open(questions_path) as f:
+            question_list = json.load(f)
+
+    engine = ReasoningEngine()
+    results = engine.answer.remote(
+        context=context,
+        questions=question_list,
+        source_label=source_label,
+    )
+
+    for r in results:
+        print(f"\nQ: {r['question']}")
+        print(f"A: {r['answer']}")
