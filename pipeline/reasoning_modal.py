@@ -17,6 +17,7 @@ import os
 import modal
 
 from modal_app import app, vol
+from prompt_utils import ANSWER_GENERATION_KWARGS, ANSWER_INSTRUCTION_SUFFIX, build_system_prompt
 
 MODEL_ID = "Qwen/Qwen2.5-14B-Instruct"
 MODEL_DIR = "/model-weights"
@@ -39,6 +40,7 @@ image = (
     )
     .env({"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"})
     .add_local_file("pipeline/modal_app.py", "/root/modal_app.py")
+    .add_local_file("pipeline/prompt_utils.py", "/root/prompt_utils.py")
 )
 
 
@@ -167,3 +169,53 @@ class ReasoningEngine:
 
         answer = self.tokenizer.decode(new_tokens, skip_special_tokens=True)
         return answer
+
+    @modal.method()
+    def answer(self, context: str, questions: list, source_label: str) -> list:
+        """
+        Purpose: Part 4 — the real book-grounded answer method. Given a
+        context block (book text or hybrid summary), a list of questions,
+        and a source label, builds the spoiler-prevention system prompt
+        and answers each question using it, matching the same
+        context/questions/source_label shape as omni's
+        answer_text_questions so the two can be compared head to head.
+
+        Args:
+            context (str): Book text or summary to ground answers in.
+            questions (list[str]): Questions to ask, each independent.
+            source_label (str): Description of the context's source.
+
+        Returns:
+            list[dict]: One dict per question, each with keys "question"
+            and "answer".
+        """
+        system_prompt = build_system_prompt(context, source_label)
+
+        results = []
+        for question in questions:
+            messages = [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": f"{question}{ANSWER_INSTRUCTION_SUFFIX}"},
+            ]
+
+            inputs = self.tokenizer.apply_chat_template(
+                messages,
+                add_generation_prompt=True,
+                return_tensors="pt",
+                return_dict=True,
+            ).to("cuda")
+
+            import torch
+
+            with torch.inference_mode():
+                output_ids = self.model.generate(
+                    **inputs,
+                    **ANSWER_GENERATION_KWARGS,
+                )
+
+            new_tokens = output_ids[0][inputs["input_ids"].shape[1]:]
+            answer = self.tokenizer.decode(new_tokens, skip_special_tokens=True)
+
+            results.append({"question": question, "answer": answer})
+
+        return results
