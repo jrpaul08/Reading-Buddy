@@ -6,12 +6,16 @@ used for the reasoning component). Takes raw audio bytes, returns a
 transcription.
 
 Built up incrementally, same shape as reasoning_modal.py:
-    Part 1 (this file, current scope): prove the container starts,
-        downloads the model, and loads it onto GPU. No transcription yet.
-    Part 2: bare transcription — feed it real audio, get text back.
-    Part 3: real-world audio handling (WebM-from-browser conversion,
-        resampling), ported from omni's _transcribe.
-    Part 4: the full method the orchestrator will actually call.
+    Part 1: prove the container starts, downloads the model, and loads
+        it onto GPU.
+    Part 2 (current scope): bare transcription. transcribe() turned out
+        to need no further work — faster-whisper decodes audio via PyAV
+        (which bundles its own ffmpeg), so browser-recorded WebM/Opus
+        audio is already handled with no extra code, unlike omni's
+        _transcribe, which had to manually detect and convert it.
+        Verified directly against a real WebM/Opus test file, not just
+        assumed. transcribe(audio_bytes) -> str is already the shape an
+        orchestrator needs to call, so there's no separate Part 3/4.
 """
 
 import os
@@ -28,10 +32,6 @@ MODEL_DIR = "/stt-weights"
 
 image = (
     modal.Image.debian_slim(python_version="3.11")
-    # Needed in Part 3 for converting browser-recorded WebM audio to a
-    # format faster-whisper can read — added now so there's no image
-    # rebuild needed when we get there.
-    .apt_install("ffmpeg")
     .pip_install(
         # Note: no torch here. faster-whisper runs on CTranslate2, a
         # separate C++/CUDA inference engine — it doesn't depend on
@@ -122,14 +122,15 @@ class STTEngine:
     @modal.method()
     def transcribe(self, audio_bytes: bytes) -> str:
         """
-        Purpose: Part 2 sanity check for real transcription. Takes raw
-        audio bytes and returns the transcribed text, proving the
-        faster-whisper transcription chain works before Part 3 adds
-        real-world audio format handling (WebM conversion, resampling).
+        Purpose: Transcribes raw audio bytes to text. Handles any format
+        faster-whisper's underlying PyAV decoder supports, including
+        WebM/Opus (the format browser MediaRecorder uploads arrive in) —
+        verified directly against a real WebM/Opus test file, not just
+        assumed to work because the library claims support.
 
         Args:
-            audio_bytes (bytes): Raw audio file content (WAV for now —
-                Part 3 will add support for other formats).
+            audio_bytes (bytes): Raw audio file content, in any format
+                PyAV can decode (WAV, WebM/Opus, etc.).
 
         Returns:
             str: The transcribed text.

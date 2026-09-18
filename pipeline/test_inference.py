@@ -155,14 +155,15 @@ def check_stt_load():
 @app.local_entrypoint()
 def test_transcribe(audio_file: str = "voice-prompts/voice-prompt-ch7.wav"):
     """
-    Purpose: Part 2 sanity check. Reads a real local audio file and sends
-    it to STTEngine.transcribe, printing the result. WAV only for now —
-    Part 3 adds real-world format handling.
+    Purpose: Reads a real local audio file and sends it to
+    STTEngine.transcribe, printing the result. Works with WAV or
+    WebM/Opus (verified against both) — any format faster-whisper's
+    underlying PyAV decoder supports.
 
     Args:
-        audio_file (str): Path to a local WAV file. Defaults to one of
-            the existing voice-prompts/ recordings used by the omni
-            model's own tests.
+        audio_file (str): Path to a local audio file (WAV or WebM).
+            Defaults to one of the existing voice-prompts/ recordings
+            used by the omni model's own tests.
 
     Returns:
         None — the transcription is printed to stdout.
