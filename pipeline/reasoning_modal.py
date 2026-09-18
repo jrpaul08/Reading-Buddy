@@ -41,6 +41,7 @@ image = (
     .env({"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"})
     .add_local_file("pipeline/modal_app.py", "/root/modal_app.py")
     .add_local_file("pipeline/prompt_utils.py", "/root/prompt_utils.py")
+    .add_local_file("pipeline/system_prompt_template.txt", "/root/system_prompt_template.txt")
 )
 
 

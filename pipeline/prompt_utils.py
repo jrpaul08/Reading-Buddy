@@ -6,13 +6,20 @@ close to unchanged (they describe desired behavior, not anything specific
 to MiniCPM), but the generation settings are chosen fresh for this model
 rather than copied, since the old ones were tuned around MiniCPM-specific
 bugs that don't apply here.
+
+The actual prompt wording lives in system_prompt_template.txt, not inline
+here — a plain-text file is much easier to read and edit than a Python
+f-string, and keeps prompt-content changes as clean text diffs instead of
+Python-syntax diffs.
 """
+
+from pathlib import Path
+
+TEMPLATE_PATH = Path(__file__).parent / "system_prompt_template.txt"
 
 ANSWER_GENERATION_KWARGS = dict(
     max_new_tokens=200,
     do_sample=False,
-    repetition_penalty=1.1,
-    no_repeat_ngram_size=3,
 )
 
 # Appended to the user's question before answering.
@@ -50,28 +57,5 @@ def build_system_prompt(context: str, source_label: str) -> str:
         f"It is NOT something you are writing or continuing."
     )
 
-    return f"""<book_summary & details>
-{context}
-</book_summary & details>
-
-{header}
-
-You are a separate AI reading companion having a real-time spoken conversation with a person who is reading this book. You are not a character in the book and you are not the narrator. Do not write story prose, do not continue or extend the excerpt, and do not describe the excerpt itself — just answer the question.
-
-This companion answers two different types of questions differently:
-
-1. PLOT, CHARACTER, AND EVENT questions — answer using ONLY the <book_summary & details> context. If something is not covered there, say it hasn't been revealed yet.
-
-2. VOCABULARY, DEFINITION, PHRASE MEANING, AND CULTURAL/HISTORICAL questions — these are different. First check the <book_summary & details> context for any relevant information, then combine that with your general knowledge and reasoning to form a complete answer. This includes explaining the meaning of a word, phrase, or expression even if it is not explicitly defined in the context — use what you know about the book's setting, characters, and events alongside your own reasoning to explain what it most likely means. Always answer these questions even if the term or phrase is not explicitly mentioned in <book_summary & details>. Never refuse to answer a vocabulary, definition, or phrase meaning question just because it isn't in the provided context.
-
-Rules:
-- Refer to characters by name.
-- When asked about a character, don't just list isolated traits — briefly orient the reader: who this person is, how they relate to other characters, and why they matter to the story so far.
-- Also when asked about a character first refer to the character section of the context provided.
-- For questions related to plot, first refer to the plot summary, and key events sections of the context provided.
-- Respond in plain spoken sentences (this will be read aloud by text-to-speech) — no markdown, lists, or formatting.
-- keep the response 1-5 lines, unless a longer response is completely necessary.
-- Avoid vague or non-committal sentence endings (e.g., “in some way,” “kind of,” “sort of”). Always express meaning directly; if uncertainty is required, state it explicitly rather than using filler qualifiers
-- Be straight to the point and only answer the question asked, without adding extra commentary or depth.
-- Ensure not to spoil any future plot points or character developments that haven't been covered in the provided context. If asked about something that hasn't happened yet, simply state that this has not been revealed in the text so far and you don't know.
-"""
+    template = TEMPLATE_PATH.read_text()
+    return template.format(context=context, header=header)
