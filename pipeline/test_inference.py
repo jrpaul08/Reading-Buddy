@@ -9,6 +9,8 @@ Usage:
     modal run pipeline/test_inference.py::test_book
     modal run pipeline/test_inference.py::check_stt_load
     modal run pipeline/test_inference.py::test_transcribe
+    modal run pipeline/test_inference.py::check_tts_load
+    modal run pipeline/test_inference.py::test_synthesize
 """
 
 import json
@@ -16,6 +18,7 @@ from pathlib import Path
 
 from reasoning_modal import app, ReasoningEngine
 from stt_modal import STTEngine
+from tts_modal import TTSEngine
 
 
 @app.local_entrypoint()
@@ -179,3 +182,57 @@ def test_transcribe(audio_file: str = "voice-prompts/voice-prompt-ch7.wav"):
     transcription = engine.transcribe.remote(audio_bytes)
 
     print(f"\nTranscription: {transcription}")
+
+
+@app.local_entrypoint()
+def check_tts_load():
+    """
+    Purpose: Part 1 sanity check for the TTS component. Spins up the
+    TTSEngine container, which loads Kokoro via KPipeline, then reports
+    back the configuration it loaded with. No synthesis yet — that's
+    Part 2.
+
+    Args:
+        None
+
+    Returns:
+        None — result is printed to stdout.
+
+    Usage:
+        modal run pipeline/test_inference.py::check_tts_load
+    """
+    engine = TTSEngine()
+    result = engine.ping.remote()
+
+    print(f"\npipeline_loaded: {result['pipeline_loaded']}")
+    print(f"device:          {result['device']}")
+    print(f"lang_code:       {result['lang_code']}")
+
+
+@app.local_entrypoint()
+def test_synthesize(text: str = "The Protagonist of the story is Raskolnikov"):
+    """
+    Purpose: Part 2 sanity check. Sends real text to TTSEngine.synthesize
+    and saves the resulting audio locally so it can actually be listened
+    to, proving the KPipeline synthesis chain works with the chosen
+    voice before Part 3 wires this into the orchestrator-ready shape.
+
+    Args:
+        text (str): The text to speak aloud. Defaults to a real answer
+            from earlier testing of the reasoning component.
+
+    Returns:
+        None — audio is saved to response_tts.wav.
+
+    Usage:
+        modal run pipeline/test_inference.py::test_synthesize
+        modal run pipeline/test_inference.py::test_synthesize --text "Who is Sonya?"
+    """
+    engine = TTSEngine()
+    audio_bytes = engine.synthesize.remote(text)
+
+    with open("response_tts.wav", "wb") as f:
+        f.write(audio_bytes)
+
+    print(f"\nText:  {text}")
+    print("Audio saved to response_tts.wav")
