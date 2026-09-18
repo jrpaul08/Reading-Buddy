@@ -38,7 +38,15 @@ image = (
         # PyTorch at all, unlike the reasoning component.
         "faster-whisper",
         "huggingface_hub",
+        # Unlike torch, CTranslate2 doesn't bundle its own CUDA runtime
+        # libraries — it expects libcublas/libcudnn to already be on the
+        # system. These packages just ship those shared library files.
+        "nvidia-cublas-cu12",
+        "nvidia-cudnn-cu12",
     )
+    .env({
+        "LD_LIBRARY_PATH": "/usr/local/lib/python3.11/site-packages/nvidia/cublas/lib:/usr/local/lib/python3.11/site-packages/nvidia/cudnn/lib",
+    })
     .add_local_file("pipeline/modal_app.py", "/root/modal_app.py")
 )
 
@@ -110,3 +118,27 @@ class STTEngine:
             "device": "cuda",
             "compute_type": "float16",
         }
+
+    @modal.method()
+    def transcribe(self, audio_bytes: bytes) -> str:
+        """
+        Purpose: Part 2 sanity check for real transcription. Takes raw
+        audio bytes and returns the transcribed text, proving the
+        faster-whisper transcription chain works before Part 3 adds
+        real-world audio format handling (WebM conversion, resampling).
+
+        Args:
+            audio_bytes (bytes): Raw audio file content (WAV for now —
+                Part 3 will add support for other formats).
+
+        Returns:
+            str: The transcribed text.
+        """
+        import io
+
+        audio_file = io.BytesIO(audio_bytes)
+
+        segments, info = self.model.transcribe(audio_file)
+
+        transcription = " ".join(segment.text.strip() for segment in segments)
+        return transcription
