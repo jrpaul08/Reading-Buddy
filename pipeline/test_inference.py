@@ -8,6 +8,7 @@ Usage:
     modal run pipeline/test_inference.py::ask_question
     modal run pipeline/test_inference.py::test_book
     modal run pipeline/test_inference.py::check_stt_load
+    modal run pipeline/test_inference.py::test_transcribe
 """
 
 import json
@@ -149,3 +150,31 @@ def check_stt_load():
     print(f"\nmodel_loaded: {result['model_loaded']}")
     print(f"device:       {result['device']}")
     print(f"compute_type: {result['compute_type']}")
+
+
+@app.local_entrypoint()
+def test_transcribe(audio_file: str = "voice-prompts/voice-prompt-ch7.wav"):
+    """
+    Purpose: Part 2 sanity check. Reads a real local audio file and sends
+    it to STTEngine.transcribe, printing the result. WAV only for now —
+    Part 3 adds real-world format handling.
+
+    Args:
+        audio_file (str): Path to a local WAV file. Defaults to one of
+            the existing voice-prompts/ recordings used by the omni
+            model's own tests.
+
+    Returns:
+        None — the transcription is printed to stdout.
+
+    Usage:
+        modal run pipeline/test_inference.py::test_transcribe
+        modal run pipeline/test_inference.py::test_transcribe --audio-file voice-prompts/voice-prompt-ch2.wav
+    """
+    with open(audio_file, "rb") as f:
+        audio_bytes = f.read()
+
+    engine = STTEngine()
+    transcription = engine.transcribe.remote(audio_bytes)
+
+    print(f"\nTranscription: {transcription}")
