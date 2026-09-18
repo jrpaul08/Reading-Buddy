@@ -20,7 +20,15 @@ from modal_app import app, vol
 from prompt_utils import ANSWER_GENERATION_KWARGS, ANSWER_INSTRUCTION_SUFFIX, build_system_prompt
 
 MODEL_ID = "Qwen/Qwen2.5-14B-Instruct"
-MODEL_DIR = "/model-weights"
+# All three pipeline components mount the shared volume at the same
+# WEIGHTS_ROOT — Modal always exposes a volume's entire root at whatever
+# single path you mount it to, regardless of how many slashes are in
+# that path, so mounting each component at its own distinct path (as
+# this file used to do) never actually separated their files on disk.
+# Real separation requires each component to use its own subdirectory
+# *within* one shared mount point instead.
+WEIGHTS_ROOT = "/weights"
+MODEL_DIR = os.path.join(WEIGHTS_ROOT, "qwen")
 
 image = (
     modal.Image.debian_slim(python_version="3.11")
@@ -49,7 +57,7 @@ image = (
     gpu="L40S",
     image=image,
     secrets=[modal.Secret.from_name("huggingface-secret")],
-    volumes={MODEL_DIR: vol},
+    volumes={WEIGHTS_ROOT: vol},
     scaledown_window=600,
     timeout=900,
 )

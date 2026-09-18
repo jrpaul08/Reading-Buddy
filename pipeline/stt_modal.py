@@ -25,10 +25,12 @@ import modal
 from modal_app import app, vol
 
 MODEL_ID = "deepdml/faster-whisper-large-v3-turbo-ct2"
-# Own directory on the shared pipeline volume — kept distinct from Qwen's
-# "/model-weights" so two unrelated models' files never land in the same
-# directory, even though both live on the same underlying Volume.
-MODEL_DIR = "/stt-weights"
+# All three pipeline components mount the shared volume at the same
+# WEIGHTS_ROOT and separate their files via a subdirectory instead —
+# see the comment in reasoning_modal.py for why a distinct mount path
+# alone (what this used to do) doesn't actually separate anything.
+WEIGHTS_ROOT = "/weights"
+MODEL_DIR = os.path.join(WEIGHTS_ROOT, "whisper")
 
 image = (
     modal.Image.debian_slim(python_version="3.11")
@@ -55,7 +57,7 @@ image = (
     gpu="L4",
     image=image,
     secrets=[modal.Secret.from_name("huggingface-secret")],
-    volumes={MODEL_DIR: vol},
+    volumes={WEIGHTS_ROOT: vol},
     scaledown_window=600,
     timeout=900,
 )
