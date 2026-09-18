@@ -8,6 +8,7 @@ __pycache__/
 .DS_Store
 response.wav
 response_book.wav
+response_tts.wav
 voice-prompts/
 test_results/
 debug_prompt.txt
