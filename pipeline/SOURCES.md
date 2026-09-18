@@ -42,6 +42,25 @@ pipeline object. The key is lowercase, the value is an IPA (International
 Phonetic Alphabet) pronunciation string. Example from Kokoro's own demo
 app: `pipelines['a'].g2p.lexicon.golds['kokoro'] = 'kˈOkəɹO'`.
 
+The IPA string is not standard IPA — it uses Misaki's own phoneme set,
+where diphthongs are single capital letters (`A`=eɪ, `I`=aɪ, `W`=aʊ,
+`Y`=ɔɪ, `O`=oʊ in American English), and a few consonants are
+respelled (`ɹ` for r, `ɡ` for g, `ʧ`=tʃ, `ʤ`=dʒ). Standard IPA copied
+from a dictionary must be converted before use.
+
+- [Misaki EN_PHONES.md](https://github.com/hexgrad/misaki/blob/main/EN_PHONES.md) — full English phoneme inventory
+- [hexgrad/misaki](https://github.com/hexgrad/misaki) — G2P library; also documents inline overrides `[word](/phonemes/)`
+
 - [kokoro on PyPI](https://pypi.org/project/kokoro/) — install, dependencies, `KPipeline` usage, what it bundles (G2P + voice management + generation), the generator return shape
 - [hexgrad/kokoro GitHub](https://github.com/hexgrad/kokoro) — source, voice list
 - [hexgrad/Kokoro-82M model card](https://huggingface.co/hexgrad/Kokoro-82M)
+
+## TODO
+
+- **Character name pronunciation (TTS).** Kokoro mispronounces foreign
+  character names (e.g. "Raskolnikov"). Deferred deliberately: the fix
+  belongs in the book-preprocessing pipeline (`preprocess_books.py`),
+  generating a pronunciation per character alongside the existing
+  character data, not a hand-maintained table in `tts_modal.py`. The
+  mechanism (`pipeline.g2p.lexicon.golds`) and the required phoneme
+  notation are documented in the Kokoro section above.

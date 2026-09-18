@@ -9,11 +9,14 @@ comparison this was weighed against).
 Sources for design decisions in this file: see pipeline/SOURCES.md.
 
 Built up incrementally, same shape as the other pipeline components:
-    Part 1 (this file, current scope): prove the container starts,
-        loads Kokoro onto GPU. No synthesis yet.
-    Part 2: bare synthesis — text in, audio out, understand the
-        (graphemes, phonemes, audio) generator shape KPipeline returns.
-    Part 3: the full method the orchestrator will actually call.
+    Part 1: prove the container starts and loads Kokoro onto GPU.
+    Part 2 (current scope): synthesis. synthesize(text) -> WAV bytes is
+        already the shape an orchestrator needs to call, so there is no
+        separate Part 3.
+
+Voice is af_bella at speed 0.85, chosen by ear. Known gap: foreign
+character names are mispronounced — deliberately deferred, see the TODO
+in pipeline/SOURCES.md.
 """
 
 import os
@@ -21,6 +24,8 @@ import os
 import modal
 
 from modal_app import app, vol
+
+MODEL_ID = "hexgrad/Kokoro-82M"
 
 # All three pipeline components mount the shared volume at the same
 # WEIGHTS_ROOT and separate their files via a subdirectory instead —
@@ -36,6 +41,13 @@ image = (
         "torch",
         "kokoro>=0.9.4",
         "soundfile",
+    )
+    # Kokoro's text processing needs this spaCy model. Left alone, it runs
+    # `pip install` for it at runtime on every cold start (seen in the
+    # first TTS run's logs). Installing it here bakes it into the image.
+    # Same wheel, same version that the runtime download fetched.
+    .pip_install(
+        "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl",
     )
     .env({"HF_HOME": MODEL_DIR})
     .add_local_file("pipeline/modal_app.py", "/root/modal_app.py")
@@ -72,7 +84,7 @@ class TTSEngine:
         vol.reload()
 
         t0 = time.time()
-        self.pipeline = KPipeline(lang_code="a", device="cuda")
+        self.pipeline = KPipeline(lang_code="a", repo_id=MODEL_ID, device="cuda")
         print(f"[pipeline load] {time.time() - t0:.1f}s")
 
     @modal.method()
@@ -104,21 +116,31 @@ class TTSEngine:
     @modal.method()
     def synthesize(self, text: str) -> bytes:
         """
-        Purpose: Part 2 sanity check for real speech synthesis. Takes
-        plain text and returns spoken audio as WAV bytes, proving the
-        KPipeline synthesis chain works with the chosen voice
-        ("af_bella") before Part 3 wires this into the shape the
-        orchestrator will actually call.
+        Purpose: Speaks text aloud. Takes plain text and returns the
+        spoken audio as WAV bytes (24 kHz), using the fixed voice
+        ("af_bella") at speed 0.85. Kokoro splits long text into chunks
+        and synthesizes each separately; the chunks are joined into one
+        continuous clip here.
 
         Args:
             text (str): The text to speak aloud.
 
         Returns:
             bytes: WAV-encoded audio of the spoken text.
+
+        Raises:
+            ValueError: If Kokoro produces no audio for the input (empty,
+                whitespace-only, or otherwise unspeakable text). The
+                caller decides how to handle this.
         """
         generator = self.pipeline(text, voice="af_bella", speed=0.85)
 
         audio_chunks = [audio for _, _, audio in generator]
+
+        if not audio_chunks:
+            raise ValueError(
+                f"Kokoro produced no audio for the given text: {text!r}"
+            )
 
         import io
         import numpy as np
