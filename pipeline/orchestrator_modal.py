@@ -24,6 +24,7 @@ Built up incrementally:
 """
 
 import modal
+from fastapi import File, Form, UploadFile
 
 from modal_app import app
 
@@ -31,7 +32,7 @@ from modal_app import app
 # app, so deploying this file ships all four classes together.
 from reasoning_modal import ReasoningEngine
 from stt_modal import STTEngine
-from tts_modal import TTSEngine
+from tts_modal import SynthesisError, TTSEngine
 
 image = (
     modal.Image.debian_slim(python_version="3.11")
@@ -95,8 +96,9 @@ class Orchestrator:
                     latency.
 
         Raises:
-            ValueError: For an unknown book_id, or if the TTS component
-                produces no audio for the answer.
+            ValueError: For an unknown book_id — a bad request.
+            SynthesisError: If the TTS component produces no audio for
+                the answer — a server-side problem, not a bad request.
         """
         import time
 
@@ -142,3 +144,46 @@ class Orchestrator:
                 "total": total_time,
             },
         }
+
+    @modal.fastapi_endpoint(method="POST")
+    async def s2s_endpoint(
+        self,
+        audio: UploadFile = File(...),
+        book_id: str = Form(...),
+        book_title: str = Form(...),
+        author: str = Form(...),
+        chapter: int = Form(...),
+    ):
+        """
+        Purpose: Public HTTP endpoint wrapping run_pipeline. Same
+        multipart contract as omni's s2s_endpoint, so the frontend does
+        not change.
+
+        Args:
+            audio (UploadFile): Uploaded audio file (the listener's
+                question).
+            book_id (str): Book identifier, matching a key in
+                book_utils.AVAILABLE_BOOKS.
+            book_title (str): Accepted for frontend convenience, not used
+                — run_pipeline derives it from book_id via book_utils.
+            author (str): Accepted for frontend convenience, not used.
+            chapter (int): The reader's current chapter (1-indexed).
+
+        Returns:
+            fastapi.Response: WAV audio bytes of the spoken answer, media
+            type "audio/wav". 400 for an unknown book_id, 500 if TTS
+            produces no audio.
+        """
+        audio_bytes = await audio.read()
+
+        from fastapi import Response
+        from fastapi.responses import JSONResponse
+
+        try:
+            result = self.run_pipeline.local(audio_bytes, book_id, chapter)
+        except ValueError as e:
+            return JSONResponse(status_code=400, content={"error": str(e)})
+        except SynthesisError as e:
+            return JSONResponse(status_code=500, content={"error": str(e)})
+
+        return Response(content=result["answer_audio"], media_type="audio/wav")
