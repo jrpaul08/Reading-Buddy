@@ -9,6 +9,7 @@ __pycache__/
 response.wav
 response_book.wav
 response_tts.wav
+response_pipeline.wav
 voice-prompts/
 test_results/
 debug_prompt.txt

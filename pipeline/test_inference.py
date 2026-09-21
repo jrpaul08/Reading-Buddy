@@ -11,11 +11,14 @@ Usage:
     modal run pipeline/test_inference.py::test_transcribe
     modal run pipeline/test_inference.py::check_tts_load
     modal run pipeline/test_inference.py::test_synthesize
+    modal run pipeline/test_inference.py::test_pipeline
 """
 
 import json
+import time
 from pathlib import Path
 
+from orchestrator_modal import Orchestrator
 from reasoning_modal import app, ReasoningEngine
 from stt_modal import STTEngine
 from tts_modal import TTSEngine
@@ -236,3 +239,60 @@ def test_synthesize(text: str = "The Protagonist of the story is Raskolnikov"):
 
     print(f"\nText:  {text}")
     print("Audio saved to response_tts.wav")
+
+
+@app.local_entrypoint()
+def test_pipeline(
+    audio_file: str = "voice-prompts/voice-prompt-ch7.wav",
+    book_id: str = "crime_and_punishment",
+    chapter: int = 7,
+):
+    """
+    Purpose: End-to-end test of the full pipeline through the
+    orchestrator, without HTTP. Sends a real recorded question through
+    speech-to-text, book-grounded reasoning, and text-to-speech, then
+    prints what was heard, the answer, and per-stage timings, and saves
+    the spoken answer so it can be listened to. Mirrors omni's test_book.
+
+    Args:
+        audio_file (str): Path to a local recording of the question.
+        book_id (str): Book identifier. Defaults to "crime_and_punishment".
+        chapter (int): The reader's current chapter. Defaults to 7.
+
+    Returns:
+        None — results are printed, and audio is saved to
+        response_pipeline.wav. The pipeline is called twice in one run:
+        the first call includes every container's cold start, the second
+        hits the now-warm containers. "wall-clock" is measured here, from
+        audio sent to answer audio back, and is what omni's test reports
+        too, so the two are directly comparable. The stage rows and
+        "total" are measured inside the orchestrator.
+
+    Usage:
+        modal run pipeline/test_inference.py::test_pipeline
+        modal run pipeline/test_inference.py::test_pipeline --chapter 2 --audio-file voice-prompts/voice-prompt-ch2.wav
+    """
+    with open(audio_file, "rb") as f:
+        audio_bytes = f.read()
+
+    orchestrator = Orchestrator()
+
+    t0 = time.time()
+    cold = orchestrator.run_pipeline.remote(audio_bytes, book_id, chapter)
+    cold_wall = time.time() - t0
+
+    t0 = time.time()
+    warm = orchestrator.run_pipeline.remote(audio_bytes, book_id, chapter)
+    warm_wall = time.time() - t0
+
+    print(f"\nQuestion heard: {cold['question']}")
+    print(f"\nAnswer: {cold['answer_text']}")
+
+    print("\nTimings (seconds)      cold     warm")
+    for stage in ("stt", "reasoning", "tts", "total"):
+        print(f"  {stage:<12} {cold['timings'][stage]:>8.1f} {warm['timings'][stage]:>8.1f}")
+    print(f"  {'wall-clock':<12} {cold_wall:>8.1f} {warm_wall:>8.1f}")
+
+    with open("response_pipeline.wav", "wb") as f:
+        f.write(cold["answer_audio"])
+    print("\nAudio saved to response_pipeline.wav")

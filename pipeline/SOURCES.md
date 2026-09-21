@@ -64,3 +64,40 @@ from a dictionary must be converted before use.
   character data, not a hand-maintained table in `tts_modal.py`. The
   mechanism (`pipeline.g2p.lexicon.golds`) and the required phoneme
   notation are documented in the Kokoro section above.
+
+### Orchestrator (`orchestrator_modal.py`)
+
+- **Empty transcription.** A silent or empty recording makes STT return
+  `""`, and the orchestrator currently sends that on to Qwen anyway.
+  Decide what should happen instead (error, retry prompt, canned reply).
+- **`chapter < 1`.** Produces an empty chapter list, and `book_utils`
+  then fails with an `IndexError` rather than a clean `ValueError`. The
+  omni endpoint had the same gap. Low priority unless the frontend can
+  ever send it.
+- **`ValueError` is ambiguous in `run_pipeline`.** It covers both an
+  unknown `book_id` (a bad request, should be a 400) and TTS producing no
+  audio (a server-side problem, should not be a 400). omni's endpoint
+  turned every `ValueError` into a 400. The `s2s_endpoint` piece needs to
+  tell them apart.
+- **Cold vs warm timings.** Each stage's timing includes that
+  container's cold start when it was cold, so a single run says little
+  about steady-state speed. Compare cold and warm runs before drawing
+  conclusions.
+
+### Speed ideas (future)
+
+- **Overlap the stages.** The pipeline is strictly sequential, so
+  end-to-end latency is the sum of STT + reasoning + TTS: TTS can't start
+  until Qwen has written the whole answer. The one large lever beyond
+  warm containers would be streaming: start speaking the first sentence
+  while Qwen is still writing the second. Substantial change (streaming
+  generation, chunked audio back to the frontend), so not planned yet.
+
+### Verification still owed
+
+- **spaCy model baked into the TTS image.** Confirm that the
+  `Collecting en-core-web-sm ... Downloading` block no longer appears
+  in a TTS run's output. That would prove Kokoro finds the pre-installed
+  model instead of downloading it on every cold start.
+- **Orchestrator mounts.** The mount list in `orchestrator_modal.py` was
+  derived by tracing imports, not tested. The first run confirms it.
