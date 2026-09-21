@@ -10,6 +10,7 @@ response.wav
 response_book.wav
 response_tts.wav
 response_pipeline.wav
+response_endpoint_test.wav
 voice-prompts/
 test_results/
 debug_prompt.txt
