@@ -14,6 +14,7 @@ Usage:
 """
 
 import json
+import time
 from pathlib import Path
 
 from modal_inference import app, image, MODEL_DIR, vol, ReadingCompanion
@@ -343,6 +344,9 @@ def test_book_hybrid(chapter_number: int = 2, audio_file: str = "voice-prompts/v
 
     Returns:
         None — results are printed to stdout and audio is saved to response_book.wav.
+        The pipeline is called twice in one run and each call is timed
+        end to end (audio sent to answer audio back): the first includes
+        the container cold start, the second hits the now-warm container.
 
     Usage:
         modal run omni/test_inference.py::test_book_hybrid
@@ -354,10 +358,19 @@ def test_book_hybrid(chapter_number: int = 2, audio_file: str = "voice-prompts/v
         audio_bytes = f.read()
 
     companion = ReadingCompanion()
+
+    t0 = time.time()
     result = companion.run_s2s_pipeline.remote(audio_bytes, book_name="crime_and_punishment", chapter_numbers=chapters)
+    cold_wall = time.time() - t0
+
+    t0 = time.time()
+    companion.run_s2s_pipeline.remote(audio_bytes, book_name="crime_and_punishment", chapter_numbers=chapters)
+    warm_wall = time.time() - t0
 
     print(f"\nQuestion heard: {result['question']}")
     print(f"\nAnswer: {result['answer_text']}")
+
+    print(f"\nWall-clock (seconds):  cold {cold_wall:.1f}  |  warm {warm_wall:.1f}")
 
     with open("response_book.wav", "wb") as f:
         f.write(result["answer_audio"])
