@@ -25,6 +25,18 @@ import modal
 
 from modal_app import app, vol
 
+
+class SynthesisError(Exception):
+    """
+    Raised when synthesis genuinely fails (e.g. no audio produced) —
+    distinct from ValueError, which book_utils and the orchestrator use
+    for bad input like an unknown book. Callers (the s2s_endpoint) need
+    to tell "your request was invalid" apart from "something broke on
+    our end," and can't do that if everything raises the same
+    exception type.
+    """
+
+
 MODEL_ID = "hexgrad/Kokoro-82M"
 
 # All three pipeline components mount the shared volume at the same
@@ -129,16 +141,16 @@ class TTSEngine:
             bytes: WAV-encoded audio of the spoken text.
 
         Raises:
-            ValueError: If Kokoro produces no audio for the input (empty,
-                whitespace-only, or otherwise unspeakable text). The
-                caller decides how to handle this.
+            SynthesisError: If Kokoro produces no audio for the input
+                (empty, whitespace-only, or otherwise unspeakable text).
+                The caller decides how to handle this.
         """
         generator = self.pipeline(text, voice="af_bella", speed=0.85)
 
         audio_chunks = [audio for _, _, audio in generator]
 
         if not audio_chunks:
-            raise ValueError(
+            raise SynthesisError(
                 f"Kokoro produced no audio for the given text: {text!r}"
             )
 

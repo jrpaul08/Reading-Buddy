@@ -74,11 +74,11 @@ from a dictionary must be converted before use.
   then fails with an `IndexError` rather than a clean `ValueError`. The
   omni endpoint had the same gap. Low priority unless the frontend can
   ever send it.
-- **`ValueError` is ambiguous in `run_pipeline`.** It covers both an
-  unknown `book_id` (a bad request, should be a 400) and TTS producing no
-  audio (a server-side problem, should not be a 400). omni's endpoint
-  turned every `ValueError` into a 400. The `s2s_endpoint` piece needs to
-  tell them apart.
+- ~~`ValueError` is ambiguous in `run_pipeline`.~~ **Resolved.** TTS's
+  "no audio produced" case now raises its own `SynthesisError`
+  (`tts_modal.py`), distinct from the `ValueError` an unknown `book_id`
+  raises, so `s2s_endpoint` can tell them apart and return a 400 for one
+  and a 500 for the other.
 - **Cold vs warm timings.** Each stage's timing includes that
   container's cold start when it was cold, so a single run says little
   about steady-state speed. Compare cold and warm runs before drawing
