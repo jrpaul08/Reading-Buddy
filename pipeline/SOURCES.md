@@ -55,6 +55,22 @@ from a dictionary must be converted before use.
 - [hexgrad/kokoro GitHub](https://github.com/hexgrad/kokoro) — source, voice list
 - [hexgrad/Kokoro-82M model card](https://huggingface.co/hexgrad/Kokoro-82M)
 
+## Orchestrator — chains STT, reasoning, TTS
+
+Not a model; a CPU-only Modal class (`Orchestrator`) that calls the
+other three in sequence and exposes them over one HTTP endpoint. Two
+things worth recording, since they were verified rather than assumed:
+
+- **`run_pipeline` cold and warm timings match between a direct Modal
+  call and the real deployed HTTP endpoint** (82.4s / 5.0s direct vs
+  82s / 200 OK via `curl` against the deployed `s2s_endpoint` URL) —
+  confirms the HTTP layer itself adds no meaningful overhead.
+- **Parallel container warmup uses `asyncio.gather` with
+  `.remote.aio()`**, not sequential `.remote()` calls, so `warmup_endpoint`
+  wakes all three GPU containers at once and a cold session pays for the
+  slowest one, not the sum of all three.
+  [Modal async guide](https://modal.com/docs/guide/async) — `.remote.aio()` + `asyncio.gather` for concurrent remote calls
+
 ## TODO
 
 - **Character name pronunciation (TTS).** Kokoro mispronounces foreign

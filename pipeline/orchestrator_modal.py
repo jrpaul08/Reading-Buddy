@@ -16,11 +16,11 @@ development, which gives it its own URLs and leaves the live omni app
 untouched. Cutting over later means pointing the frontend's URL secrets
 at this app's endpoints.
 
-Built up incrementally:
-    Part 1 (current scope): file header, image, and the class shell.
-    Part 2: run_pipeline — the three stages chained, with per-stage timing.
-    Part 3: s2s_endpoint — the public HTTP wrapper around run_pipeline.
-    Part 4: warmup_endpoint — wakes all three GPU containers in parallel.
+Complete: run_pipeline (the three stages chained, with per-stage timing),
+s2s_endpoint (the public HTTP wrapper, verified end to end against a
+real deployed URL — see pipeline/SOURCES.md), and warmup_endpoint (wakes
+all three GPU containers in parallel via asyncio.gather, so a cold
+session pays for the slowest one, not the sum of all three).
 """
 
 import modal
@@ -187,3 +187,31 @@ class Orchestrator:
             return JSONResponse(status_code=500, content={"error": str(e)})
 
         return Response(content=result["answer_audio"], media_type="audio/wav")
+
+    @modal.fastapi_endpoint(method="POST")
+    async def warmup_endpoint(self):
+        """
+        Purpose: Wakes all three GPU components at once, in parallel,
+        rather than one after another. Calling any method on a component
+        forces its container to load if cold (same trick omni's
+        warmup_endpoint uses) — this does that for STT, reasoning, and
+        TTS simultaneously, so a cold session's actual question later
+        pays for whichever container was slowest to wake, not the sum
+        of all three.
+
+        Args:
+            None
+
+        Returns:
+            dict: {"status": "ready"} once all three containers are warm
+            and able to serve requests.
+        """
+        import asyncio
+
+        await asyncio.gather(
+            STTEngine().ping.remote.aio(),
+            ReasoningEngine().ping.remote.aio(),
+            TTSEngine().ping.remote.aio(),
+        )
+
+        return {"status": "ready"}
