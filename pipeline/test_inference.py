@@ -83,6 +83,7 @@ def test_book(
     book_name: str = "crime_and_punishment",
     chapter_number: int = 4,
     questions: str = "",
+    questions_file: str = "",
 ):
     """
     Purpose: Part 4 sanity check — the first real, book-grounded test.
@@ -96,11 +97,16 @@ def test_book(
         book_name (str): Book identifier, e.g. "crime_and_punishment".
         chapter_number (int): The reader's current chapter (1-indexed).
             Context includes chapters 1 through this chapter. Defaults to 4.
-        questions (str): Questions separated by | (pipe). If omitted,
-            falls back to the full list in
-            books/<book_name>/test_questions.json — the same file
-            omni/test_inference.py's test_context_qa reads, so editing
-            that one list improves test coverage for both models at once.
+        questions (str): Questions separated by | (pipe), typed directly
+            on the command line. Takes priority over questions_file if
+            both are given.
+        questions_file (str): Name of a file inside
+            books/<book_name>/test_questions/ to load questions from,
+            e.g. "test_question_ch21". Ignored if questions is given. If
+            neither is given, falls back to test_questions.json in that
+            same folder — the file omni/test_inference.py's
+            test_context_qa also reads, so editing that one list
+            improves test coverage for both models at once.
 
     Returns:
         None — results are printed to stdout.
@@ -108,17 +114,22 @@ def test_book(
     Usage:
         modal run pipeline/test_inference.py::test_book
         modal run pipeline/test_inference.py::test_book --chapter-number 7 --questions "Who is Sonya?|What is the axe for?"
+        modal run pipeline/test_inference.py::test_book --chapter-number 21 --questions-file test_question_ch21
     """
     from book_utils import describe_hybrid_context
 
     chapter_numbers = list(range(1, chapter_number + 1))
     context, source_label = describe_hybrid_context(book_name, chapter_numbers)
 
+    questions_dir = Path(__file__).parent.parent / "books" / book_name / "test_questions"
+
     if questions:
         question_list = [q.strip() for q in questions.split("|") if q.strip()]
+    elif questions_file:
+        with open(questions_dir / questions_file) as f:
+            question_list = json.load(f)
     else:
-        questions_path = Path(__file__).parent.parent / "books" / book_name / "test_questions.json"
-        with open(questions_path) as f:
+        with open(questions_dir / "test_questions.json") as f:
             question_list = json.load(f)
 
     engine = ReasoningEngine()

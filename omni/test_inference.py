@@ -158,7 +158,7 @@ def test_context_qa(save_results: bool = False):
     book_name = "crime_and_punishment"
     context, source_label = describe_hybrid_context(book_name, [1, 2])
 
-    questions_path = Path(__file__).parent.parent / "books" / book_name / "test_questions.json"
+    questions_path = Path(__file__).parent.parent / "books" / book_name / "test_questions" / "test_questions.json"
     with open(questions_path) as f:
         questions = json.load(f)
 
