@@ -319,14 +319,23 @@ def load_hybrid_context(book: str, chapter_numbers: List[int]) -> str:
     sections = ["SUMMARY:"]
     for ch in chapters:
         sections.append(f"\nChapter {ch['number']}: {ch['summary']}")
+        sections.append(f"Why this chapter matters: {ch['chapter_significance']}")
 
     characters = {}
+    relationships = {}
     key_events = []
     locations = []
     cultural_references = {}
     for ch in chapters:
         for c in ch['characters']:
             characters[c['name']] = c
+        for r in ch['relationships']:
+            # Keyed by the sorted pair of names, same dedup approach as
+            # characters (by name) and cultural_references (by term), so
+            # a relationship mentioned in multiple chapters only appears
+            # once, keeping the latest chapter's description of it.
+            pair_key = tuple(sorted(r['characters']))
+            relationships[pair_key] = r
         key_events.extend(ch['key_events'])
         locations.extend(ch['locations'])
         for cr in ch['cultural_references']:
@@ -335,11 +344,19 @@ def load_hybrid_context(book: str, chapter_numbers: List[int]) -> str:
     sections.append("\n\nCHARACTERS:")
     for c in characters.values():
         aliases = f" (also: {', '.join(c['aliases'])})" if c['aliases'] else ""
-        sections.append(f"- {c['name']}{aliases}: {c['description']}")
+        # situation and intention are both already full sentences, so
+        # concatenating them reads as one continuous description — the
+        # same role the old single "description" field played.
+        sections.append(f"- {c['name']}{aliases}: {c['situation']} {c['intention']}")
+
+    sections.append("\nRELATIONSHIPS:")
+    for r in relationships.values():
+        names = " & ".join(r['characters'])
+        sections.append(f"- {names}: {r['dynamic']}")
 
     sections.append("\nKEY EVENTS:")
     for event in key_events:
-        sections.append(f"- {event}")
+        sections.append(f"- {event['event']} — {event['cause']}")
 
     sections.append("\nLOCATIONS:")
     for loc in dict.fromkeys(locations):
