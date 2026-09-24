@@ -10,6 +10,7 @@ This is a standalone utility, separate from the production modal_inference.py
 app and model.
 
 Usage:
+    modal run preprocess_books.py::download_model
     modal run preprocess_books.py::test_model
 """
 
@@ -22,9 +23,9 @@ import modal
 
 app = modal.App("reading-buddy-preprocess")
 
-MODEL_ID = "Qwen/Qwen2.5-14B-Instruct"
+MODEL_ID = "Qwen/Qwen3-14B"
 MODEL_DIR = "/model-weights"
-MODEL_WEIGHTS_DIR = "/model-weights/qwen2.5-14b-instruct"
+MODEL_WEIGHTS_DIR = "/model-weights/qwen3-14b"
 
 vol = modal.Volume.from_name("reading-buddy-preprocess-weights", create_if_missing=True)
 
@@ -56,73 +57,98 @@ def build_summarization_prompt(chapter_text: str, chapter_number: int) -> str:
     Returns:
         str: Complete prompt to send to the model.
     """
-    return f"""Before generating your response, mentally walk through the chapter from beginning to end and identify every distinct scene. Your summary and key_events must cover all of them with equal attention, including the final scene.
+    return f"""You are processing chapter {chapter_number} of a novel for a reading companion app. Readers will ask this companion why characters do things, what drives their decisions, what certain words or customs mean, and how characters relate to each other. Your output must be deep enough to answer all of those questions accurately — not just what happened, but why. Whatever you get wrong here will be repeated by the companion as fact, and whatever you invent will be treated as true. This chapter is your only source of information about this story.
 
-You are processing chapter {chapter_number} of a novel for a reading companion app.
-Your output will be used to answer readers' questions about the story so far — accuracy and detail matter.
+TWO RULES ABOUT KNOWLEDGE, AND THEY ARE DIFFERENT:
 
-Read the chapter text below and return a single JSON object with this exact structure:
+Rule one — forbidden: never use knowledge of what happens later in this specific book, and never use your own prior knowledge of this specific book's plot, characters, or history, even if you happen to know it. This chapter must stand as if it is all you know of the story.
+
+Rule two — required: you must use your general knowledge of psychology, religion, mythology, history, philosophy, and literary tradition to explain what a character's actions mean, even when the text does not spell it out. A character's behavior is often driven by something the author implies rather than states outright — a belief system, a personal history, a fear, a calculation. Finding that and naming it is your job. This is not "outside knowledge of the plot." It is the difference between reporting a scene and understanding it.
+
+FORESHADOWING RULE: Never describe this chapter in terms of what it "sets up," "foreshadows," "leads to," or "builds toward." Never name or imply a specific future event. You may say a situation is left unresolved or that tension remains, but only describe what is now true because of this chapter — never what will become true later. This applies to every field without exception.
+
+THE SPECIFICITY TEST: for every cause, motivation, or intention you write, ask yourself — could this sentence be swapped into a different chapter, describing a different character doing a different thing, and still sound plausible? If yes, it is not specific enough and you must dig deeper. Reasons worth naming include (this list is illustrative, not exhaustive): a specific belief or conviction the character holds; a personal history or past wound resurfacing in this moment; a calculation about what they stand to gain or lose; a fear of one particular consequence; a moral principle in tension with their own self-interest; a social or religious obligation they feel bound by. Phrases like "driven by guilt," "seeking redemption," "internal conflict," or "complex emotions" name a category of feeling, not a cause. They are never acceptable as a final answer.
+
+If you cannot ground a claim — a motive, a relationship, an origin of an object, a piece of backstory — in something the text actually states or clearly shows, do not invent a plausible-sounding answer. Leave it out rather than guess. A missing detail is far less harmful than a wrong one stated with confidence.
+
+---
+
+STEP ONE — ESTABLISH THE FACTS FIRST
+
+Before any interpretation, read the entire chapter and establish, plainly: who is present, where they are, what happens, in what order, and what is explicitly said or shown — not yet why. Get this layer exactly right. Do not let an interpretation you find compelling cause you to misstate what actually happened.
+
+STEP TWO — THEN ANALYZE
+
+Once the facts are settled, analyze the chapter's significant moments. For each important action, decision, emotional reaction, or revelation, work out: what happened (per Step One), what the character appears to want or fear, what specifically caused or motivated it, what in the text actually supports that interpretation, and any relevant outside historical, psychological, religious, or literary context that explains it. Be explicit with yourself about the difference between what the text states and what you are inferring. This thinking is what every field below must draw from — the fields are not separate reasoning exercises, they are different views onto this same analysis.
+
+---
+
+Return a single JSON object with this structure:
 
 {{
-  "summary": "An in-depth summary that reads as a chronological walkthrough of the ENTIRE chapter, from its opening scene to its final scene — do not stop short. Do not miss any important details. Keep in mind the reader might have questions regarding any part of the story, so do not skip over any scene or interaction. Include specific character names, capture important internal reasoning or emotional moments, and explicitly describe how the chapter ends. Do not be vague — be specific about what happened and why. Make sure to include every single character that is presented or mentioned in the chapter regardless of how brief their appearance. Capture every action that a character does, whether to another character or as an individual action. Once written, re-read it and see what else can be included to add more depth.",
+  "chapter_analysis": "The output of Step One and Step Two. First establish the factual sequence of the chapter. Then, for each character with a significant action or decision, and for each pivotal moment, explain what is really driving it — including interpretation the text implies but does not state directly. Name specific beliefs, histories, fears, or calculations. If a moment only makes sense in light of a religious, psychological, historical, or symbolic framework, identify that framework here explicitly, even if the chapter text never names it. Be clear about what is stated in the text versus what you are inferring. This field is where the thinking happens; the fields below should draw from it rather than re-deriving it from scratch.",
+
+  "summary": "A chronological walkthrough of the entire chapter, scene by scene, informed by your analysis above. For each scene: what happens, who is involved, and what specifically drives it — integrated together, not as two separate ideas. Cover every scene with equal depth, including the final one. Do not let the summary regress into vaguer language than your analysis already established.",
 
   "characters": [
     {{
-      "name": "Character's most commonly used name",
-      "aliases": ["Every other name, nickname, title, or patronymic used for this character anywhere in the chapter text"],
-      "description": "2-3 sentences. Who this character is, their relationship to other characters, their personality or situation, and why they matter. Written for someone who has only read up to this chapter."
+      "name": "Character's most commonly used name in this chapter",
+      "aliases": ["Every other name, nickname, title, patronymic, or shortened form used for this character anywhere in this chapter"],
+      "situation": "Who this character is and the specific pressures or conditions shaping their behavior right now, drawing on your analysis.",
+      "intention": "What this character is specifically trying to achieve or avoid in this chapter, and the exact reasoning behind it, drawing on your analysis. If their stated reason differs from their real reason, state the real one."
     }}
   ],
 
-  "key_events": ["One specific action or moment per entry. Be granular — each entry should describe a single distinct thing that happened, not a summary of a whole scene. Name the specific characters involved. For a chapter with multiple scenes, aim for 8-12 events to ensure full coverage."],
+  "relationships": [
+    {{
+      "characters": ["Character A", "Character B"],
+      "dynamic": "What each character specifically wants from or fears about the other in this chapter, and how that drives what happens between them."
+    }}
+  ],
 
-  "locations": ["Distinct locations that appear in this chapter."],
+  "key_events": [
+    {{
+      "event": "One specific action or moment, named with the specific characters involved",
+      "cause": "The specific driver behind this action, drawn directly from your chapter_analysis — do not re-derive it independently here. Must pass the specificity test — precise enough that it could not be swapped into a different moment."
+    }}
+  ],
+
+  "chapter_significance": "What specifically changed or was revealed by this chapter. Identify the character, relationship, belief, conflict, or situation involved and state precisely what is different after the chapter than before it. Do not discuss what it sets up, foreshadows, or what will happen later — only what is different now.",
+
+  "locations": ["Each distinct location, named as specifically as the text allows"],
 
   "cultural_references": [
     {{
-      "term": "Any word, title, rank, institution, currency, disease, law, social custom, religious practice, period-specific object, or historical reference a modern reader may not understand",
-      "explanation": "A two-part explanation: first, what this term means in its historical or cultural context using general knowledge — its actual significance, weight, or meaning in the world the novel is set in; second, how it specifically applies to the characters or situation in this chapter."
+      "term": "Any word, title, rank, institution, currency, disease, law, social custom, religious or philosophical belief, historical reference, or symbolic/biblical/mythological allusion that appears or is invoked in this chapter",
+      "explanation": "First: what this term, practice, or story actually means and its real weight in the world it comes from. Second: why it specifically applies here — including, if this is a symbolic or biblical reference, what it reveals about the character who invokes it or the moment it appears in, drawing on your analysis above. Only include a claim here if you are genuinely confident it is accurate."
     }}
   ]
 }}
 
-After completing your summary, re-read it and ask yourself: have I described every specific action that occurs in the final scene with the same level of detail as the opening scene? If the answer is no, expand it. Vague closing phrases like "the scene concludes with" or "chaos ensued" are not acceptable — describe exactly what each character does, says, thinks, or feels at the end of the chapter.
+---
 
-Here is an example of the level of detail expected for "summary" and "key_events", for a chapter from a different novel (Jane Eyre):
+WORKED EXAMPLE — from Jane Eyre, Chapter 1 (a different novel, for demonstration only):
 
-"summary": "On a cold, rainy winter afternoon at Gateshead Hall, ten-year-old Jane Eyre has been excluded from the warm drawing-room by her aunt Mrs. Reed, who tells her she may not join the family until she becomes more sociable and pleasant. Jane slips into the adjoining breakfast-room alone, takes down Bewick's History of British Birds from the bookshelf, and retreats into the window-seat behind a thick red curtain, wrapping herself in quiet solitude. She reads contentedly, studying the dark wintry landscape through the glass and losing herself in the book's mysterious vignettes of desolate arctic coastlines, shipwrecks, and ghostly figures — images that match her own sense of cold isolation. Her peace is broken when John Reed, her fourteen-year-old cousin, enters the room calling for her. He is large, bullying, and physically repellent — a boy who torments Jane habitually while his mother turns a blind eye. Eliza, his sister, immediately betrays Jane's hiding place by pointing out the window-seat. Jane comes out trembling, knowing what is coming. John seats himself in an armchair and orders Jane to stand before him, then strikes her suddenly across the face without warning, telling her it is punishment for answering back to his mother and for her impudence. Jane endures the blow but when John picks up the heavy book she had been reading and hurls it at her, hitting her head and drawing blood, something breaks inside her. The pain overwhelms her fear and she flies at John in a frantic rage, calling him a murderer, a slave-driver, and a Roman emperor — comparisons she had privately drawn before but never dared speak aloud. John grabs her hair and shoulder and they grapple violently. Eliza and Georgiana run to fetch Mrs. Reed, who arrives with Bessie the nurse and the maid Abbot. The adults separate them, and all blame falls on Jane — she is described as a fury and a picture of passion while John's cruelty goes unacknowledged. Mrs. Reed orders Jane taken to the red-room and locked inside as punishment, and four hands immediately seize Jane and carry her upstairs."
+chapter_analysis (excerpt): "John Reed's violence toward Jane is not simple childhood cruelty — it enacts a household hierarchy in which Jane, as a penniless dependent relative, has no legal or social standing. His strike is a physical assertion of ownership over a space and its contents, including, in his eyes, the right to determine who may use them. Mrs. Reed's decision to punish only Jane is not blindness to John's behavior; it is the deliberate maintenance of that same hierarchy — acknowledging John's cruelty would mean acknowledging Jane has a legitimate grievance, which would undermine the household order Mrs. Reed depends on. Jane's outburst — comparing John to Nero and Caligula, tyrants she has read about — marks the first time her private interior judgment of her treatment breaks into speech; the suppression she has maintained out of necessity finally fails under physical pain rather than emotional injury alone."
 
-"key_events": [
-  "Mrs. Reed excludes Jane from the drawing-room and tells her she may not rejoin the family until she becomes more sociable and pleasant",
-  "Jane slips into the breakfast-room alone and takes Bewick's History of British Birds from the bookshelf",
-  "Jane hides behind the red curtain in the window-seat, reading contentedly and studying the dark winter landscape",
-  "John Reed enters the breakfast-room calling for Jane, failing to find her himself",
-  "Eliza betrays Jane's hiding place by pointing out the window-seat to John",
-  "Jane comes out trembling and stands before John at his command",
-  "John strikes Jane suddenly and hard across the face without warning",
-  "John accuses Jane of having no right to the family's books and orders her to stand by the door",
-  "John hurls the heavy book at Jane, hitting her and cutting her head against the door",
-  "Jane calls John a murderer, a slave-driver, and a Roman emperor — comparisons she had privately drawn before but never spoken aloud",
-  "John rushes at Jane grabbing her hair and shoulder, and Jane fights back frantically",
-  "Eliza and Georgiana run to fetch Mrs. Reed",
-  "Mrs. Reed arrives with Bessie and Abbot and the children are separated",
-  "All blame is placed on Jane while John's cruelty goes unaddressed",
-  "Mrs. Reed orders Jane taken to the red-room and locked inside as punishment",
-  "Bessie and Abbot seize Jane with four hands and carry her upstairs"
-]
+summary: "On a cold, rainy winter afternoon at Gateshead Hall, ten-year-old Jane Eyre has been excluded from the warm drawing-room by her aunt Mrs. Reed, who tells her she may not join the family until she becomes more sociable and pleasant. Jane slips into the adjoining breakfast-room alone, takes down Bewick's History of British Birds from the bookshelf, and retreats into the window-seat behind a thick red curtain, wrapping herself in quiet solitude. She reads contentedly, studying the dark wintry landscape through the glass and losing herself in the book's mysterious vignettes of desolate arctic coastlines, shipwrecks, and ghostly figures — images that match her own sense of cold isolation. Her peace is broken when John Reed, her fourteen-year-old cousin, enters the room calling for her. He is large, bullying, and physically repellent — a boy who torments Jane habitually while his mother turns a blind eye. Eliza, his sister, immediately betrays Jane's hiding place by pointing out the window-seat. Jane comes out trembling, knowing what is coming. John seats himself in an armchair and orders Jane to stand before him, then strikes her suddenly across the face without warning, telling her it is punishment for answering back to his mother and for her impudence. Jane endures the blow but when John picks up the heavy book she had been reading and hurls it at her, hitting her head and drawing blood, something breaks inside her. The pain overwhelms her fear and she flies at John in a frantic rage, calling him a murderer, a slave-driver, and a Roman emperor — comparisons she had privately drawn before but never dared speak aloud. John grabs her hair and shoulder and they grapple violently. Eliza and Georgiana run to fetch Mrs. Reed, who arrives with Bessie the nurse and the maid Abbot. The adults separate them, and all blame falls on Jane — she is described as a fury and a picture of passion while John's cruelty goes unacknowledged. Mrs. Reed orders Jane taken to the red-room and locked inside as punishment, and four hands immediately seize Jane and carry her upstairs."
 
-Match this level of specificity and detail in your own summary and key_events, applied to the chapter below.
+key_events (sample entries):
+- Event: "John strikes Jane across the face" / Cause: "He enacts the household hierarchy that gives him ownership over the space and its contents — striking her is not random anger but an assertion that she has no right to what she was using"
+- Event: "Mrs. Reed orders Jane locked in the red-room" / Cause: "Acknowledging John's cruelty would mean acknowledging Jane has a legitimate grievance, which would undermine the household order Mrs. Reed depends on — so all blame is placed on Jane instead"
 
-Important rules:
-- Only extract information that is explicitly present in the chapter text. Do not use outside knowledge of the book.
-- For aliases, scan every sentence for alternative names — patronymics, nicknames, titles, and shortened names all count.
-- Every key event should name the specific characters involved.
-- Include characters who are discussed or referenced in the chapter even if they do not physically appear. If a character's story, actions, or situation is described in detail by another character, they must be included in the characters list and their role must be reflected in the summary and key_events.
-- This chapter may contain multiple distinct scenes or locations. Before writing the summary, mentally divide the chapter into its major scenes from beginning to end, and make sure the summary and key_events cover EVERY one of them, including the final scene — do not stop early or let one scene crowd out the rest of the chapter.
-- For scenes involving confrontation, conflict, or high emotion, break them into individual moments in both the summary and key_events. Do not summarize a dramatic scene in one sentence — describe each distinct action that occurs within it.
-- Preserve concrete details exactly as stated in the text — specific numbers, amounts, dates, durations, and names of people and places. Do not flatten these into vague generalizations.
-- Cultural references are the one area where you may and should draw on general knowledge beyond the chapter text. For any term a modern reader might not understand — whether it is a social custom, legal concept, historical institution, disease, currency, religious practice, or period-specific object — provide an explanation grounded in the historical and cultural reality of the world the novel is set in, then connect it specifically to how it appears or affects characters in this chapter. Do not infer meaning or significance from the word alone — explain what it actually meant for people who lived in that world.
-- Return ONLY the JSON object. No preamble, explanation, or markdown code fences.
+---
+
+RULES:
+- Establish the factual sequence of events before interpreting anything — do not let an interesting interpretation lead you to misstate what happened.
+- For summary, key_events, characters, and relationships: only extract or interpret what is grounded in this chapter's text. Never use knowledge of what happens later in this book, and never use your own prior knowledge of this specific book.
+- For chapter_analysis and cultural_references: actively bring in general knowledge of psychology, religion, history, mythology, and literary tradition — this is expected, not optional.
+- Every character referred to by more than one name must have all names listed in aliases.
+- Include characters discussed in meaningful detail even if they do not physically appear.
+- Preserve specific numbers, amounts, names, and dates exactly as stated.
+- Only include relationships where a meaningful dynamic exists in this chapter.
+- If you cannot ground a claim in the text, leave it out rather than inventing a plausible answer.
+- Return ONLY the JSON. No preamble, explanation, or markdown fences.
 
 <chapter_text>
 {chapter_text}
@@ -140,8 +166,9 @@ def parse_chapter_json(raw_response: str) -> dict:
             around the JSON.
 
     Returns:
-        dict: Parsed chapter data with keys "summary", "characters",
-            "key_events", "locations", "cultural_references".
+        dict: Parsed chapter data with keys "chapter_analysis", "summary",
+            "characters", "relationships", "key_events",
+            "chapter_significance", "locations", "cultural_references".
 
     Raises:
         ValueError: If the response is not valid JSON, or doesn't match the
@@ -162,6 +189,9 @@ def parse_chapter_json(raw_response: str) -> dict:
     if not isinstance(data, dict):
         raise ValueError(f"Expected a JSON object, got {type(data).__name__}")
 
+    if not isinstance(data.get("chapter_analysis"), str):
+        raise ValueError("Missing or invalid 'chapter_analysis' (expected string)")
+
     if not isinstance(data.get("summary"), str):
         raise ValueError("Missing or invalid 'summary' (expected string)")
 
@@ -174,11 +204,33 @@ def parse_chapter_json(raw_response: str) -> dict:
             raise ValueError(f"Character missing 'name': {c}")
         if not isinstance(c.get("aliases"), list):
             raise ValueError(f"Character '{c.get('name')}' missing or invalid 'aliases' (expected list)")
-        if not isinstance(c.get("description"), str):
-            raise ValueError(f"Character '{c.get('name')}' missing or invalid 'description' (expected string)")
+        if not isinstance(c.get("situation"), str):
+            raise ValueError(f"Character '{c.get('name')}' missing or invalid 'situation' (expected string)")
+        if not isinstance(c.get("intention"), str):
+            raise ValueError(f"Character '{c.get('name')}' missing or invalid 'intention' (expected string)")
+
+    if not isinstance(data.get("relationships"), list):
+        raise ValueError("Missing or invalid 'relationships' (expected list)")
+    for r in data["relationships"]:
+        if not isinstance(r, dict):
+            raise ValueError(f"Each relationship must be an object, got {type(r).__name__}")
+        if not isinstance(r.get("characters"), list):
+            raise ValueError(f"Relationship missing or invalid 'characters' (expected list): {r}")
+        if not isinstance(r.get("dynamic"), str):
+            raise ValueError(f"Relationship '{r.get('characters')}' missing or invalid 'dynamic' (expected string)")
 
     if not isinstance(data.get("key_events"), list):
         raise ValueError("Missing or invalid 'key_events' (expected list)")
+    for e in data["key_events"]:
+        if not isinstance(e, dict):
+            raise ValueError(f"Each key_event must be an object, got {type(e).__name__}")
+        if not isinstance(e.get("event"), str):
+            raise ValueError(f"Key event missing or invalid 'event' (expected string): {e}")
+        if not isinstance(e.get("cause"), str):
+            raise ValueError(f"Key event '{e.get('event')}' missing or invalid 'cause' (expected string)")
+
+    if not isinstance(data.get("chapter_significance"), str):
+        raise ValueError("Missing or invalid 'chapter_significance' (expected string)")
 
     if not isinstance(data.get("locations"), list):
         raise ValueError("Missing or invalid 'locations' (expected list)")
@@ -318,7 +370,12 @@ def apply_canonicalization(data: list, mapping: dict) -> list:
             if canonical in merged:
                 merged[canonical]["aliases"] = sorted(set(merged[canonical]["aliases"]) | aliases)
             else:
-                merged[canonical] = {"name": canonical, "aliases": sorted(aliases), "description": c["description"]}
+                merged[canonical] = {
+                    "name": canonical,
+                    "aliases": sorted(aliases),
+                    "situation": c["situation"],
+                    "intention": c["intention"],
+                }
                 order.append(canonical)
 
         entry["characters"] = [merged[name] for name in order]
@@ -405,8 +462,8 @@ def build_character_glossary(data: list) -> list:
 
     Returns:
         list[dict]: One entry per character, each with "name", "aliases",
-            "description" (from the chapter where they first appear), and
-            "introduced_chapter", sorted by introduced_chapter.
+            "situation" and "intention" (from the chapter where they first
+            appear), and "introduced_chapter", sorted by introduced_chapter.
     """
     glossary = {}
     for entry in data:
@@ -416,7 +473,8 @@ def build_character_glossary(data: list) -> list:
                 glossary[name] = {
                     "name": name,
                     "aliases": set(c["aliases"]),
-                    "description": c["description"],
+                    "situation": c["situation"],
+                    "intention": c["intention"],
                     "introduced_chapter": entry["number"],
                 }
             else:
@@ -427,7 +485,8 @@ def build_character_glossary(data: list) -> list:
         {
             "name": g["name"],
             "aliases": sorted(g["aliases"]),
-            "description": g["description"],
+            "situation": g["situation"],
+            "intention": g["intention"],
             "introduced_chapter": g["introduced_chapter"],
         }
         for g in sorted(glossary.values(), key=lambda g: g["introduced_chapter"])
@@ -466,13 +525,22 @@ class ChapterSummarizer:
 
         vol.reload()
 
-        if not os.path.exists(os.path.join(MODEL_WEIGHTS_DIR, "config.json")):
-            snapshot_download(
-                repo_id=MODEL_ID,
-                local_dir=MODEL_WEIGHTS_DIR,
-                token=os.environ["HF_TOKEN"],
-            )
-            vol.commit()
+        # Always call snapshot_download rather than gating on config.json's
+        # existence: it's resumable and cheap when files are already
+        # present (etag check per file), and self-heals a volume left
+        # incomplete by two containers downloading concurrently — Modal
+        # volumes aren't safe for multiple simultaneous writers, so a
+        # config.json-only check can wrongly conclude the download is
+        # done when shard files are still missing. Run
+        # preprocess_books.py::download_model once before any parallel
+        # summarization run to avoid triggering that race in the first
+        # place.
+        snapshot_download(
+            repo_id=MODEL_ID,
+            local_dir=MODEL_WEIGHTS_DIR,
+            token=os.environ["HF_TOKEN"],
+        )
+        vol.commit()
 
         t0 = time.time()
         self.model = AutoModelForCausalLM.from_pretrained(
@@ -495,7 +563,7 @@ class ChapterSummarizer:
         self,
         prompt: str,
         max_new_tokens: int = 256,
-        enable_thinking: bool = False,
+        enable_thinking: bool = True,
         do_sample: bool = False,
         temperature: float = 0.7,
     ) -> str:
@@ -508,7 +576,9 @@ class ChapterSummarizer:
             max_new_tokens (int): Maximum number of tokens to generate.
             enable_thinking (bool): If True, the model first emits a
                 <think>...</think> reasoning block before its response.
-                Defaults to False for concise, directly-parseable output.
+                Defaults to True — Qwen3 is a hybrid reasoning model and
+                this preprocessing pipeline wants its full reasoning trace
+                before the structured JSON output.
             do_sample (bool): If True, use sampling (with `temperature`)
                 instead of greedy decoding. Useful for retries after a
                 malformed response.
@@ -575,8 +645,8 @@ class ChapterSummarizer:
         for attempt in range(max_retries):
             raw = self.generate.local(
                 prompt,
-                max_new_tokens=6144,
-                enable_thinking=False,
+                max_new_tokens=8192,
+                enable_thinking=True,
                 do_sample=(attempt > 0),
             )
             try:
@@ -586,6 +656,34 @@ class ChapterSummarizer:
                 print(f"[summarize_chapter] attempt {attempt + 1} failed: {e}\nRaw response:\n{raw}")
 
         raise ValueError(f"Failed to get valid JSON after {max_retries} attempts: {last_error}")
+
+
+@app.local_entrypoint()
+def download_model():
+    """
+    Purpose: Force exactly one container to download the model weights to
+    the shared volume and commit them, before running anything that spins
+    up multiple parallel containers (test_summarize_chapter with several
+    chapters, or process_book). Modal volumes aren't safe for multiple
+    containers to write to concurrently — if several containers each hit
+    ChapterSummarizer.enter() with an empty/partial volume at once, their
+    downloads race and can leave the volume with a corrupted, incomplete
+    set of files. Running this single-container entrypoint first
+    guarantees the weights are fully downloaded and committed before any
+    parallel run starts.
+
+    Args:
+        None
+
+    Returns:
+        None — prints once the model has loaded successfully.
+
+    Usage:
+        modal run preprocess_books.py::download_model
+    """
+    summarizer = ChapterSummarizer()
+    summarizer.generate.remote("ping", max_new_tokens=4)
+    print("\nModel weights downloaded and committed.")
 
 
 @app.local_entrypoint()
@@ -676,39 +774,44 @@ def process_book(
 
 
 @app.local_entrypoint()
-def test_summarize_chapter(chapter_number: int = 1):
+def test_summarize_chapter(chapter_numbers: str = "1"):
     """
-    Purpose: Validate the summarization prompt and JSON parsing on a single
-    chapter of "Crime and Punishment", for comparison against the
-    hand-written reference in summary_key_data.json.
+    Purpose: Validate the summarization prompt and JSON parsing on one or
+    more chapters of "Crime and Punishment", for comparison against the
+    hand-written reference in summary_key_data.json. Chapters are
+    summarized in parallel (up to max_containers GPUs at once), same as
+    process_book, so testing several chapters costs wall-clock time for
+    only the slowest one rather than each sequentially.
 
     Args:
-        chapter_number (int): 1-indexed chapter number to summarize.
-            Defaults to 1.
+        chapter_numbers (str): One or more 1-indexed chapter numbers,
+            separated by commas, e.g. "24,26". Defaults to "1".
 
     Returns:
-        None — the parsed JSON result is printed to stdout.
+        None — each chapter's parsed JSON result is printed to stdout as
+        it completes, labeled by chapter number. A debug prompt is also
+        written per chapter to debug_prompt_ch<N>.txt.
 
     Usage:
         modal run preprocess_books.py::test_summarize_chapter
-        modal run preprocess_books.py::test_summarize_chapter --chapter-number 2
+        modal run preprocess_books.py::test_summarize_chapter --chapter-numbers 2
+        modal run preprocess_books.py::test_summarize_chapter --chapter-numbers 24,26
     """
     from book_utils import get_current_chapter
 
-    chapter_text = get_current_chapter("crime_and_punishment", chapter_number)
+    numbers = [int(n.strip()) for n in chapter_numbers.split(",") if n.strip()]
+    chapter_texts = [get_current_chapter("crime_and_punishment", n) for n in numbers]
 
-    prompt = build_summarization_prompt(chapter_text, chapter_number)
-    debug_path = Path(__file__).parent / "debug_prompt.txt"
-    debug_path.write_text(prompt)
-    print(f"Prompt written to {debug_path} ({len(prompt)} chars)")
+    for n, chapter_text in zip(numbers, chapter_texts):
+        prompt = build_summarization_prompt(chapter_text, n)
+        debug_path = Path(__file__).parent / f"debug_prompt_ch{n}.txt"
+        debug_path.write_text(prompt)
+        print(f"Prompt written to {debug_path} ({len(prompt)} chars)")
 
     summarizer = ChapterSummarizer()
-    result = summarizer.summarize_chapter.remote(
-        chapter_text=chapter_text,
-        chapter_number=chapter_number,
-    )
-
-    print(json.dumps(result, indent=2))
+    for n, result in zip(numbers, summarizer.summarize_chapter.map(chapter_texts, numbers)):
+        print(f"\n=== Chapter {n} ===")
+        print(json.dumps(result, indent=2))
 
 
 @app.local_entrypoint()
@@ -749,8 +852,8 @@ def canonicalize_characters(book_name: str = "crime_and_punishment", max_retries
     for attempt in range(max_retries):
         raw = summarizer.generate.remote(
             prompt,
-            max_new_tokens=4096,
-            enable_thinking=False,
+            max_new_tokens=6144,
+            enable_thinking=True,
             do_sample=(attempt > 0),
         )
         try:
