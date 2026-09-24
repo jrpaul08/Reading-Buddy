@@ -7,6 +7,7 @@ Usage:
     modal run pipeline/test_inference.py::check_load
     modal run pipeline/test_inference.py::ask_question
     modal run pipeline/test_inference.py::test_book
+    modal run pipeline/test_inference.py::test_book_batch
     modal run pipeline/test_inference.py::check_stt_load
     modal run pipeline/test_inference.py::test_transcribe
     modal run pipeline/test_inference.py::check_tts_load
@@ -142,6 +143,64 @@ def test_book(
     for r in results:
         print(f"\nQ: {r['question']}")
         print(f"A: {r['answer']}")
+
+
+@app.local_entrypoint()
+def test_book_batch(book_name: str = "crime_and_punishment"):
+    """
+    Purpose: Runs test_book's per-chapter question sets back to back
+    inside a single modal run, reusing one ReasoningEngine container the
+    whole way through. A separate `modal run ...::test_book` per chapter
+    file pays a full cold start each time (each modal run tears its
+    containers down on exit); looping over every chapter/question-file
+    pair here against one ReasoningEngine() instance pays for exactly one
+    cold start total, with every call after the first hitting the warm
+    container.
+
+    Args:
+        book_name (str): Book identifier, e.g. "crime_and_punishment".
+
+    Returns:
+        None — results for every chapter are printed to stdout as they
+        complete.
+
+    Usage:
+        modal run pipeline/test_inference.py::test_book_batch
+    """
+    from book_utils import describe_hybrid_context
+
+    questions_dir = Path(__file__).parent.parent / "books" / book_name / "test_questions"
+
+    chapter_files = [
+        (8, "test_questions_ch8.json"),
+        (14, "test_questions_ch14.json"),
+        (21, "test_question_ch21.json"),
+        (28, "test_question_ch28.json"),
+        (34, "test_question_ch34.json"),
+        (39, "test_question_ch39.json"),
+    ]
+
+    engine = ReasoningEngine()
+
+    for chapter_number, questions_file in chapter_files:
+        with open(questions_dir / questions_file) as f:
+            question_list = json.load(f)
+
+        chapter_numbers = list(range(1, chapter_number + 1))
+        context, source_label = describe_hybrid_context(book_name, chapter_numbers)
+
+        t0 = time.time()
+        results = engine.answer.remote(
+            context=context,
+            questions=question_list,
+            source_label=source_label,
+        )
+        elapsed = time.time() - t0
+
+        print(f"\n=== Chapter {chapter_number} ({questions_file}) — {elapsed:.1f}s ===")
+        for r in results:
+            print(f"\nQ: {r['question']}")
+            print(f"A: {r['answer']}")
 
 
 @app.local_entrypoint()
