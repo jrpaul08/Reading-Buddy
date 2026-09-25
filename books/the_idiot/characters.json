@@ -1,0 +1,409 @@
+[
+  {
+    "name": "Prince Lef Nicolaievitch Muishkin",
+    "aliases": [
+      "Lef Nicolaievitch",
+      "Lef Nicolaievitch Muishkin",
+      "Leon",
+      "Muishkin",
+      "Myshkin",
+      "Nikolai Petrovich",
+      "Prince",
+      "Prince L. Muishkin",
+      "Prince Lebedeff",
+      "Prince Lef Nicolaievitch",
+      "Prince Muishkin",
+      "Prince Myshkin",
+      "Prince S.",
+      "The Prince",
+      "The prince",
+      "prince",
+      "the invalid",
+      "the prince",
+      "the young gentleman"
+    ],
+    "situation": "A financially destitute, socially isolated man with a nervous illness (possibly epilepsy) that has left him physically and emotionally fragile. His appearance and demeanor suggest a mix of intellectual curiosity and vulnerability, and his encounter with Rogojin may represent a tentative step toward reintegration into society.",
+    "intention": "To seek companionship and practical support from Rogojin, despite his own uncertain circumstances. His acceptance of Rogojin\u2019s offer of clothing and money is driven by a need for social connection and material stability, though his illness and lack of resources make him reliant on others.",
+    "introduced_chapter": 1
+  },
+  {
+    "name": "Parfen Rogojin",
+    "aliases": [
+      "Parfen",
+      "Parfen Semeonovitch",
+      "Parfen Semionovitch Rogojin",
+      "Rogojin",
+      "the moujik"
+    ],
+    "situation": "A wealthy heir to a vast fortune, burdened by familial conflict and a volatile temper. His recent return from Pskoff, where he fled his father\u2019s abuse, and his obsessive fixation on Nastasia Philipovna reveal a man driven by a desire for validation and a need to assert his independence.",
+    "intention": "To gain social recognition and manipulate the prince into an alliance, possibly to leverage the prince\u2019s connections or to share his story with someone who might elevate his status. His invitation to the prince is both a gesture of camaraderie and a calculated move to secure an ally.",
+    "introduced_chapter": 1
+  },
+  {
+    "name": "Fedor Ivanovitch Epanchin",
+    "aliases": [
+      "Afanasy Ivanovitch Totski's associate",
+      "Epanchin",
+      "General Epanchin",
+      "Ivan Fedorovitch",
+      "The general",
+      "the general"
+    ],
+    "situation": "A self-made man of considerable wealth and influence, General Epanchin navigates a social landscape where his lack of formal education and noble lineage create subtle tensions. His respect for his wife's aristocratic heritage and his own pragmatic approach to power reflect a complex negotiation of identity and status.",
+    "intention": "To maintain his social and professional standing while managing the expectations of his family, particularly his wife's pride in her noble ancestry. His interactions with the prince may be driven by a desire to reinforce his family's connections to the Muishkin lineage, which could enhance their social capital.",
+    "introduced_chapter": 2
+  },
+  {
+    "name": "Gavrila Ardalionovitch",
+    "aliases": [
+      "Gania",
+      "Mr. Ivolgin"
+    ],
+    "situation": "A young man associated with one of the companies General Epanchin is involved with, Gavrila's recognition of the prince and his role in facilitating the meeting suggest a position of influence within the social and business networks of the Epanchins.",
+    "intention": "To navigate the social dynamics of the Epanchin household by recognizing the prince's familial connection and ensuring his access to General Epanchin. His curiosity about the prince may reflect an interest in the potential benefits of this connection.",
+    "introduced_chapter": 2
+  },
+  {
+    "name": "Ardalion Alexandrovitch Gania",
+    "aliases": [
+      "Gania",
+      "Gania Alexandrovna",
+      "Gania Ardalionovna",
+      "Gania Ptitsin",
+      "Gavril Ardalionovitch",
+      "Gavrila Ardalionovitch",
+      "Gavrila Ardalionovitch (Gania)",
+      "the brother"
+    ],
+    "situation": "A socially ambitious man trapped between familial expectations and personal desires. His engagement to Nastasia is both a social climb and a financial burden, exacerbated by his family's disapproval and his own insecurities.",
+    "intention": "To secure Nastasia's hand while managing the threat of Rogojin's wealth and influence. His anxiety is driven by a fear of losing her to someone with greater financial means, combined with a need to maintain his family's social standing.",
+    "introduced_chapter": 3
+  },
+  {
+    "name": "Lizabetha Prokofievna Epanchin",
+    "aliases": [
+      "Elizabetha Prokofievna",
+      "General Epanchin's wife",
+      "Lizabetha",
+      "Lizabetha Epanchina",
+      "Lizabetha Prokofievna",
+      "Lizabetha Prokofievna (Mrs. Epanchin)",
+      "Madame Epanchin",
+      "Mrs. Epanchin"
+    ],
+    "situation": "A woman who has learned to tolerate her husband's infidelities but is now suspicious of his secret pearl gift to Nastasia. Her curiosity about his actions reflects a power struggle within the marriage.",
+    "intention": "To uncover the truth about her husband's secret dealings with Nastasia, possibly to assert control over their relationship and family dynamics.",
+    "introduced_chapter": 4
+  },
+  {
+    "name": "Nastasia Philipovna",
+    "aliases": [
+      "Nastasia",
+      "Nastia",
+      "the orphaned girl",
+      "the princess"
+    ],
+    "situation": "A woman shaped by trauma and manipulation, now seeking autonomy through strategic decisions. Her past with Totski has left her with a complex understanding of power and control.",
+    "intention": "To reject Totski's attempts to manipulate her and to assert her agency by conditionally engaging with Gavrila Ivolgin, ensuring she is not treated as a commodity.",
+    "introduced_chapter": 4
+  },
+  {
+    "name": "Afanasy Ivanovitch Totski",
+    "aliases": [
+      "Totski",
+      "the wealthy man"
+    ],
+    "situation": "A man of high status who fears Nastasia's unpredictability. His past actions have left him vulnerable to her manipulation, and he seeks to control the situation through financial offers.",
+    "intention": "To secure his own social position by using Nastasia to facilitate a marriage for his daughter, while avoiding public humiliation through her potential actions.",
+    "introduced_chapter": 4
+  },
+  {
+    "name": "Alexandra Epanchin",
+    "aliases": [
+      "Alexandra",
+      "Alexandra Ivanovna"
+    ],
+    "situation": "The eldest daughter, whose curiosity about the prince's 'madness' and 'recovery' suggests a fascination with psychological extremes. Her support for the prince contrasts with her mother's skepticism.",
+    "intention": "To explore the boundaries of human experience through the prince's stories, possibly as a way to assert her own intellectual maturity.",
+    "introduced_chapter": 5
+  },
+  {
+    "name": "Aglaya Epanchin",
+    "aliases": [
+      "Aglaya",
+      "Aglaya Ivanovna",
+      "Aglaya Ivanovna Epanchina",
+      "The girl",
+      "the proud maiden"
+    ],
+    "situation": "The youngest daughter, whose mockery of the prince's 'philosophy' and 'quietism' reveals a defensive posture against perceived intellectual inferiority. Her interest in the execution story may stem from a desire to challenge the prince's authority.",
+    "intention": "To undermine the prince's credibility through sarcasm, while secretly engaging with his stories to assert her own worldview.",
+    "introduced_chapter": 5
+  },
+  {
+    "name": "Marie",
+    "aliases": [
+      "the girl"
+    ],
+    "situation": "A woman shunned by the village after being betrayed, living in poverty and shame. Her mother's cruelty and the parson's condemnation reinforce her self-loathing, but the prince's kindness and the children's affection offer her brief solace.",
+    "intention": "To survive in a hostile environment, she accepts her mother's cruelty and the village's scorn. Her stated reason for enduring this is self-blame, but her deeper motivation is a desire to atone for her perceived 'sin' through suffering.",
+    "introduced_chapter": 6
+  },
+  {
+    "name": "Jules Thibaut",
+    "aliases": [
+      "Thibaut",
+      "the schoolmaster"
+    ],
+    "situation": "The village schoolmaster who resents the prince's influence over the children. His jealousy and adherence to rigid social norms drive his hostility toward the prince.",
+    "intention": "To maintain control over the children's education and reinforce the village's moral hierarchy. His stated reason for opposing the prince is professional rivalry, but his deeper motivation is fear of losing authority to someone who challenges adult hypocrisy.",
+    "introduced_chapter": 6
+  },
+  {
+    "name": "The Parson",
+    "aliases": [
+      "the clergyman",
+      "the pastor"
+    ],
+    "situation": "A village official who publicly condemns Marie, reflecting the community's moral rigidity. His actions are driven by a desire to maintain social order through public shaming.",
+    "intention": "To uphold the village's moral standards by blaming Marie for her mother's death. His stated reason is religious duty, but his deeper motivation is to assert control over the community's narrative.",
+    "introduced_chapter": 6
+  },
+  {
+    "name": "Nina Alexandrovna Ardalionovna",
+    "aliases": [
+      "Nina Alexandrovna"
+    ],
+    "situation": "Nina is a woman of diminished means, struggling to maintain her family's dignity. Her attempts to mediate between Gania and Varvara reflect her awareness of the family's precarious position. Her submission to Gania's will is a calculated act to avoid further conflict.",
+    "intention": "Nina's primary goal is to preserve family unity despite the tensions. Her request to the prince to pay her directly for lodging is a subtle assertion of her authority, even as she defers to Gania's control.",
+    "introduced_chapter": 8
+  },
+  {
+    "name": "Varvara Ardalionovna Ptitsin",
+    "aliases": [
+      "Varia",
+      "Varvara",
+      "Varvara Ardalionovna",
+      "Varvara Epanchina"
+    ],
+    "situation": "Varvara is a strong-willed young woman who resists her brother's dominance. Her possession of Nastasia Philipovna's portrait suggests her complicity in the marriage arrangement, though her demeanor indicates inner conflict.",
+    "intention": "Varvara's intention is to assert her autonomy within the family while navigating the pressures of the impending marriage. Her silence and calculated stares at Gania are tools of resistance, though she may also feel trapped by familial obligations.",
+    "introduced_chapter": 8
+  },
+  {
+    "name": "Ardalion Alexandrovitch Ivolgin",
+    "aliases": [
+      "Ardalion Alexandrovitch",
+      "Colia\u2019s father",
+      "General",
+      "General Ivolgin",
+      "Ivolgin",
+      "Nina Alexandrovna\u2019s husband",
+      "The General",
+      "old General Ivolgin",
+      "the general",
+      "the old man"
+    ],
+    "situation": "The general is a retired military man living in poverty, forced to share a room with his son Colia. His dramatic recounting of the prince's father's death is an attempt to assert relevance and authority.",
+    "intention": "The general seeks to reassert his importance through the prince's connection to his late friend. His story may also serve to deflect attention from his own failures or to manipulate the prince into favoring his family.",
+    "introduced_chapter": 8
+  },
+  {
+    "name": "Colia Ivolgin",
+    "aliases": [
+      "Colia",
+      "the boy",
+      "the son"
+    ],
+    "situation": "Colia is emotionally invested in the prince's well-being, viewing him as a moral anchor amid the family's dysfunction. His anxiety about Gania's actions and his reluctance to deliver the note to General Epanchin suggest a desire to protect the prince from further conflict.",
+    "intention": "Colia aims to shield the prince from the family's turmoil, particularly Gania's manipulative behavior. His attachment to the prince may stem from a belief that the prince represents a moral standard the family has abandoned.",
+    "introduced_chapter": 11
+  },
+  {
+    "name": "Marfa Borisovna Terentieff",
+    "aliases": [
+      "Madame Terentieff",
+      "Marfa Borisovna"
+    ],
+    "situation": "A woman financially ruined by the general's irresponsibility, she embodies the consequences of a patriarchal system that exploits women. Her confrontation with the general reveals a history of betrayal and neglect.",
+    "intention": "To exact emotional and financial retribution from the general, driven by a belief that his honor is tied to his ability to provide. Her stated accusations (financial theft) reflect a deeper need for validation in a society that marginalizes her.",
+    "introduced_chapter": 12
+  },
+  {
+    "name": "Ferdishenko",
+    "aliases": [],
+    "situation": "Ferdishenko occupies a role as a tolerated jester, using self-deprecating humor to navigate his social position. His awareness of being a 'buffoon' allows him to deflect criticism while subtly mocking others, such as the general and Gania. His behavior is driven by a need to maintain his role as a source of amusement, even if it involves crude or offensive remarks.",
+    "intention": "Ferdishenko's intention is to assert his role as a jester by provoking laughter and discomfort, even if it means being offensive. His reference to the fable and the game proposal are calculated to maintain his position and test the guests' reactions, possibly to gauge their tolerance for his antics.",
+    "introduced_chapter": 14
+  },
+  {
+    "name": "Lukian Timofeyovitch Lebedeff",
+    "aliases": [
+      "Lebedeff",
+      "Lebedeff the drunkard",
+      "Lebedeff the intriguer",
+      "Lukian",
+      "Lukian Timofeyovitch",
+      "Mr. Lebedeff",
+      "the clerk"
+    ],
+    "situation": "A man of unstable mental state, Lebedeff oscillates between drunkenness, self-pity, and fervent religious discourse. His interactions with his nephew and family are marked by a mix of affection and control, as he seeks to assert his authority while masking his own insecurities.",
+    "intention": "Lebedeff's intention is to manipulate Muishkin into renting his villa, leveraging the prince's potential influence and financial stability. His religious rants and historical references serve as both a defense mechanism and a means to elevate his own moral standing.",
+    "introduced_chapter": 19
+  },
+  {
+    "name": "Lebedeff's Nephew",
+    "aliases": [
+      "The Nephew",
+      "The Young Man"
+    ],
+    "situation": "A university student burdened by debt, the nephew is desperate for financial aid but is acutely aware of his own moral failings. His interactions with Lebedeff are marked by tension, as he seeks help while resenting his uncle's condescension.",
+    "intention": "The nephew's primary goal is to secure fifteen roubles to avoid losing his job. His admission of guilt and promise to repay the debt are attempts to justify his request, though his bitterness toward Lebedeff suggests a deeper resentment.",
+    "introduced_chapter": 19
+  },
+  {
+    "name": "Old Woman",
+    "aliases": [
+      "Mother",
+      "the old woman"
+    ],
+    "situation": "The old woman is portrayed as a figure of quiet, automatic faith, her actions rooted in tradition rather than conscious reflection. Her blessing of the prince is instinctive, highlighting the contrast between genuine faith and performative religiosity.",
+    "intention": "The old woman's actions are driven by a lifelong adherence to religious practice, with no explicit intention beyond her role as a caretaker and believer. Her presence underscores the prince's belief in faith as an innate human experience.",
+    "introduced_chapter": 21
+  },
+  {
+    "name": "Evgenie Pavlovitch Radomski",
+    "aliases": [
+      "Evgenie",
+      "Evgenie Pavlovitch"
+    ],
+    "situation": "Evgenie's arrival in civilian clothes disrupts the social order, signaling a shift in his status or a rejection of his military past. His ironic demeanor suggests he is aware of the 'poor knight' joke and Aglaya's performance.",
+    "intention": "Evgenie's intention is to establish his presence in the Epanchin household, possibly to form a connection with the prince. His retirement from the military may be a strategic move to align with different social circles.",
+    "introduced_chapter": 24
+  },
+  {
+    "name": "Antip Burdovsky",
+    "aliases": [
+      "Antip",
+      "Burdovsky",
+      "Mr. Burdovsky",
+      "Pavlicheff\u2019s son",
+      "the boxer"
+    ],
+    "situation": "Antip is part of a group of men who confront the prince, likely over a prior dispute. His appearance and demeanor suggest a background of poverty and marginalization.",
+    "intention": "Antip's intention is to demand resolution of the dispute, possibly for financial or personal gain. His presence with the other men indicates a collective grievance against the prince.",
+    "introduced_chapter": 24
+  },
+  {
+    "name": "Lebedeff\u2019s Nephew",
+    "aliases": [
+      "Lebedeff\u2019s nephew",
+      "Mr. Doktorenko"
+    ],
+    "situation": "He is a leader of the group demanding justice, driven by a mix of ideological conviction and personal ambition. His eloquent speech reflects a desire to assert the 'natural law' of justice against the prince\u2019s perceived aristocratic privilege.",
+    "intention": "He seeks to pressure the prince into compliance by invoking moral and legal arguments, though his true goal is to exploit the situation for personal or ideological gain.",
+    "introduced_chapter": 25
+  },
+  {
+    "name": "Hippolyte Lebedeff",
+    "aliases": [
+      "Hippolyte",
+      "Hippolyte Ptitsin",
+      "Hippolyte Terentieff",
+      "Mr. Terentieff",
+      "Terentieff",
+      "The invalid",
+      "the general",
+      "the invalid"
+    ],
+    "situation": "Hippolyte is a figure of authority who reacts with indignation to the prince\u2019s accusations. His role is to defend the group\u2019s actions while maintaining a veneer of respectability.",
+    "intention": "Hippolyte aims to protect the group\u2019s reputation and ensure their demands are met, though his indignation masks a fear of being exposed as complicit in the fraud.",
+    "introduced_chapter": 25
+  },
+  {
+    "name": "Keller",
+    "aliases": [
+      "Keller (the boxer)",
+      "Mr. Keller",
+      "the boxer"
+    ],
+    "situation": "Keller is the author of the satirical article, which weaponizes class resentment. His calm demeanor and calculated remarks suggest a manipulative personality.",
+    "intention": "Keller seeks to undermine the prince\u2019s credibility and force him into a position of weakness, using the article as a tool to exploit social tensions.",
+    "introduced_chapter": 25
+  },
+  {
+    "name": "Prince Leontyev",
+    "aliases": [
+      "Leontyev",
+      "Prince"
+    ],
+    "situation": "The prince is in a state of emotional vulnerability, torn between his genuine affection for Aglaya and his fear of rejection. His social marginalization as a 'foreigner' in Russian society exacerbates his self-doubt, making him susceptible to manipulation by figures like Mrs. Epanchin. His physical reactions (blushing, trembling) and evasive language suggest unresolved romantic feelings for Aglaya, which he downplays to avoid confrontation.",
+    "intention": "The prince's primary intention is to avoid further conflict with Mrs. Epanchin, even as he is drawn to Aglaya. His compliance with her demands to visit Aglaya's house reflects a desire to reconcile with her, despite his awareness of the risks. His stated reason for writing the letter (as a 'brother') contrasts with his unspoken hope for a deeper connection with Aglaya.",
+    "introduced_chapter": 29
+  },
+  {
+    "name": "The Narrator",
+    "aliases": [
+      "Terentieff",
+      "the invalid"
+    ],
+    "situation": "A terminally ill man with consumption, isolated from his family and society. His physical decline and psychological state drive his interactions, marked by a detached, almost clinical observation of others' suffering and his own impending death.",
+    "intention": "To confront the absurdity of existence through acts of charity (helping Terentich) and philosophical reflection, ultimately leading to a decision to end his life. His stated intention is to seek a 'good deed,' but his real motivation is to escape the torment of mortality and the futility of human struggle.",
+    "introduced_chapter": 35
+  },
+  {
+    "name": "Terentich",
+    "aliases": [
+      "the doctor"
+    ],
+    "situation": "A destitute physician who has lost his position and is living in squalor with his family. His desperation and poverty make him a mirror to the narrator's own precarious existence.",
+    "intention": "To secure a new position through the narrator's acquaintance Bachmatoff. His stated intention is to survive, but his real motivation is to provide for his family, driven by a sense of duty and the fear of failure.",
+    "introduced_chapter": 35
+  },
+  {
+    "name": "Peter Matveyevitch Bachmatoff",
+    "aliases": [
+      "Bachmatoff"
+    ],
+    "situation": "A former schoolmate of the narrator, now a man of influence. His relationship with the narrator is marked by past enmity, but he is moved by the narrator's request to help Terentich.",
+    "intention": "To assist the narrator in helping Terentich, driven by a mix of guilt over their past rivalry and a desire to perform a 'good deed.' His stated intention is to use his uncle's influence, but his real motivation is to reconcile with the narrator and redeem himself.",
+    "introduced_chapter": 35
+  },
+  {
+    "name": "Vera Lebedeff",
+    "aliases": [
+      "Vera"
+    ],
+    "situation": "A compassionate figure who pleads with the prince to be lenient with Hippolyte, revealing a personal investment in his well-being despite the household\u2019s indifference.",
+    "intention": "To protect Hippolyte from harsh judgment, driven by a sense of empathy and a desire to avoid further destabilizing the household.",
+    "introduced_chapter": 38
+  },
+  {
+    "name": "The Woman",
+    "aliases": [
+      "the 'sinful' woman",
+      "the woman"
+    ],
+    "situation": "The woman is in a state of psychological instability, oscillating between idealizing the prince as a divine figure and degrading herself as a 'madwoman.' Her fixation on the prince as 'light' and her paranoid accusations against another man suggest a history of trauma or social marginalization that has distorted her perception of reality. Her insistence on a final confrontation with the prince indicates a desperate need for validation.",
+    "intention": "The woman's intention is to force the prince to acknowledge her existence and his role in her emotional state. Her stated reason for confronting him is to confirm his happiness, but her real motivation is to extract a form of emotional validation that she believes he owes her. Her actions are driven by a need to reconcile her self-perceived worthlessness with her idealized view of the prince.",
+    "introduced_chapter": 39
+  },
+  {
+    "name": "Ptitsin",
+    "aliases": [
+      "Gavrila Ardalionovitch Ptitsin"
+    ],
+    "situation": "Ptitsin is a man who has accepted his mediocrity and is content with his modest success. He is described as quiet and not easily offended, but he harbors a quiet ambition to own a house in the Liteynaya. His relationship with his brother Gania is strained, as Gania resents his lack of ambition.",
+    "intention": "Ptitsin's intention is to maintain his modest success and avoid the pitfalls of his brother's ambitions. His real motivation is to live a life of quiet stability, even as he is aware of his brother's disdain for his perceived lack of ambition.",
+    "introduced_chapter": 40
+  },
+  {
+    "name": "Ivan Petrovitch",
+    "aliases": [
+      "the old man"
+    ],
+    "situation": "Ivan Petrovitch is a member of the aristocracy who is both intrigued by Myshkin's idealism and wary of his unpredictability. His role as a social host requires him to manage the prince's outbursts while maintaining his own composure.",
+    "intention": "Ivan Petrovitch aims to integrate Myshkin into the social circle, but his attempts are complicated by his own ambivalence toward the prince's radical views. His true intention is to maintain social harmony, even if it means downplaying Myshkin's more controversial statements.",
+    "introduced_chapter": 46
+  }
+]

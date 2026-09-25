@@ -1,0 +1,242 @@
+[
+  {
+    "name": "Mr. Bennet",
+    "aliases": [
+      "Mr. B. Bennet",
+      "Mr. Bennet of Longbourn",
+      "Mr. Bingley's visitor",
+      "the father"
+    ],
+    "situation": "A man of quick wit and sarcastic humor, Mr. Bennet is detached from the social pressures his wife faces. His disengagement from his family's marital prospects may stem from a cynical view of marriage as a transactional institution, or from a personal disinterest in social obligations.",
+    "intention": "Mr. Bennet's stated intention is to mock his wife's enthusiasm for visiting Mr. Bingley, but his real motivation is to avoid the social pressures of arranging marriages for his daughters. His sarcastic remarks suggest a desire to distance himself from the economic anxieties his wife embodies.",
+    "introduced_chapter": 1
+  },
+  {
+    "name": "Mrs. Bennet",
+    "aliases": [
+      "Mrs. B. Bennet",
+      "Mrs. Bennet of Longbourn",
+      "Mrs. Elizabeth Bennet",
+      "Mrs. Long's acquaintance",
+      "Mrs. Longbourn",
+      "the mother"
+    ],
+    "situation": "Mrs. Bennet is driven by the urgent need to secure advantageous marriages for her five daughters, a necessity in a society where women without inheritance have few financial options. Her emotional volatility is framed as 'nerves,' a socially acceptable excuse for her behavior.",
+    "intention": "Mrs. Bennet's stated intention is to ensure her daughters' futures by visiting Mr. Bingley, but her deeper motivation is to fulfill her role as a mother in a patriarchal society where marriage is the primary means of financial security. Her insistence on visiting Bingley reflects a fear of social obsolescence if her daughters remain unmarried.",
+    "introduced_chapter": 1
+  },
+  {
+    "name": "Mr. Bingley",
+    "aliases": [
+      "Bingley",
+      "Charles Bingley",
+      "Mr. Charles Bingley"
+    ],
+    "situation": "Mr. Bingley is introduced as a wealthy young man who has recently rented Netherfield Park. His presence in the neighborhood is framed as an opportunity for the Bennet family, though he has not yet appeared in the narrative.",
+    "intention": "Mr. Bingley's stated intention is to take possession of Netherfield Park, but his potential interest in marriage is inferred through the Bennets' speculation. His role as a 'single man of large fortune' is a catalyst for the social dynamics explored in the chapter.",
+    "introduced_chapter": 1
+  },
+  {
+    "name": "Elizabeth Bennet",
+    "aliases": [
+      "Eliza",
+      "Eliza Bennet",
+      "Elizabeth",
+      "Lizzie",
+      "Lizzy",
+      "Miss Bennet",
+      "Miss Eliza",
+      "Miss Eliza Bennet",
+      "Miss Elizabeth",
+      "Miss Elizabeth Bennet"
+    ],
+    "situation": "The most perceptive of the Bennet daughters, she is aware of her mother's social anxieties but maintains a composed exterior. Her dialogue with her father reveals her understanding of his ironic detachment.",
+    "intention": "To navigate the social expectations placed on her while maintaining her own sense of agency. She recognizes her father's manipulation but does not challenge it directly.",
+    "introduced_chapter": 2
+  },
+  {
+    "name": "Kitty Bennet",
+    "aliases": [
+      "Kitty"
+    ],
+    "situation": "A younger daughter whose behavior is shaped by her mother's influence and the family's social pressures. Her coughing is a physical manifestation of her anxiety.",
+    "intention": "To avoid drawing attention to herself, though her actions (like coughing) inadvertently become focal points of the family's social anxieties.",
+    "introduced_chapter": 2
+  },
+  {
+    "name": "Lydia Bennet",
+    "aliases": [
+      "Lydia",
+      "Lydia Wickham",
+      "Miss Lydia Bennet"
+    ],
+    "situation": "The youngest and most impulsive of the Bennet daughters, her comment about being the tallest reflects her desire to assert individuality in a family that prioritizes social conformity.",
+    "intention": "To assert her own identity through bold statements, even if they are superficial or attention-seeking.",
+    "introduced_chapter": 2
+  },
+  {
+    "name": "Mary Bennet",
+    "aliases": [
+      "Mary",
+      "Miss Mary Bennet"
+    ],
+    "situation": "The most introspective of the Bennet daughters, her silence in the face of her father's sarcastic remarks reflects her discomfort with the family's social preoccupations.",
+    "intention": "To avoid engaging in the family's social debates, using her intellectual pursuits as a refuge from the pressures of marriage.",
+    "introduced_chapter": 2
+  },
+  {
+    "name": "Mr. Fitzwilliam Darcy",
+    "aliases": [
+      "Darcy",
+      "Mr. Darcy",
+      "Mr. Darcy of Pemberley"
+    ],
+    "situation": "A wealthy aristocrat whose pride and adherence to class hierarchies make him socially isolated. His behavior at the ball is influenced by his belief in his own superiority and the social norms of his time.",
+    "intention": "To maintain his social standing by avoiding interactions with those he deems beneath him. His comment about Elizabeth is a calculated dismissal meant to assert his own status, not a genuine assessment of her appearance.",
+    "introduced_chapter": 3
+  },
+  {
+    "name": "Jane Bennet",
+    "aliases": [
+      "Jane",
+      "Jane Bingley",
+      "Miss Bennet",
+      "Miss Jane",
+      "Miss Jane Bennet"
+    ],
+    "situation": "Jane is processing her positive impressions of Bingley, filtered through her natural optimism and desire for social connection. Her tendency to overlook flaws is both a strength and a vulnerability in navigating social hierarchies.",
+    "intention": "Jane seeks to affirm Bingley's character and maintain a positive outlook, even as she acknowledges Elizabeth's valid points. Her intention is to foster harmony rather than conflict in their discussion.",
+    "introduced_chapter": 4
+  },
+  {
+    "name": "Charlotte Lucas",
+    "aliases": [
+      "Charlotte",
+      "Charlotte Collins",
+      "Miss Charlotte Lucas",
+      "Miss Lucas",
+      "Mrs. Collins"
+    ],
+    "situation": "A pragmatic and socially astute woman who understands the realities of class and gender in her society. Her interactions are shaped by a desire to maintain harmony and avoid conflict, even when it means defending the behavior of the socially dominant.",
+    "intention": "To mediate between Mrs. Bennet\u2019s anxieties and Elizabeth\u2019s wounded pride, framing Mr. Darcy\u2019s pride as a socially acceptable trait for someone of his status.",
+    "introduced_chapter": 5
+  },
+  {
+    "name": "Miss Caroline Bingley",
+    "aliases": [
+      "Caroline Bingley",
+      "Miss Bingley"
+    ],
+    "situation": "A member of the upper class who uses condescension as a tool to assert social dominance. Her interactions with Elizabeth reveal a class-based hierarchy that privileges wealth and status.",
+    "intention": "To maintain her family's social standing by controlling access to her brother's estate, using polite but dismissive behavior toward Elizabeth to reinforce class boundaries.",
+    "introduced_chapter": 7
+  },
+  {
+    "name": "Mr. William Collins",
+    "aliases": [
+      "Mr. Collins",
+      "Mr. Collins of Hunsford",
+      "William Collins",
+      "the clergyman"
+    ],
+    "situation": "A clergyman under Lady Catherine's patronage, driven by a need to ingratiate himself with the Bennets and secure his future inheritance.",
+    "intention": "To reconcile with the Bennets, flatter them, and position himself as a benefactor, all while subtly asserting his claim to Longbourn.",
+    "introduced_chapter": 13
+  },
+  {
+    "name": "Mr. George Wickham",
+    "aliases": [
+      "George Wickham",
+      "Mr. Wickham",
+      "Wickham",
+      "the officer"
+    ],
+    "situation": "Mr. Wickham is presented as a charming and well-mannered young man, but his interaction with Mr. Darcy reveals an underlying tension. His presence in Meryton and his connection to Mr. Denny suggest a recent arrival in the area.",
+    "intention": "Mr. Wickham's intention is to establish himself in the local social scene, possibly with the aim of securing a position or marriage. His relationship with Mr. Darcy implies a prior conflict that may influence his future actions.",
+    "introduced_chapter": 15
+  },
+  {
+    "name": "Mrs. William Gardiner",
+    "aliases": [
+      "Mrs. Gardiner",
+      "Mrs. Gardiner of London"
+    ],
+    "situation": "Mrs. Gardiner is a rational, socially aware woman who recognizes the limitations of her sister\u2019s worldview. Her visit to Longbourn is both a familial obligation and an opportunity to provide perspective on the family\u2019s romantic entanglements.",
+    "intention": "She aims to temper Mrs. Bennet\u2019s hysteria with practicality, while also addressing Elizabeth\u2019s emotional state regarding Mr. Bingley. Her real intention is to protect her nieces from the consequences of impulsive decisions, particularly Elizabeth\u2019s growing attachment to Mr. Wickham.",
+    "introduced_chapter": 25
+  },
+  {
+    "name": "Lady Catherine de Bourgh",
+    "aliases": [
+      "Her Ladyship",
+      "Lady Catherine",
+      "Your Ladyship",
+      "her Ladyship"
+    ],
+    "situation": "Lady Catherine is a powerful figure in the community, and her patronage is crucial to the Collinses\u2019 social standing. Her visit reinforces the class hierarchy and the Collinses\u2019 dependence on her.",
+    "intention": "Lady Catherine seeks to assert her influence and maintain her social dominance, using her connections to elevate the Collinses while subtly reminding them of their inferior status.",
+    "introduced_chapter": 28
+  },
+  {
+    "name": "Miss Anne de Bourgh",
+    "aliases": [
+      "Miss De Bourgh"
+    ],
+    "situation": "Miss De Bourgh is frail and unkind, embodying the societal expectation that women must marry for status rather than affection. Her presence highlights the transactional nature of marriage in this world.",
+    "intention": "Miss De Bourgh\u2019s role is to serve as a potential bride for Mr. Collins, fulfilling the social expectation that she marry for inheritance and status, despite her own lack of agency.",
+    "introduced_chapter": 28
+  },
+  {
+    "name": "Colonel Fitzwilliam",
+    "aliases": [
+      "Fitzwilliam"
+    ],
+    "situation": "Fitzwilliam is attempting to alleviate the tedium of Rosings by engaging with Elizabeth, whom he finds agreeable. His interactions with her are marked by a desire to appear sociable and to avoid the oppressive atmosphere of Lady Catherine's household.",
+    "intention": "Fitzwilliam aims to create a pleasant social environment for Elizabeth, using their conversation about music as a means to draw her out and to contrast with Darcy's reserve.",
+    "introduced_chapter": 31
+  },
+  {
+    "name": "Mrs. Reynolds",
+    "aliases": [],
+    "situation": "Mrs. Reynolds is a long-time servant at Pemberley, whose loyalty to Darcy is evident in her unreserved praise of his character. Her role is to provide a contrast to Elizabeth's preconceptions.",
+    "intention": "Mrs. Reynolds' intention is to uphold Darcy's reputation as a generous and kind master. Her stated reason for her praise is her long experience with him, but her deeper motivation is to maintain the household's stability and her own position.",
+    "introduced_chapter": 43
+  },
+  {
+    "name": "Miss Georgiana Darcy",
+    "aliases": [
+      "Georgiana Darcy",
+      "Miss Darcy",
+      "Miss Darcy (Georgiana)"
+    ],
+    "situation": "Miss Darcy is an introverted young woman whose shyness contrasts with the reputation of her family's pride. Her presence is marked by quiet deference to Elizabeth and her brother.",
+    "intention": "Miss Darcy seeks to comply with her brother's social initiatives while avoiding the pressure of public attention, reflecting her limited experience in social navigation.",
+    "introduced_chapter": 44
+  },
+  {
+    "name": "Mr. William Gardiner",
+    "aliases": [
+      "Mr. Gardiner",
+      "Mr. Gardiner of the Gardiners"
+    ],
+    "situation": "Mr. Gardiner observes the social dynamics with pragmatic interest, recognizing the significance of Darcy's changed behavior while respecting Elizabeth's need for privacy.",
+    "intention": "Mr. Gardiner seeks to support Elizabeth's autonomy while gathering information about Darcy's character through careful observation.",
+    "introduced_chapter": 44
+  },
+  {
+    "name": "Georgiana Darcy",
+    "aliases": [
+      "Georgiana"
+    ],
+    "situation": "Georgiana's relationship with Elizabeth reflects her growing understanding of social dynamics and her willingness to learn from Elizabeth's example.",
+    "intention": "Georgiana aims to develop her own sense of independence and social awareness through her interactions with Elizabeth.",
+    "introduced_chapter": 61
+  },
+  {
+    "name": "The Gardiners",
+    "aliases": [],
+    "situation": "The Gardiners' close relationship with the Darcys underscores their role as moral and familial anchors in a society that often prioritizes status over substance.",
+    "intention": "The Gardiners aim to maintain their close bond with the Darcys, reflecting their shared values of integrity and familial loyalty.",
+    "introduced_chapter": 61
+  }
+]

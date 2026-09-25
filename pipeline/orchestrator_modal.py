@@ -185,6 +185,15 @@ class Orchestrator:
             return JSONResponse(status_code=400, content={"error": str(e)})
         except SynthesisError as e:
             return JSONResponse(status_code=500, content={"error": str(e)})
+        except Exception as e:
+            # Catch-all so no exception (e.g. a schema mismatch in a
+            # book's context file) ever escapes uncaught. An uncaught
+            # exception skips this handler's normal response path and,
+            # with it, the CORS headers a browser needs to even read the
+            # error — it then looks like a CORS failure client-side
+            # instead of the real 500, which is much harder to debug.
+            print(f"[s2s_endpoint] unexpected error: {type(e).__name__}: {e}")
+            return JSONResponse(status_code=500, content={"error": "Internal server error"})
 
         return Response(content=result["answer_audio"], media_type="audio/wav")
 

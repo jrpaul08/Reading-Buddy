@@ -1,0 +1,841 @@
+[
+  {
+    "name": "Edmond Dant\u00e8s",
+    "aliases": [
+      "Abb\u00e9 Busoni",
+      "Captain Dant\u00e8s",
+      "Captain Edmond Dant\u00e8s",
+      "Count",
+      "Count Monte Cristo",
+      "Count of Monte Cristo",
+      "Dant\u00e8s",
+      "Edmond",
+      "Emperor of Cochin-China",
+      "His Excellency",
+      "King of China",
+      "Lord Ruthven",
+      "Lord Wilmore",
+      "M. de Monte Cristo",
+      "Major Black",
+      "Maltese",
+      "Mate of the Pharaon",
+      "Monsieur de Monte Cristo",
+      "Monte Cristo",
+      "Sinbad the Sailor",
+      "The Count",
+      "The Count of Monte Cristo",
+      "Zaccone",
+      "number 34",
+      "the Abb\u00e9 Busoni",
+      "the Count",
+      "the Count of Monte Cristo",
+      "the Count of Monte Cristo (implied)",
+      "the abb\u00e9",
+      "the count",
+      "the mysterious stranger",
+      "the noble stranger",
+      "the sailor",
+      "the young man"
+    ],
+    "situation": "Dant\u00e8s is a young, competent sailor and captain\u2019s mate of the Pharaon, recently promoted to de facto command after Captain Leclere\u2019s death. His actions are driven by a sense of duty, loyalty to his crew, and a desire to prove his worth to Morrel. His calmness and skill in handling the ship reflect a character shaped by discipline and a strong work ethic.",
+    "intention": "Dant\u00e8s aims to fulfill his responsibilities as captain\u2019s mate, ensure the ship\u2019s safe arrival, and secure his future as captain of the Pharaon. His stated reason for stopping at Elba is to follow the captain\u2019s orders, but his deeper motivation may involve a desire to honor the captain\u2019s memory and advance his career.",
+    "introduced_chapter": 1
+  },
+  {
+    "name": "Maximilian Morrel",
+    "aliases": [
+      "Albert de Morcerf\u2019s friend",
+      "Captain of Spahis",
+      "M. Morrel",
+      "M. Morrel & Son",
+      "M. Morrel de Villefort",
+      "M. de Morrel",
+      "Maximilian",
+      "Maximilian de Morrel",
+      "Morrel",
+      "the shipowner",
+      "the stoic"
+    ],
+    "situation": "Morrel is the shipowner of the Pharaon and a man of business who values competence and loyalty. His interactions with Dant\u00e8s and Danglars reveal a pragmatic approach to leadership, balancing respect for Dant\u00e8s\u2019s abilities with the constraints of his partnership.",
+    "intention": "Morrel seeks to ensure the ship\u2019s safe return and the successful delivery of its cargo. His decision to consider promoting Dant\u00e8s to captain is driven by a recognition of Dant\u00e8s\u2019s skill, but also by the need to maintain the firm\u2019s reputation and his own authority within the partnership.",
+    "introduced_chapter": 1
+  },
+  {
+    "name": "Danglars",
+    "aliases": [
+      "Baron",
+      "Baron Danglars",
+      "Danglars de Villefort",
+      "M. Danglars",
+      "the Baron",
+      "the banker",
+      "the baron",
+      "the prisoner",
+      "the shipowner"
+    ],
+    "situation": "Danglars is the supercargo of the Pharaon, a position that grants him authority over the crew but also makes him a target of their resentment. His interactions with Dant\u00e8s and Morrel suggest a character driven by ambition and a desire to undermine Dant\u00e8s\u2019s rise.",
+    "intention": "Danglars aims to secure his own position and possibly advance his career by questioning Dant\u00e8s\u2019s decisions and hinting at a secret letter from the captain. His actions are motivated by a fear of being overshadowed and a desire to maintain control over the ship\u2019s operations.",
+    "introduced_chapter": 1
+  },
+  {
+    "name": "Old Dant\u00e8s",
+    "aliases": [
+      "Dant\u00e8s Senior",
+      "the old man"
+    ],
+    "situation": "A frail, elderly man who has been living in financial hardship after using part of his son's previous gift to pay off a debt to Caderousse. His situation is shaped by a combination of frugality, pride, and a deep love for his son.",
+    "intention": "To appear self-sufficient despite his poverty, while also ensuring his son's happiness. His stated intention is to accept the money Dant\u00e8s offers, but his real motivation is to avoid burdening his son further.",
+    "introduced_chapter": 2
+  },
+  {
+    "name": "Caderousse",
+    "aliases": [
+      "Caderousse de Villefort",
+      "Caderousse the Tailor",
+      "Gaspard",
+      "Gaspard Caderousse",
+      "M. Bossuet",
+      "M. Caderousse",
+      "Monsieur Pailletin",
+      "my little fellow",
+      "neighbor Caderousse",
+      "the dying man",
+      "the innkeeper",
+      "the man with the red handkerchief",
+      "the tailor",
+      "the wounded man"
+    ],
+    "situation": "A local tailor who had previously lent Dant\u00e8s money. He is envious of Dant\u00e8s' success and uses the visit to subtly undermine Dant\u00e8s' confidence in his relationship with Merc\u00e9d\u00e8s.",
+    "intention": "To ingratiate himself with Dant\u00e8s while probing for weaknesses. His stated intention is to congratulate Dant\u00e8s, but his real motivation is to sow doubt about Merc\u00e9d\u00e8s' loyalty and to position himself as a potential beneficiary of Dant\u00e8s' downfall.",
+    "introduced_chapter": 2
+  },
+  {
+    "name": "Merc\u00e9d\u00e8s Dant\u00e8s",
+    "aliases": [
+      "Countess de Morcerf",
+      "Madame Albert",
+      "Madame de Morcerf",
+      "Mademoiselle Merc\u00e9d\u00e8s",
+      "Merc\u00e9d\u00e8s",
+      "Merc\u00e9d\u00e8s de Morcerf",
+      "Merc\u00e9d\u00e8s de Villefort",
+      "the Countess",
+      "the widow"
+    ],
+    "situation": "A poor orphan living in the Catalan village, dependent on Fernand's charity for survival. She is torn between her familial obligations to Fernand and her deep love for Edmond Dant\u00e8s. Her refusal to marry Fernand is driven by her fear of becoming a burden to him and her commitment to Edmond.",
+    "intention": "To protect her relationship with Edmond Dant\u00e8s by refusing Fernand's proposal, even at the cost of her own social standing. Her stated reason is her love for Edmond, but her deeper motivation is a fear of being trapped in an unhappy marriage and a desire to preserve her autonomy.",
+    "introduced_chapter": 3
+  },
+  {
+    "name": "Fernand Mondego",
+    "aliases": [
+      "Fernand",
+      "Fernand de Monte Cristo",
+      "Fernand the Catalan"
+    ],
+    "situation": "A fisherman and soldier from the Catalan village, bound by familial ties to Merc\u00e9d\u00e8s and the custom of intermarriage. His jealousy of Edmond Dant\u00e8s and his sense of entitlement to Merc\u00e9d\u00e8s are rooted in his belief that he is her rightful partner.",
+    "intention": "To marry Merc\u00e9d\u00e8s, believing it is his due by family tradition and social expectation. His stated reason is love, but his real motivation is a mix of insecurity, resentment toward Edmond, and a desire to assert dominance over Merc\u00e9d\u00e8s.",
+    "introduced_chapter": 3
+  },
+  {
+    "name": "M. de Villefort",
+    "aliases": [
+      "G\u00e9rard de Villefort",
+      "M. Villefort",
+      "Noirtier (family name)",
+      "Procureur",
+      "Procureur Villefort",
+      "Villefort",
+      "procureur",
+      "the deputy procureur",
+      "the king\u2019s procureur",
+      "the magistrate",
+      "the procureur",
+      "the young magistrate",
+      "the young man"
+    ],
+    "situation": "A royalist magistrate navigating the political fallout of his father\u2019s past as a Girondin. His current role requires him to distance himself from his father\u2019s revolutionary ties while securing his social standing through marriage to Ren\u00e9e de Saint-M\u00e9ran. His actions are driven by the need to prove unwavering loyalty to the monarchy, which is essential for his career and marriage.",
+    "intention": "To demonstrate absolute loyalty to the monarchy by handling the arrest of Edmond Dant\u00e8s, despite personal reservations. His stated reason is duty to the king, but his real motivation is to solidify his position as a royalist and secure his marriage to Ren\u00e9e, which hinges on his perceived reliability.",
+    "introduced_chapter": 6
+  },
+  {
+    "name": "Marquise de Saint-M\u00e9ran",
+    "aliases": [
+      "Madame de Saint-M\u00e9ran",
+      "Marchioness de Saint-M\u00e9ran",
+      "Marquise",
+      "old marchioness"
+    ],
+    "situation": "A former royalist who endured persecution during the Reign of Terror. Her family\u2019s history of loyalty to the exiled monarchy fuels her rigid adherence to royalist ideology. She views Villefort\u2019s past as a Girondin\u2019s son as a potential threat to her family\u2019s status and demands he prove his commitment to the monarchy.",
+    "intention": "To ensure Villefort\u2019s unwavering loyalty to the monarchy, which is crucial for her family\u2019s political security and the success of her daughter\u2019s marriage. Her stated reason is concern for the monarchy\u2019s stability, but her real motivation is to eliminate any perceived threat to her family\u2019s standing.",
+    "introduced_chapter": 6
+  },
+  {
+    "name": "Ren\u00e9e de Saint-M\u00e9ran",
+    "aliases": [
+      "Mademoiselle de Saint-M\u00e9ran",
+      "Ren\u00e9e"
+    ],
+    "situation": "A young woman betrothed to Villefort, caught between her love for him and her mother\u2019s political expectations. Her personal feelings for Villefort conflict with the harsh demands of royalist ideology.",
+    "intention": "To plead for mercy on behalf of Edmond Dant\u00e8s, reflecting her personal empathy and desire to protect Villefort from the harsh realities of his role. Her stated reason is concern for justice, but her real motivation is to preserve her relationship with Villefort and avoid the brutality of the regime.",
+    "introduced_chapter": 6
+  },
+  {
+    "name": "The Jailer",
+    "aliases": [
+      "The Jailor",
+      "Under-jailer"
+    ],
+    "situation": "The jailer is a figure of authority within the Ch\u00e2teau d'If, tasked with enforcing the prison's rules. His situation is defined by the institutionalized dehumanization of prisoners and his own economic dependence on the prisoners' survival.",
+    "intention": "The jailer's intention is to maintain order and prevent Dant\u00e8s from disrupting the prison's routine. His dismissive attitude toward Dant\u00e8s's requests reflects a systemic indifference to prisoners' humanity, as well as a pragmatic concern for his own position.",
+    "introduced_chapter": 8
+  },
+  {
+    "name": "Ren\u00e9e",
+    "aliases": [
+      "Mademoiselle Ren\u00e9e"
+    ],
+    "situation": "Ren\u00e9e is emotionally invested in Villefort\u2019s future, viewing his departure as a personal loss rather than a political event. Her love for Villefort blinds her to the injustice of Dant\u00e8s\u2019s fate.",
+    "intention": "Ren\u00e9e\u2019s stated intention is to plead for Dant\u00e8s, but her real motivation is to secure her own happiness with Villefort, even if it means sacrificing Dant\u00e8s.",
+    "introduced_chapter": 9
+  },
+  {
+    "name": "Louis XVIII",
+    "aliases": [
+      "King Louis XVIII",
+      "Louis",
+      "Louis XVIII.",
+      "the King",
+      "the king",
+      "the philosophical monarch"
+    ],
+    "situation": "The king is in a private study at the Tuileries, engaged in annotating Horace, a literary pursuit that distracts him from political concerns. His detachment from immediate threats reflects a broader preference for intellectual engagement over active governance.",
+    "intention": "Louis XVIII aims to maintain his composure and avoid alarm, using literary references to deflect serious discussion. His intention is to preserve his image as a rational, composed ruler, even as he is confronted with potential threats to his reign.",
+    "introduced_chapter": 10
+  },
+  {
+    "name": "M. de Blacas",
+    "aliases": [
+      "Blacas",
+      "Duc de Blacas",
+      "the duke"
+    ],
+    "situation": "Blacas is a courtier with a vested interest in the king's perception of threats. His insistence on the southern danger may stem from a desire to assert his importance and loyalty to the king.",
+    "intention": "Blacas seeks to ensure the king takes the southern threat seriously, possibly to position himself as a vigilant advisor. His urgency is driven by a mix of genuine concern and a desire to demonstrate his value to the king.",
+    "introduced_chapter": 10
+  },
+  {
+    "name": "M. Dandr\u00e9",
+    "aliases": [
+      "Dandr\u00e9",
+      "the minister of police"
+    ],
+    "situation": "Dandr\u00e9 is the king's minister of police, tasked with reporting on Bonaparte's activities. His report downplays the threat, reflecting bureaucratic complacency or a desire to avoid alarming the king.",
+    "intention": "Dandr\u00e9 aims to provide the king with information that minimizes the perceived danger, possibly to avoid panic or to maintain the status quo. His focus on Bonaparte's physical ailments suggests a strategy to trivialize the threat.",
+    "introduced_chapter": 10
+  },
+  {
+    "name": "Baron Dandr\u00e9",
+    "aliases": [
+      "the baron",
+      "the minister of police"
+    ],
+    "situation": "Dandr\u00e9 is publicly humiliated by the king for failing to prevent Napoleon's landing. His silence about the details of the intelligence failure suggests a loss of confidence in his role.",
+    "intention": "Dandr\u00e9's intention is to survive the king's wrath while maintaining his dignity. His silence and deference to the king indicate a resignation to his political downfall.",
+    "introduced_chapter": 11
+  },
+  {
+    "name": "Noirtier",
+    "aliases": [
+      "M. Noirtier",
+      "M. Noirtier de Villefort",
+      "Noirtier de Villefort",
+      "Old Noirtier",
+      "the assassin",
+      "the father-in-law",
+      "the old man",
+      "the paralytic",
+      "the stranger"
+    ],
+    "situation": "Noirtier is Villefort's estranged father, whose Bonapartist leanings are known. His appearance at Villefort's hotel introduces a personal threat, as his involvement in General Quesnel's assassination could expose Villefort's secrets.",
+    "intention": "Noirtier's intention is to confront Villefort about his role in the political crisis, though his motives are unclear. His presence forces Villefort to confront the consequences of his family's actions.",
+    "introduced_chapter": 11
+  },
+  {
+    "name": "G\u00e9rard de Villefort",
+    "aliases": [
+      "G\u00e9rard",
+      "G\u00e9rard Villefort",
+      "Villefort"
+    ],
+    "situation": "A royalist deputy procureur torn between his political duties and his father\u2019s Bonapartist activities. His anxiety stems from the knowledge that his father\u2019s actions could implicate him in treason, yet he is compelled to comply to avoid further conflict.",
+    "intention": "To appear loyal to the monarchy while secretly aiding his father\u2019s survival. His real intention is to navigate the political storm without compromising his own position, though he is increasingly aware of the risks his father\u2019s actions pose to him.",
+    "introduced_chapter": 12
+  },
+  {
+    "name": "The Inspector-General",
+    "aliases": [
+      "the inspector"
+    ],
+    "situation": "The inspector is a bureaucratic figure tasked with inspecting prisons, but his role is constrained by political realities and institutional inertia. His situation is defined by a need to perform his duties while avoiding personal responsibility for prisoners\u2019 fates.",
+    "intention": "The inspector intends to fulfill his official duties by examining prisoners\u2019 requests, but his real motivation is to avoid controversy by dismissing Dant\u00e8s\u2019 case and maintaining the status quo of political repression.",
+    "introduced_chapter": 14
+  },
+  {
+    "name": "The Abb\u00e9 Faria",
+    "aliases": [
+      "Abb\u00e9 Faria",
+      "Faria",
+      "The Priest",
+      "the abb\u00e9",
+      "the beneficent companion",
+      "the mad abb\u00e9",
+      "the mad prisoner",
+      "the old man",
+      "the priest",
+      "the stranger"
+    ],
+    "situation": "Faria is a former Italian cardinal imprisoned for 5 years, now reduced to a delusional state. His situation is defined by a fixation on a treasure he believes he possesses, a coping mechanism for the void of his captivity.",
+    "intention": "Faria seeks freedom by offering his treasure to the inspector, driven by a specific calculation that the inspector might prioritize financial gain over political correctness. His stated reason is to prove the treasure\u2019s existence, but his deeper motivation is to escape the prison\u2019s dehumanizing effects.",
+    "introduced_chapter": 14
+  },
+  {
+    "name": "No. 27",
+    "aliases": [
+      "The Other Prisoner",
+      "The Unknown Prisoner"
+    ],
+    "situation": "An older prisoner who has been in captivity since 1811. His situation is defined by years of solitary labor and a hardened worldview, yet he is moved by Dant\u00e8s' youth and sincerity. His current state is one of cautious hope, tempered by past betrayals.",
+    "intention": "To escape the prison, but his real motivation is to avoid dying in isolation. His stated intention to abandon Dant\u00e8s is a defense mechanism to protect himself from emotional vulnerability.",
+    "introduced_chapter": 15
+  },
+  {
+    "name": "Jacopo",
+    "aliases": [],
+    "situation": "Jacopo is a member of the Genoese tartan crew who saves Dant\u00e8s from drowning. He is skeptical of Dant\u00e8s' story but eventually accepts him after observing his sailing skills. His role is to facilitate Dant\u00e8s' integration into the crew, though his initial hesitation reflects the crew's general wariness of strangers.",
+    "intention": "Jacopo's intention is to ensure the safety of the crew and the vessel. His decision to help Dant\u00e8s is pragmatic, based on the need for a competent sailor and the risk of leaving a man in the water during a storm.",
+    "introduced_chapter": 21
+  },
+  {
+    "name": "The Captain",
+    "aliases": [
+      "Captain",
+      "The Pilot"
+    ],
+    "situation": "The captain of the Genoese tartan is initially skeptical of Dant\u00e8s but becomes convinced of his competence after observing his sailing skills. His role is to maintain the crew's safety and the ship's course, while also managing the dynamics of trust within the crew.",
+    "intention": "The captain's intention is to ensure the ship's safe passage to Leghorn. His decision to accept Dant\u00e8s is based on a balance between caution and the need for additional labor, as well as the crew's collective assessment of Dant\u00e8s' reliability.",
+    "introduced_chapter": 21
+  },
+  {
+    "name": "The Captain of La Jeune Am\u00e9lie",
+    "aliases": [
+      "The Captain",
+      "The Patron of La Jeune Am\u00e9lie"
+    ],
+    "situation": "A smuggler who initially distrusts Dant\u00e8s but grows to rely on his skills. His decision to trust Dant\u00e8s may be influenced by Dant\u00e8s' competence and the need for reliable crew members.",
+    "intention": "To maintain the smuggling operation's success by retaining skilled crew members like Dant\u00e8s. His willingness to plan a risky operation on Monte Cristo suggests a focus on profit over caution.",
+    "introduced_chapter": 22
+  },
+  {
+    "name": "The Patron",
+    "aliases": [
+      "Captain Baldi",
+      "The old patron"
+    ],
+    "situation": "The patron is a pragmatic leader who prioritizes the crew\u2019s mission over individual concerns. His decision to leave Dant\u00e8s behind is influenced by the need to complete their voyage, though he is visibly conflicted. His authority is challenged by Dant\u00e8s\u2019 insistence on staying, revealing a dynamic of mutual respect and tension.",
+    "intention": "The patron\u2019s intention is to ensure the success of the voyage, even if it means leaving Dant\u00e8s behind. His actions are driven by a calculation of risk and reward, as he weighs the importance of Dant\u00e8s\u2019 mission against the crew\u2019s immediate needs.",
+    "introduced_chapter": 23
+  },
+  {
+    "name": "La Carconte",
+    "aliases": [
+      "Madeleine Radelle"
+    ],
+    "situation": "A former beauty now reduced to a sickly, resentful figure, La Carconte's health has deteriorated due to a fever common in the marshes. Her constant complaints and bitter remarks reflect her deep-seated resentment toward her husband and life's hardships. She serves as a moral counterpoint to Caderousse, warning him against the dangers of revealing secrets.",
+    "intention": "La Carconte's primary intention is to protect her husband from potential danger, believing that sharing information about Dant\u00e8s's legacy could lead to their ruin. Her fear is rooted in the social hierarchy of the time, where those who wrong others could face severe consequences. Her warnings are both a reflection of her own survival instincts and a desire to shield Caderousse from his past.",
+    "introduced_chapter": 26
+  },
+  {
+    "name": "The Englishman",
+    "aliases": [
+      "Clerk of Thomson & French",
+      "the man from Rome",
+      "the representative of Thomson & French"
+    ],
+    "situation": "Acting as a financial agent for Thomson & French, he is driven by a combination of professional duty and personal ambition. His offer to buy Boville\u2019s debt at face value suggests a desire to manipulate Morrel\u2019s financial situation, possibly to benefit his own firm or to pursue a hidden agenda tied to the prison records.",
+    "intention": "To secure leverage over Morrel & Son by acquiring Boville\u2019s debt, while simultaneously investigating the prison records for information about Edmond Dant\u00e8s. His stated reason is financial gain, but his actions imply a deeper interest in Dant\u00e8s\u2019s fate, possibly linked to his own past or a broader scheme.",
+    "introduced_chapter": 28
+  },
+  {
+    "name": "M. de Boville",
+    "aliases": [
+      "the inspector of prisons",
+      "the man in despair"
+    ],
+    "situation": "A desperate man whose personal and financial stability hinges on the repayment of Morrel\u2019s debt. His role as prison inspector grants him access to sensitive information, which he shares reluctantly with the Englishman.",
+    "intention": "To recover his two hundred thousand francs to save his daughter\u2019s marriage. His willingness to sell the debt quickly reflects his prioritization of immediate financial relief over long-term consequences, even if it means enabling the collapse of Morrel\u2019s firm.",
+    "introduced_chapter": 28
+  },
+  {
+    "name": "Cocles",
+    "aliases": [
+      "Cock-eye"
+    ],
+    "situation": "A loyal, one-eyed cashier who remains with Morrel due to his unwavering belief in the merchant\u2019s punctuality. His situation is defined by his rigid adherence to arithmetic and his role as Morrel\u2019s last remaining employee.",
+    "intention": "Cocles aims to ensure all financial transactions are exact, driven by a belief that Morrel\u2019s business will recover. His real intention is to uphold his own principles, even as Morrel\u2019s situation deteriorates.",
+    "introduced_chapter": 29
+  },
+  {
+    "name": "Emmanuel",
+    "aliases": [
+      "the clerk"
+    ],
+    "situation": "Morrel\u2019s clerk, who stays out of devotion to Morrel\u2019s daughter, Julie. His situation is shaped by his loyalty to the Morrel family and his role as a mediator between Morrel and others.",
+    "intention": "Emmanuel seeks to protect Morrel\u2019s family and business, even as he recognizes the impossibility of recovery. His real intention is to maintain stability for Julie, whom he loves.",
+    "introduced_chapter": 29
+  },
+  {
+    "name": "Julie Morrel",
+    "aliases": [
+      "Julie",
+      "Mademoiselle Julie",
+      "Mademoiselle Julie Morrel"
+    ],
+    "situation": "Morrel\u2019s daughter, who is emotionally burdened by her father\u2019s ruin. Her situation is defined by her love for Emmanuel and her role as a bearer of bad news.",
+    "intention": "Julie aims to support her father and Emmanuel, but her real intention is to preserve hope for their future, even as she delivers devastating news.",
+    "introduced_chapter": 29
+  },
+  {
+    "name": "Penelon",
+    "aliases": [
+      "Old Seaman"
+    ],
+    "situation": "A sailor from the *Pharaon* who survived the shipwreck. His situation is defined by his loyalty to Morrel and his role as a witness to the disaster.",
+    "intention": "Penelon aims to receive wages for his service, but his real intention is to show gratitude and loyalty to Morrel despite his own hardship.",
+    "introduced_chapter": 29
+  },
+  {
+    "name": "Franz d\u2019\u00c9pinay",
+    "aliases": [
+      "Baron Franz d'\u00c9pinay",
+      "Baron Franz d\u2019\u00c9pinay",
+      "Franz",
+      "Franz d'Hubert",
+      "Franz d'\u00c9pinay",
+      "M. Danglars",
+      "M. Franz d\u2019\u00c9pinay",
+      "M. d\u2019\u00c9pinay",
+      "Signor Sinbad\u2019s guest",
+      "baron d\u2019\u00c9pinay",
+      "excellency",
+      "the young man"
+    ],
+    "situation": "Franz is a young, adventurous nobleman seeking novel experiences. His decision to visit Monte Cristo despite warnings reflects a desire to test his own courage and a fascination with the exotic. His curiosity is tempered by a pragmatic awareness of danger, though he underestimates the risks posed by the smugglers and the psychological effects of hashish.",
+    "intention": "Franz aims to experience the thrill of exploration and to prove his resilience. His stated reason for visiting Monte Cristo is a desire for adventure, but his deeper motivation is a need to assert his independence and confront the unknown, even at the risk of personal harm.",
+    "introduced_chapter": 31
+  },
+  {
+    "name": "Gaetano",
+    "aliases": [
+      "Captain Gaetano",
+      "the captain",
+      "the patron"
+    ],
+    "situation": "Gaetano is a seasoned sailor with intimate knowledge of the smugglers\u2019 operations. His actions suggest a complex relationship with the criminal underworld, possibly involving complicity or necessity. He navigates the moral ambiguity of his role by balancing caution with a willingness to take risks for profit.",
+    "intention": "Gaetano\u2019s primary goal is to ensure the safe return of Franz and his crew, while also leveraging the opportunity to engage with the smugglers. His decision to take Franz to Monte Cristo is driven by a combination of professional duty and a desire to maintain his own standing within the smuggling network.",
+    "introduced_chapter": 31
+  },
+  {
+    "name": "Sinbad the Sailor",
+    "aliases": [
+      "Sinbad",
+      "the Count of Monte Cristo (implied)",
+      "the unknown host"
+    ],
+    "situation": "Sinbad is a reclusive, enigmatic figure who has accumulated immense wealth and power. His hospitality to Franz is a calculated act, possibly aimed at assessing Franz\u2019s character or testing his susceptibility to manipulation. His use of hashish and the hallucinatory experience with the statues of courtesans suggest a deeper psychological agenda.",
+    "intention": "Sinbad\u2019s intention is to evaluate Franz\u2019s potential as an ally or adversary. By offering hashish, he may be probing Franz\u2019s moral boundaries or preparing him for a future encounter. His actions reflect a strategic mind, using the encounter to reinforce his own sense of control and to explore the limits of human perception.",
+    "introduced_chapter": 31
+  },
+  {
+    "name": "Albert de Morcerf",
+    "aliases": [
+      "Albert",
+      "Albert Morcerf",
+      "Count Morcerf",
+      "Count de Morcerf",
+      "Count of Morcerf",
+      "Fernand",
+      "Fernand Mondego",
+      "General Morcerf",
+      "M. de Morcerf",
+      "Morcerf",
+      "Vicomte Albert de Morcerf",
+      "Vicomte de Morcerf",
+      "Viscount Albert",
+      "Viscount Albert de Morcerf",
+      "Viscount Morcerf",
+      "Viscount of Morcerf",
+      "excellency",
+      "the Count of Morcerf",
+      "the viscount"
+    ],
+    "situation": "Albert is a companion to Franz, arriving in Rome with him. His attitude toward the lack of carriages and horses is dismissive, reflecting a belief in wealth as a solution to logistical problems.",
+    "intention": "Albert\u2019s primary goal is to ensure their travel plans proceed smoothly, relying on his financial resources to overcome obstacles. His confidence contrasts with Franz\u2019s frustration, highlighting their differing approaches to problem-solving.",
+    "introduced_chapter": 32
+  },
+  {
+    "name": "Signor Pastrini",
+    "aliases": [
+      "Pastrini",
+      "the landlord"
+    ],
+    "situation": "Pastrini is a pragmatic innkeeper who navigates the complexities of Roman society. His warnings about Vampa are not merely out of concern but also to protect his guests from liability. His detailed account of Vampa\u2019s story serves both to inform and to assert his local knowledge, reinforcing his role as a mediator between the travelers and the dangerous world outside.",
+    "intention": "Pastrini aims to ensure the travelers\u2019 safety while maintaining his own position of authority. His real motivation is to avoid being blamed for their misfortunes, as seen in his insistence on the dangers of the route and his reluctance to provide a carriage without proper precautions.",
+    "introduced_chapter": 33
+  },
+  {
+    "name": "Luigi Vampa",
+    "aliases": [
+      "Vampa",
+      "the bandit",
+      "the bandit leader",
+      "the captain"
+    ],
+    "situation": "Vampa is a former shepherd turned bandit leader, driven by a mix of love for Teresa and a desire for revenge against Cucumetto. His transformation is marked by a shift from innocence to ruthlessness, as he uses violence and cunning to achieve his goals. His story is a cautionary tale of how personal trauma can lead to moral ambiguity.",
+    "intention": "Vampa seeks to protect Teresa from Cucumetto and to elevate himself from his humble origins. His real motivation is a complex blend of love, vengeance, and the desire to transcend his social status, even if it means embracing a life of violence.",
+    "introduced_chapter": 33
+  },
+  {
+    "name": "Teresa",
+    "aliases": [
+      "the shepherdess"
+    ],
+    "situation": "Teresa is a young shepherdess whose beauty and coquetry make her a target for Cucumetto. Her relationship with Vampa is central to the narrative, as her suffering fuels his transformation into a bandit. Her actions, though seemingly passive, are pivotal in shaping Vampa\u2019s destiny.",
+    "intention": "Teresa\u2019s intention is to escape the violence of the bandits and secure a future with Vampa. Her real motivation is a desire for love and stability, which she believes Vampa can provide despite the dangers of his new life.",
+    "introduced_chapter": 33
+  },
+  {
+    "name": "Countess G\u2014\u2014",
+    "aliases": [
+      "the Countess"
+    ],
+    "situation": "The Countess is influenced by her familiarity with Byron's works, which shape her perception of the mysterious man. Her fear is a blend of genuine unease and social anxiety, reflecting the era's cultural preoccupations with the supernatural.",
+    "intention": "The Countess seeks to avoid the mysterious man, driven by a fear of the unknown and a desire to protect her social standing. Her intention is to distance herself from potential scandal, even as she acknowledges the Count's influence.",
+    "introduced_chapter": 34
+  },
+  {
+    "name": "Andrea Rondolo",
+    "aliases": [
+      "Andrea",
+      "Benedetto",
+      "the Cavalcanti",
+      "the prince"
+    ],
+    "situation": "Andrea is a condemned criminal, driven by desperation and rage at being spared while his accomplice is pardoned. His physical and emotional struggle during the execution reflects the human cost of arbitrary justice.",
+    "intention": "Andrea\u2019s intention is to resist his fate, driven by a desire to die alongside his accomplice. His actions are motivated by a fear of being the sole victim of injustice, which he perceives as a betrayal of his own suffering.",
+    "introduced_chapter": 35
+  },
+  {
+    "name": "Lucien Debray",
+    "aliases": [
+      "Debray",
+      "Lucien",
+      "M. Debray",
+      "M. Lucien",
+      "M. Lucien Debray",
+      "The mysterious lodger"
+    ],
+    "situation": "A political figure with ties to the ministry, navigating the volatile landscape of 1838 French politics. His casual confidence and references to the Order of Charles III. suggest a career built on patronage and opportunism.",
+    "intention": "To engage Albert in political discourse while subtly asserting his own importance. His mention of the ministry\u2019s instability and Don Carlos\u2019s fate serves both as conversation and a veiled reminder of his own influence.",
+    "introduced_chapter": 39
+  },
+  {
+    "name": "Beauchamp",
+    "aliases": [
+      "M. Beauchamp",
+      "the journalist"
+    ],
+    "situation": "A political critic and member of the Chamber, representing the opposition to the current government. His presence at Albert\u2019s breakfast underscores the social entanglements of political figures.",
+    "intention": "To critique the government\u2019s policies while maintaining a veneer of civility. His brief exchange with Debray highlights the tension between political factions.",
+    "introduced_chapter": 39
+  },
+  {
+    "name": "Bertuccio",
+    "aliases": [
+      "Giovanni Bertuccio",
+      "M. Bertuccio",
+      "The Steward",
+      "the Corsican",
+      "the smuggler",
+      "the steward"
+    ],
+    "situation": "Bertuccio is Monte Cristo's steward and is tasked with managing the property acquisition. His visible nervousness and hesitation suggest he may have knowledge of the house's history or a personal stake in its acquisition, though the text does not explicitly state this. His compliance with Monte Cristo's orders, despite his discomfort, indicates a power dynamic where Monte Cristo holds authority.",
+    "intention": "Bertuccio's intention is to comply with Monte Cristo's orders, but his nervousness implies he may be hiding something about the house. His forced accompaniment to Auteuil suggests he is either compelled by Monte Cristo's authority or has a hidden motive related to the property.",
+    "introduced_chapter": 42
+  },
+  {
+    "name": "The Notary",
+    "aliases": [
+      "M. Deschamps",
+      "Monsieur",
+      "the second notary"
+    ],
+    "situation": "The notary is a minor character who facilitates the property transaction. His surprise at Monte Cristo's ignorance of the house's location highlights Monte Cristo's deliberate misrepresentation of the property's nature, possibly to manipulate perceptions.",
+    "intention": "The notary's intention is to complete the transaction and receive payment. His reaction to Monte Cristo's abruptness and wealth underscores the count's status as an unusual and powerful client.",
+    "introduced_chapter": 42
+  },
+  {
+    "name": "Assunta",
+    "aliases": [],
+    "situation": "Assunta is Bertuccio's sister-in-law, who takes care of the child Benedetto and supports Bertuccio's efforts to protect him. Her situation is one of loyalty and sacrifice, as she navigates the moral complexities of Bertuccio's actions.",
+    "intention": "Assunta's intention is to ensure the child's well-being and protect Bertuccio from the consequences of his vendetta. Her actions are motivated by a sense of familial duty and a desire to provide a stable life for Benedetto.",
+    "introduced_chapter": 44
+  },
+  {
+    "name": "Benedetto",
+    "aliases": [
+      "Andrea",
+      "Edmond Dant\u00e8s (implied)",
+      "the child"
+    ],
+    "situation": "Benedetto is the child rescued from Villefort, raised by Bertuccio and Assunta. His situation is one of moral and social ambiguity, as his upbringing and the influence of his environment shape his character.",
+    "intention": "Benedetto's intention is not explicitly stated, but his actions suggest a desire for personal gain and a lack of moral restraint, influenced by his upbringing and the absence of discipline.",
+    "introduced_chapter": 44
+  },
+  {
+    "name": "Baptistin",
+    "aliases": [
+      "the valet de chambre"
+    ],
+    "situation": "Baptistin is Monte Cristo's valet, who is subjected to a detailed lecture on loyalty and obedience. His role is to serve Monte Cristo with unwavering devotion.",
+    "intention": "Baptistin's intention is to follow Monte Cristo's instructions to the letter, as his position and financial security depend on it.",
+    "introduced_chapter": 46
+  },
+  {
+    "name": "Madame Danglars",
+    "aliases": [
+      "Baroness Danglars",
+      "Baronne Danglars",
+      "Eug\u00e9nie",
+      "Eug\u00e9nie Danglars",
+      "Hermine",
+      "Madame de Danglars",
+      "Mademoiselle Danglars",
+      "Mademoiselle Eug\u00e9nie",
+      "Mademoiselle Eug\u00e9nie Danglars",
+      "Mrs. Danglars",
+      "the Baroness",
+      "the baroness"
+    ],
+    "situation": "Madame Danglars is a woman of high social standing but is trapped in a marriage where her husband prioritizes financial gain over her emotional well-being. Her frustration with Danglars' greed is evident in her reaction to the horses' sale.",
+    "intention": "Madame Danglars seeks to maintain her social status and assert her authority within the household. Her anger at Danglars for selling her horses reflects a desire to protect her possessions and reputation, even as she is complicit in the transaction.",
+    "introduced_chapter": 47
+  },
+  {
+    "name": "Madame de Villefort",
+    "aliases": [
+      "H\u00e9lo\u00efse",
+      "Madame H\u00e9lo\u00efse de Villefort",
+      "Madame Villefort",
+      "Mademoiselle de Villefort's stepmother",
+      "the poisoner",
+      "the wife"
+    ],
+    "situation": "Madame de Villefort is a member of the aristocracy who is both grateful to Monte Cristo for saving her life and intrigued by his mysterious persona. Her letter to Madame Danglars highlights her desire to form a connection with Monte Cristo.",
+    "intention": "Madame de Villefort seeks to secure Monte Cristo's favor while also ensuring her son Edward's safety. Her gratitude is tempered by a desire to understand and possibly exploit Monte Cristo's influence.",
+    "introduced_chapter": 47
+  },
+  {
+    "name": "Edward de Villefort",
+    "aliases": [
+      "Edward",
+      "Edward Villefort",
+      "Master Edward",
+      "Young Edward",
+      "the boy",
+      "the young imp"
+    ],
+    "situation": "Edward is a spoiled and defiant child whose behavior reflects the indulgence of his parents. His disdain for Ali's appearance underscores his entitlement and lack of social awareness.",
+    "intention": "Edward's actions are driven by a desire to assert his autonomy, even if it manifests as rudeness. His reaction to Ali reveals a lack of respect for those he perceives as beneath him.",
+    "introduced_chapter": 47
+  },
+  {
+    "name": "Ali",
+    "aliases": [
+      "the Nubian"
+    ],
+    "situation": "Ali is Monte Cristo's servant, whose skills in handling horses are crucial to the chapter's climax. His reaction to Edward's insult suggests a deeper emotional investment in his master's plans.",
+    "intention": "Ali's primary role is to execute Monte Cristo's commands with precision. His internal reaction to Edward's insult indicates a personal stake in the success of Monte Cristo's schemes.",
+    "introduced_chapter": 47
+  },
+  {
+    "name": "Hayd\u00e9e",
+    "aliases": [
+      "Ali Tepelini\u2019s Daughter",
+      "The Princess",
+      "Vasiliki\u2019s daughter",
+      "daughter of Ali Pasha",
+      "the Greek",
+      "the daughter of a prince",
+      "the young Greek",
+      "the young girl"
+    ],
+    "situation": "Hayd\u00e9e is in a state of enforced servitude, living in opulent but culturally distinct quarters. Her emotional dependency on Monte Cristo is evident, as she refuses to leave him despite his warnings about aging and her own youth.",
+    "intention": "Hayd\u00e9e seeks to remain with Monte Cristo, viewing him as both a protector and a substitute father figure. Her refusal to leave him is driven by a fear of abandonment and a deep psychological need for stability, possibly rooted in a history of trauma or loss.",
+    "introduced_chapter": 49
+  },
+  {
+    "name": "Julie Herbault",
+    "aliases": [
+      "Julie",
+      "Madame Herbault"
+    ],
+    "situation": "Julie is the Morrel family's daughter and wife of Emmanuel. She is deeply invested in the story of their benefactor, viewing it as a divine act of grace. Her emotional reaction to the count's possible knowledge of the benefactor's identity underscores her family's reverence for their savior.",
+    "intention": "Julie's intention is to find the benefactor and express gratitude, believing that their happiness is a result of his intervention. Her hope that the count might be the benefactor reflects her desire for closure and recognition.",
+    "introduced_chapter": 50
+  },
+  {
+    "name": "Emmanuel Herbault",
+    "aliases": [
+      "Emmanuel",
+      "M. Herbault"
+    ],
+    "situation": "Emmanuel is Julie's husband and the Morrel family's patriarch. He is pragmatic and focused on maintaining their family's stability. His account of their financial history reveals their values of integrity and perseverance.",
+    "intention": "Emmanuel's intention is to ensure the family's continued success and to preserve their reputation. His narrative about their business decisions reflects a desire to honor their father's legacy and avoid the pitfalls of greed.",
+    "introduced_chapter": 50
+  },
+  {
+    "name": "Valentine de Villefort",
+    "aliases": [
+      "Mademoiselle Valentine",
+      "Mademoiselle Villefort",
+      "Mademoiselle de Villefort",
+      "Valentine"
+    ],
+    "situation": "Valentine is a young woman from a wealthy but oppressive household. She is neglected by her father, M. Villefort, and resented by her stepmother, Madame de Villefort. Her only emotional support is her paralyzed grandfather, M. Noirtier, who is politically active as a Bonapartist. She is engaged to M. d\u2019\u00c9pinay, a match her father insists upon, but she is conflicted about the union. Her wealth, inherited from her mother, is a source of resentment for her stepmother.",
+    "intention": "Valentine seeks emotional connection with Maximilian despite the risks. She is driven by a desire to escape her oppressive family life but is constrained by her father's authority and her engagement. Her intention is to maintain a secret relationship with Maximilian while avoiding direct confrontation with her family's expectations.",
+    "introduced_chapter": 51
+  },
+  {
+    "name": "Major Bartolomeo Cavalcanti",
+    "aliases": [
+      "M. Cavalcanti",
+      "Monsieur Cavalcanti",
+      "the major"
+    ],
+    "situation": "The major is an aging Italian nobleman in financial and social decline. His desperation to recover his lost son is compounded by his fear of social stigma in France due to the lack of legal documentation. He is emotionally fragile and overly reliant on Monte Cristo's goodwill.",
+    "intention": "The major's intention is to recover his son, Andrea, and legitimize his claim to him through the documents provided by Monte Cristo. His stated reason is to reunite with his son, but his deeper motivation is to restore his social standing and avoid the shame of an illegitimate child in French society.",
+    "introduced_chapter": 55
+  },
+  {
+    "name": "Andrea Cavalcanti",
+    "aliases": [
+      "Andrea",
+      "Benedetto",
+      "Caderousse",
+      "Count Andrea Cavalcanti",
+      "M. Andrea",
+      "M. Andrea Cavalcanti",
+      "Master Benedetto",
+      "Master Cavalcanti",
+      "Prince Cavalcanti",
+      "the murderer of Caderousse",
+      "your excellency"
+    ],
+    "situation": "Andrea is a young man who has been raised in secret by his kidnappers, who ensured his education to maximize his value. He is aware of the financial incentives behind his reunion with his father and approaches the situation with calculated skepticism, questioning the authenticity of their relationship.",
+    "intention": "Andrea's primary intention is to secure financial stability and social standing by reuniting with his father. His skepticism about their relationship suggests he is testing the major's willingness to play along, possibly to ensure he receives the promised financial support.",
+    "introduced_chapter": 56
+  },
+  {
+    "name": "Barrois",
+    "aliases": [
+      "the old servant"
+    ],
+    "situation": "A loyal servant who has served Noirtier for 25 years. He is the only person besides Valentine who fully understands Noirtier\u2019s needs and is willing to act on his behalf.",
+    "intention": "To fulfill Noirtier\u2019s request for a notary, despite Villefort\u2019s skepticism. His loyalty to Noirtier overrides any deference to the family\u2019s authority.",
+    "introduced_chapter": 58
+  },
+  {
+    "name": "Gardener",
+    "aliases": [
+      "the horticulturist",
+      "the telegraph operator"
+    ],
+    "situation": "The gardener is a man in his late fifties, content with his modest job and routine. He is passionate about horticulture but lacks ambition and understanding of the telegraph system. His situation is one of limited means and a desire for a better life.",
+    "intention": "The gardener's intention is to improve his financial situation and expand his garden. He is motivated by the Count's offer of money, which he sees as a means to achieve his goals, despite the risks involved.",
+    "introduced_chapter": 61
+  },
+  {
+    "name": "Abb\u00e9 Busoni",
+    "aliases": [
+      "Busoni",
+      "the Abb\u00e9",
+      "the abb\u00e9"
+    ],
+    "situation": "Busoni is a visitor to Monte Cristo's home, arriving before Danglars. His presence is brief but notable, suggesting a network of connections that Monte Cristo may be leveraging.",
+    "intention": "Busoni's intention is unclear, but his arrival and departure may serve as a narrative device to highlight Monte Cristo's social influence and the transient nature of financial alliances.",
+    "introduced_chapter": 66
+  },
+  {
+    "name": "Lord Wilmore",
+    "aliases": [
+      "Wilmore",
+      "the Englishman"
+    ],
+    "situation": "An Englishman with a personal grudge against the Count, driven by a desire to undermine him through public exposure of his flaws and financial instability.",
+    "intention": "To discredit the Count by revealing his past as a prisoner, his speculative ventures, and his feud, while concealing his own role in the Count's downfall.",
+    "introduced_chapter": 69
+  },
+  {
+    "name": "M. d\u2019Avrigny",
+    "aliases": [
+      "Doctor d\u2019Avrigny",
+      "M. d'Avrigny",
+      "d'Avrigny"
+    ],
+    "situation": "A physician driven by his professional duty to uncover the truth, regardless of personal consequences. His calm, methodical approach contrasts with Villefort\u2019s emotional turmoil.",
+    "intention": "To expose Valentine as the poisoner and ensure justice, even if it means destroying Villefort\u2019s family. His stated reason is legal duty, but his deeper motivation is a moral conviction that crime must be punished, even at the cost of personal relationships.",
+    "introduced_chapter": 80
+  },
+  {
+    "name": "Louise d'Armilly",
+    "aliases": [
+      "Mademoiselle Louise d'Armilly",
+      "Mademoiselle d'Armilly"
+    ],
+    "situation": "Louise is Eug\u00e9nie's companion and a music teacher. She is initially hesitant about the escape but is ultimately inspired by Eug\u00e9nie's resolve. Her situation is shaped by her admiration for Eug\u00e9nie's courage and her own desire to support her friend's aspirations.",
+    "intention": "Louise's intention is to support Eug\u00e9nie's escape, though she initially fears the consequences. Her real motivation is a combination of loyalty to Eug\u00e9nie and her own latent desire for a life beyond the constraints of her current social role.",
+    "introduced_chapter": 97
+  },
+  {
+    "name": "Mademoiselle d\u2019Armilly",
+    "aliases": [],
+    "situation": "A companion to Mademoiselle Danglars, she shares her fear of Andrea but is more immediately affected by the emotional weight of his presence. Her reaction to his plea is more visceral, reflecting a deeper sense of moral conflict.",
+    "intention": "To avoid being implicated in Andrea's crime, even if this means contributing to his capture. Her actions are driven by a desire to preserve her own dignity in a society that would condemn her for association with a criminal.",
+    "introduced_chapter": 98
+  },
+  {
+    "name": "Debray",
+    "aliases": [],
+    "situation": "A wealthy businessman and political figure, Debray is motivated by a desire to maintain social connections and avoid controversy. His interactions with Beauchamp and Ch\u00e2teau-Renaud suggest a pragmatic approach to navigating the complexities of power and reputation.",
+    "intention": "Debray aims to align himself with influential figures while subtly distancing himself from the Villefort family's scandals. His skepticism about the 'assassin' rumor may reflect a desire to avoid implicating the Villeforts in any wrongdoing.",
+    "introduced_chapter": 109
+  },
+  {
+    "name": "Ch\u00e2teau-Renaud",
+    "aliases": [],
+    "situation": "A man of aristocratic pretensions, Ch\u00e2teau-Renaud is driven by a need to assert his social standing through wit and disdain for the bourgeoisie. His remarks about the Villefort family and the 'multitudinously' dying at their house reveal a deep-seated antipathy toward the minister's household.",
+    "intention": "Ch\u00e2teau-Renaud seeks to undermine the Villefort family's reputation through biting commentary, using his knowledge of historical and literary references to position himself as a cultured critic of the aristocracy.",
+    "introduced_chapter": 109
+  },
+  {
+    "name": "Peppino",
+    "aliases": [
+      "the bandit",
+      "the follower"
+    ],
+    "situation": "Peppino is a member of a bandit group led by Luigi Vampa. He is tasked with following Danglars to ensure the bandits can intercept him and claim his money. His situation is one of calculated risk, as he operates in the shadows of Rome's underworld.",
+    "intention": "Peppino's intention is to ensure that the bandits can capture Danglars and extract a ransom from him. His real intention is to secure the bandits' financial gain by targeting those with valuable assets, as evidenced by the previous thefts from the bank.",
+    "introduced_chapter": 114
+  }
+]
