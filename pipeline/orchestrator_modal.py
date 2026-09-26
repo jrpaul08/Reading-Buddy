@@ -262,6 +262,23 @@ class Orchestrator:
 
         return {"status": "saved", "count": len(items)}
 
+    @modal.fastapi_endpoint(method="GET")
+    async def list_saved_responses_endpoint(self, session_id: str):
+        """
+        Purpose: Lists everything saved so far for a session, for the
+        frontend's saved-responses page. Read-only — items only ever get
+        added via save_response_endpoint, never through this one.
+
+        Args:
+            session_id (str): The same session_id used when saving.
+
+        Returns:
+            list[dict]: Each with keys "question", "answer", "book_id",
+            "chapter", "saved_at" (unix timestamp), oldest first. Empty
+            list if nothing has been saved yet for this session_id.
+        """
+        return saved_responses.get(session_id, [])
+
     @modal.fastapi_endpoint(method="POST")
     async def warmup_endpoint(self):
         """
