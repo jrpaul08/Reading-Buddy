@@ -171,10 +171,22 @@ class Orchestrator:
 
         Returns:
             fastapi.Response: WAV audio bytes of the spoken answer, media
-            type "audio/wav". 400 for an unknown book_id, 500 if TTS
-            produces no audio.
+            type "audio/wav", plus the question and answer text in two
+            response headers ("X-Question", "X-Answer-Text") so the
+            frontend can save them without a second round trip. Header
+            values are percent-encoded (like a URI component) because raw
+            HTTP headers can't carry non-ASCII characters — book text is
+            full of them (e.g. "Svidrigaïlov") — so the frontend must
+            decode both with decodeURIComponent() before displaying or
+            saving them. "Access-Control-Expose-Headers" is set
+            explicitly because browsers hide all custom response headers
+            from JavaScript by default, even when CORS otherwise allows
+            the request. 400 for an unknown book_id, 500 if TTS produces
+            no audio.
         """
         audio_bytes = await audio.read()
+
+        from urllib.parse import quote
 
         from fastapi import Response
         from fastapi.responses import JSONResponse
@@ -195,7 +207,15 @@ class Orchestrator:
             print(f"[s2s_endpoint] unexpected error: {type(e).__name__}: {e}")
             return JSONResponse(status_code=500, content={"error": "Internal server error"})
 
-        return Response(content=result["answer_audio"], media_type="audio/wav")
+        return Response(
+            content=result["answer_audio"],
+            media_type="audio/wav",
+            headers={
+                "X-Question": quote(result["question"]),
+                "X-Answer-Text": quote(result["answer_text"]),
+                "Access-Control-Expose-Headers": "X-Question, X-Answer-Text",
+            },
+        )
 
     @modal.fastapi_endpoint(method="POST")
     async def warmup_endpoint(self):
