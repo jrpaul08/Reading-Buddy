@@ -26,7 +26,7 @@ session pays for the slowest one, not the sum of all three).
 import modal
 from fastapi import File, Form, UploadFile
 
-from modal_app import app
+from modal_app import app, saved_responses
 
 # Importing the component classes is what registers them on the shared
 # app, so deploying this file ships all four classes together.
@@ -216,6 +216,51 @@ class Orchestrator:
                 "Access-Control-Expose-Headers": "X-Question, X-Answer-Text",
             },
         )
+
+    @modal.fastapi_endpoint(method="POST")
+    async def save_response_endpoint(
+        self,
+        session_id: str = Form(...),
+        question: str = Form(...),
+        answer: str = Form(...),
+        book_id: str = Form(...),
+        chapter: int = Form(...),
+    ):
+        """
+        Purpose: Saves one question/answer pair to a session's saved-
+        responses list. The frontend calls this after a turn it already
+        has the text for (from s2s_endpoint's X-Question/X-Answer-Text
+        headers) — this endpoint does no transcription, reasoning, or
+        TTS work of its own, it's pure storage.
+
+        Args:
+            session_id (str): Stable id the frontend generates once per
+                session/device (e.g. stored in browser storage) to group
+                one person's saved items together.
+            question (str): The question text to save.
+            answer (str): The answer text to save.
+            book_id (str): Book identifier, for display on the saved-
+                responses page.
+            chapter (int): The chapter the reader was on when this was
+                asked, for display on the saved-responses page.
+
+        Returns:
+            dict: {"status": "saved", "count": N} where N is the total
+            number of items now saved for this session_id.
+        """
+        import time
+
+        items = saved_responses.get(session_id, [])
+        items.append({
+            "question": question,
+            "answer": answer,
+            "book_id": book_id,
+            "chapter": chapter,
+            "saved_at": time.time(),
+        })
+        saved_responses[session_id] = items
+
+        return {"status": "saved", "count": len(items)}
 
     @modal.fastapi_endpoint(method="POST")
     async def warmup_endpoint(self):

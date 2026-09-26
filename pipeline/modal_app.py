@@ -23,3 +23,10 @@ app = modal.App("reading-buddy-pipeline")
 # volume, which only holds MiniCPM-o's weights — different model files,
 # no reason to share a volume between the two implementations.
 vol = modal.Volume.from_name("reading-buddy-pipeline-weights", create_if_missing=True)
+
+# Storage for the "save the response" feature: each saved item (question,
+# answer, book_id, chapter, saved_at) lives in a list keyed by a
+# session_id the frontend generates once and keeps around (e.g. in
+# browser storage) purely to group one person's saved items together —
+# not used anywhere else in the pipeline, which otherwise stays stateless.
+saved_responses = modal.Dict.from_name("reading-buddy-pipeline-saved-responses", create_if_missing=True)
