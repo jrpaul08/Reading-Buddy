@@ -335,6 +335,23 @@ class Orchestrator:
         """
         return saved_responses.get(session_id, [])
 
+    @modal.fastapi_endpoint(method="GET")
+    async def list_glossary_endpoint(self, session_id: str):
+        """
+        Purpose: Lists every glossary entry saved so far for a session,
+        for the frontend's glossary page. Read-only — items only ever
+        get added via add_to_glossary_endpoint, never through this one.
+
+        Args:
+            session_id (str): The same session_id used when saving.
+
+        Returns:
+            list[dict]: Each with keys "term", "definition", "book_id",
+            "chapter", "saved_at" (unix timestamp), oldest first. Empty
+            list if nothing has been saved yet for this session_id.
+        """
+        return glossary_entries.get(session_id, [])
+
     @modal.fastapi_endpoint(method="POST")
     async def warmup_endpoint(self):
         """
