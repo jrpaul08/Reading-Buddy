@@ -30,3 +30,10 @@ vol = modal.Volume.from_name("reading-buddy-pipeline-weights", create_if_missing
 # browser storage) purely to group one person's saved items together —
 # not used anywhere else in the pipeline, which otherwise stays stateless.
 saved_responses = modal.Dict.from_name("reading-buddy-pipeline-saved-responses", create_if_missing=True)
+
+# Storage for the "add to glossary" feature: each entry (term,
+# definition, book_id, chapter, saved_at) lives in a list keyed by the
+# same session_id used for saved_responses. Only ever written to when
+# ReasoningEngine.check_vocabulary confirms an exchange was actually a
+# vocabulary question — never written to directly from user input.
+glossary_entries = modal.Dict.from_name("reading-buddy-pipeline-glossary-entries", create_if_missing=True)

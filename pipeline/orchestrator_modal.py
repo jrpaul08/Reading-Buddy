@@ -26,7 +26,7 @@ session pays for the slowest one, not the sum of all three).
 import modal
 from fastapi import File, Form, UploadFile
 
-from modal_app import app, saved_responses
+from modal_app import app, glossary_entries, saved_responses
 
 # Importing the component classes is what registers them on the shared
 # app, so deploying this file ships all four classes together.
@@ -261,6 +261,62 @@ class Orchestrator:
         saved_responses[session_id] = items
 
         return {"status": "saved", "count": len(items)}
+
+    @modal.fastapi_endpoint(method="POST")
+    async def add_to_glossary_endpoint(
+        self,
+        session_id: str = Form(...),
+        question: str = Form(...),
+        answer: str = Form(...),
+        book_id: str = Form(...),
+        chapter: int = Form(...),
+    ):
+        """
+        Purpose: Powers the "add to glossary" voice command. Given the
+        last question/answer the frontend already has, checks whether it
+        was actually a vocabulary question (via
+        ReasoningEngine.check_vocabulary) and only saves a glossary entry
+        if so — otherwise nothing is stored. One request handles both the
+        check and the save, since there's no fallback/retry flow: either
+        this exchange was a definition, or the caller is told it wasn't.
+
+        Args:
+            session_id (str): Same session_id used for saved responses.
+            question (str): The reader's original question.
+            answer (str): The answer they were given for it.
+            book_id (str): Book identifier, for display on the glossary
+                page.
+            chapter (int): The chapter the reader was on, for display on
+                the glossary page.
+
+        Returns:
+            dict: {"status": "saved", "term": str, "definition": str,
+            "count": N} if this was a vocabulary question, or
+            {"status": "not_vocabulary"} if it wasn't (nothing saved).
+        """
+        import time
+
+        check = ReasoningEngine().check_vocabulary.remote(question, answer)
+
+        if not check["is_vocabulary"]:
+            return {"status": "not_vocabulary"}
+
+        items = glossary_entries.get(session_id, [])
+        items.append({
+            "term": check["term"],
+            "definition": check["definition"],
+            "book_id": book_id,
+            "chapter": chapter,
+            "saved_at": time.time(),
+        })
+        glossary_entries[session_id] = items
+
+        return {
+            "status": "saved",
+            "term": check["term"],
+            "definition": check["definition"],
+            "count": len(items),
+        }
 
     @modal.fastapi_endpoint(method="GET")
     async def list_saved_responses_endpoint(self, session_id: str):
