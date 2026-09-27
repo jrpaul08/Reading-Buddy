@@ -228,3 +228,80 @@ class ReasoningEngine:
             results.append({"question": question, "answer": answer})
 
         return results
+
+    @modal.method()
+    def check_vocabulary(self, question: str, answer: str) -> dict:
+        """
+        Purpose: Given a question the reader already asked and the answer
+        they already got, decides whether that exchange was actually a
+        vocabulary/definition/phrase-meaning question (as opposed to a
+        plot, character, or event question) — and if so, pulls out a
+        clean term + definition. Powers the "add to glossary" voice
+        command: the frontend calls this with the last Q&A it already
+        has, and only saves a glossary entry if this comes back positive.
+        Deliberately separate from answer() — this never touches book
+        context or the spoiler-prevention system prompt, it only reads
+        an already-given answer.
+
+        Args:
+            question (str): The reader's original question.
+            answer (str): The answer they were given for it.
+
+        Returns:
+            dict: {"is_vocabulary": True, "term": str, "definition": str}
+            if this was a definition-type exchange, otherwise just
+            {"is_vocabulary": False}.
+        """
+        import json
+        import re
+
+        prompt = f"""The reader just asked a question about a book and was given an answer. Decide whether this was a vocabulary, phrase-meaning, or definition-type question — one that explains what a specific word, phrase, or term means — as opposed to a question about plot, characters, relationships, or events.
+
+Question: {question}
+Answer: {answer}
+
+If this was a vocabulary/definition question, respond with exactly this JSON, with no other text:
+{{"is_vocabulary": true, "term": "<the specific word or phrase being defined>", "definition": "<a clean, concise definition, drawn only from the answer above>"}}
+
+If it was not, respond with exactly this JSON, with no other text:
+{{"is_vocabulary": false}}"""
+
+        messages = [{"role": "user", "content": prompt}]
+        inputs = self.tokenizer.apply_chat_template(
+            messages,
+            add_generation_prompt=True,
+            return_tensors="pt",
+            return_dict=True,
+        ).to("cuda")
+
+        import torch
+
+        with torch.inference_mode():
+            output_ids = self.model.generate(
+                **inputs,
+                max_new_tokens=200,
+                do_sample=False,
+            )
+
+        new_tokens = output_ids[0][inputs["input_ids"].shape[1]:]
+        raw = self.tokenizer.decode(new_tokens, skip_special_tokens=True)
+
+        text = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
+        fence_match = re.search(r"```(?:json)?\s*\n(.*?)\n```", text, flags=re.DOTALL)
+        if fence_match:
+            text = fence_match.group(1).strip()
+
+        try:
+            data = json.loads(text)
+        except json.JSONDecodeError:
+            print(f"[check_vocabulary] non-JSON response, treating as not-vocabulary: {raw!r}")
+            return {"is_vocabulary": False}
+
+        if not data.get("is_vocabulary"):
+            return {"is_vocabulary": False}
+
+        if not isinstance(data.get("term"), str) or not isinstance(data.get("definition"), str):
+            print(f"[check_vocabulary] malformed positive response, treating as not-vocabulary: {data!r}")
+            return {"is_vocabulary": False}
+
+        return {"is_vocabulary": True, "term": data["term"], "definition": data["definition"]}
