@@ -38,3 +38,9 @@ saved_responses = modal.Dict.from_name("reading-buddy-pipeline-saved-responses",
 # ReasoningEngine.check_vocabulary confirms an exchange was actually a
 # vocabulary question — never written to directly from user input.
 glossary_entries = modal.Dict.from_name("reading-buddy-pipeline-glossary-entries", create_if_missing=True)
+
+# Storage for reading position: keyed the same way as saved_responses/
+# glossary_entries, but the value is a dict of {book_id: chapter} rather
+# than a list — someone can be partway through more than one book at
+# once, so position is tracked per book, not as a single value.
+reading_progress = modal.Dict.from_name("reading-buddy-pipeline-reading-progress", create_if_missing=True)

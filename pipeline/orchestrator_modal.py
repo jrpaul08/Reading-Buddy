@@ -21,10 +21,12 @@ s2s_endpoint (the public HTTP wrapper, verified end to end against a
 real deployed URL — see pipeline/SOURCES.md), warmup_endpoint (wakes
 all three GPU containers in parallel via asyncio.gather, so a cold
 session pays for the slowest one, not the sum of all three), the
-save-response/glossary endpoints (save_response_endpoint,
-add_to_glossary_endpoint, list_saved_responses_endpoint,
-list_glossary_endpoint), and Clerk-based auth with a guest-mode
-fallback (_resolve_identity) shared across all four of those.
+save-response/glossary/reading-position endpoints
+(save_response_endpoint, add_to_glossary_endpoint,
+save_reading_position_endpoint, list_saved_responses_endpoint,
+list_glossary_endpoint, get_reading_position_endpoint), and
+Clerk-based auth with a guest-mode fallback (_resolve_identity) shared
+across all six of those.
 """
 
 import modal
@@ -32,7 +34,7 @@ from fastapi import File, Form, Header, Response, UploadFile
 from fastapi.responses import JSONResponse
 
 from auth import AuthError, verify_clerk_token
-from modal_app import app, glossary_entries, saved_responses
+from modal_app import app, glossary_entries, reading_progress, saved_responses
 
 # Importing the component classes is what registers them on the shared
 # app, so deploying this file ships all four classes together.
@@ -467,6 +469,74 @@ class Orchestrator:
             return JSONResponse(status_code=401, content={"error": str(e)})
 
         return glossary_entries.get(user_id, [])
+
+    @modal.fastapi_endpoint(method="POST")
+    async def save_reading_position_endpoint(
+        self,
+        book_id: str = Form(...),
+        chapter: int = Form(...),
+        authorization: str | None = Header(default=None),
+        session_id: str | None = Form(default=None),
+    ):
+        """
+        Purpose: Records which chapter the caller is currently on for a
+        given book, so they can resume there later. Called whenever the
+        reader's position changes — overwrites whatever chapter was
+        previously saved for this book, it doesn't keep history.
+
+        Args:
+            book_id (str): Book identifier.
+            chapter (int): The chapter the reader is now on.
+            authorization (str | None): "Bearer <Clerk token>" if logged
+                in. Takes priority over session_id if both are given.
+            session_id (str | None): Frontend-generated guest id, used
+                only if authorization isn't provided.
+
+        Returns:
+            dict: {"status": "saved", "book_id": str, "chapter": int}.
+            401 if neither a valid token nor a session_id is provided.
+        """
+        try:
+            user_id = _resolve_identity(authorization, session_id)
+        except AuthError as e:
+            return JSONResponse(status_code=401, content={"error": str(e)})
+
+        books = reading_progress.get(user_id, {})
+        books[book_id] = chapter
+        reading_progress[user_id] = books
+
+        return {"status": "saved", "book_id": book_id, "chapter": chapter}
+
+    @modal.fastapi_endpoint(method="GET")
+    async def get_reading_position_endpoint(
+        self,
+        book_id: str,
+        authorization: str | None = Header(default=None),
+        session_id: str | None = None,
+    ):
+        """
+        Purpose: Fetches the last chapter saved for a given book, so the
+        app can offer to resume the reader there when they open it.
+
+        Args:
+            book_id (str): Book identifier.
+            authorization (str | None): "Bearer <Clerk token>" if logged
+                in. Takes priority over session_id if both are given.
+            session_id (str | None): Frontend-generated guest id (query
+                param), used only if authorization isn't provided.
+
+        Returns:
+            dict: {"book_id": str, "chapter": int | None} — chapter is
+            None if no position has ever been saved for this book. 401
+            if neither a valid token nor a session_id is provided.
+        """
+        try:
+            user_id = _resolve_identity(authorization, session_id)
+        except AuthError as e:
+            return JSONResponse(status_code=401, content={"error": str(e)})
+
+        books = reading_progress.get(user_id, {})
+        return {"book_id": book_id, "chapter": books.get(book_id)}
 
     @modal.fastapi_endpoint(method="POST")
     async def warmup_endpoint(self):
