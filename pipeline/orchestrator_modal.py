@@ -24,8 +24,9 @@ session pays for the slowest one, not the sum of all three).
 """
 
 import modal
-from fastapi import File, Form, UploadFile
+from fastapi import File, Form, Header, UploadFile
 
+from auth import AuthError, verify_clerk_token
 from modal_app import app, glossary_entries, saved_responses
 
 # Importing the component classes is what registers them on the shared
@@ -33,6 +34,28 @@ from modal_app import app, glossary_entries, saved_responses
 from reasoning_modal import ReasoningEngine
 from stt_modal import STTEngine
 from tts_modal import SynthesisError, TTSEngine
+
+
+def _extract_user_id(authorization: str) -> str:
+    """
+    Purpose: Pulls the token out of an "Authorization: Bearer <token>"
+    header and verifies it, returning the real, Clerk-confirmed user id.
+    Shared by every endpoint that needs to know who's calling it.
+
+    Args:
+        authorization (str): The raw Authorization header value.
+
+    Returns:
+        str: The verified Clerk user id.
+
+    Raises:
+        AuthError: If the header isn't a Bearer token, or the token
+            itself fails verification.
+    """
+    if not authorization.startswith("Bearer "):
+        raise AuthError("Missing or malformed Authorization header")
+    token = authorization[len("Bearer "):]
+    return verify_clerk_token(token)
 
 image = (
     modal.Image.debian_slim(python_version="3.11")
@@ -224,37 +247,44 @@ class Orchestrator:
     @modal.fastapi_endpoint(method="POST")
     async def save_response_endpoint(
         self,
-        session_id: str = Form(...),
         question: str = Form(...),
         answer: str = Form(...),
         book_id: str = Form(...),
         chapter: int = Form(...),
+        authorization: str = Header(...),
     ):
         """
-        Purpose: Saves one question/answer pair to a session's saved-
-        responses list. The frontend calls this after a turn it already
-        has the text for (from s2s_endpoint's X-Question/X-Answer-Text
-        headers) — this endpoint does no transcription, reasoning, or
-        TTS work of its own, it's pure storage.
+        Purpose: Saves one question/answer pair to the logged-in user's
+        saved-responses list. The frontend calls this after a turn it
+        already has the text for (from s2s_endpoint's X-Question/
+        X-Answer-Text headers) — this endpoint does no transcription,
+        reasoning, or TTS work of its own, it's pure storage.
 
         Args:
-            session_id (str): Stable id the frontend generates once per
-                session/device (e.g. stored in browser storage) to group
-                one person's saved items together.
             question (str): The question text to save.
             answer (str): The answer text to save.
             book_id (str): Book identifier, for display on the saved-
                 responses page.
             chapter (int): The chapter the reader was on when this was
                 asked, for display on the saved-responses page.
+            authorization (str): "Bearer <Clerk token>" — identifies who
+                this is being saved for. Verified, not trusted as-is.
 
         Returns:
             dict: {"status": "saved", "count": N} where N is the total
-            number of items now saved for this session_id.
+            number of items now saved for this user. 401 if the token
+            is missing or invalid.
         """
         import time
 
-        items = saved_responses.get(session_id, [])
+        from fastapi.responses import JSONResponse
+
+        try:
+            user_id = _extract_user_id(authorization)
+        except AuthError as e:
+            return JSONResponse(status_code=401, content={"error": str(e)})
+
+        items = saved_responses.get(user_id, [])
         items.append({
             "question": question,
             "answer": answer,
@@ -262,50 +292,60 @@ class Orchestrator:
             "chapter": chapter,
             "saved_at": time.time(),
         })
-        saved_responses[session_id] = items
+        saved_responses[user_id] = items
 
         return {"status": "saved", "count": len(items)}
 
     @modal.fastapi_endpoint(method="POST")
     async def add_to_glossary_endpoint(
         self,
-        session_id: str = Form(...),
         question: str = Form(...),
         answer: str = Form(...),
         book_id: str = Form(...),
         chapter: int = Form(...),
+        authorization: str = Header(...),
     ):
         """
         Purpose: Powers the "add to glossary" voice command. Given the
         last question/answer the frontend already has, checks whether it
         was actually a vocabulary question (via
         ReasoningEngine.check_vocabulary) and only saves a glossary entry
-        if so — otherwise nothing is stored. One request handles both the
-        check and the save, since there's no fallback/retry flow: either
-        this exchange was a definition, or the caller is told it wasn't.
+        for the logged-in user if so — otherwise nothing is stored. One
+        request handles both the check and the save, since there's no
+        fallback/retry flow: either this exchange was a definition, or
+        the caller is told it wasn't.
 
         Args:
-            session_id (str): Same session_id used for saved responses.
             question (str): The reader's original question.
             answer (str): The answer they were given for it.
             book_id (str): Book identifier, for display on the glossary
                 page.
             chapter (int): The chapter the reader was on, for display on
                 the glossary page.
+            authorization (str): "Bearer <Clerk token>" — identifies who
+                this is being saved for. Verified, not trusted as-is.
 
         Returns:
             dict: {"status": "saved", "term": str, "definition": str,
             "count": N} if this was a vocabulary question, or
             {"status": "not_vocabulary"} if it wasn't (nothing saved).
+            401 if the token is missing or invalid.
         """
         import time
+
+        from fastapi.responses import JSONResponse
+
+        try:
+            user_id = _extract_user_id(authorization)
+        except AuthError as e:
+            return JSONResponse(status_code=401, content={"error": str(e)})
 
         check = ReasoningEngine().check_vocabulary.remote(question, answer)
 
         if not check["is_vocabulary"]:
             return {"status": "not_vocabulary"}
 
-        items = glossary_entries.get(session_id, [])
+        items = glossary_entries.get(user_id, [])
         items.append({
             "term": check["term"],
             "definition": check["definition"],
@@ -313,7 +353,7 @@ class Orchestrator:
             "chapter": chapter,
             "saved_at": time.time(),
         })
-        glossary_entries[session_id] = items
+        glossary_entries[user_id] = items
 
         return {
             "status": "saved",
@@ -323,38 +363,57 @@ class Orchestrator:
         }
 
     @modal.fastapi_endpoint(method="GET")
-    async def list_saved_responses_endpoint(self, session_id: str):
+    async def list_saved_responses_endpoint(self, authorization: str = Header(...)):
         """
-        Purpose: Lists everything saved so far for a session, for the
-        frontend's saved-responses page. Read-only — items only ever get
-        added via save_response_endpoint, never through this one.
+        Purpose: Lists everything saved so far for the logged-in user,
+        for the frontend's saved-responses page. Read-only — items only
+        ever get added via save_response_endpoint, never through this one.
 
         Args:
-            session_id (str): The same session_id used when saving.
+            authorization (str): "Bearer <Clerk token>". Verified, not
+                trusted as-is.
 
         Returns:
             list[dict]: Each with keys "question", "answer", "book_id",
             "chapter", "saved_at" (unix timestamp), oldest first. Empty
-            list if nothing has been saved yet for this session_id.
+            list if nothing has been saved yet for this user. 401 if the
+            token is missing or invalid.
         """
-        return saved_responses.get(session_id, [])
+        from fastapi.responses import JSONResponse
+
+        try:
+            user_id = _extract_user_id(authorization)
+        except AuthError as e:
+            return JSONResponse(status_code=401, content={"error": str(e)})
+
+        return saved_responses.get(user_id, [])
 
     @modal.fastapi_endpoint(method="GET")
-    async def list_glossary_endpoint(self, session_id: str):
+    async def list_glossary_endpoint(self, authorization: str = Header(...)):
         """
-        Purpose: Lists every glossary entry saved so far for a session,
-        for the frontend's glossary page. Read-only — items only ever
-        get added via add_to_glossary_endpoint, never through this one.
+        Purpose: Lists every glossary entry saved so far for the
+        logged-in user, for the frontend's glossary page. Read-only —
+        items only ever get added via add_to_glossary_endpoint, never
+        through this one.
 
         Args:
-            session_id (str): The same session_id used when saving.
+            authorization (str): "Bearer <Clerk token>". Verified, not
+                trusted as-is.
 
         Returns:
             list[dict]: Each with keys "term", "definition", "book_id",
             "chapter", "saved_at" (unix timestamp), oldest first. Empty
-            list if nothing has been saved yet for this session_id.
+            list if nothing has been saved yet for this user. 401 if the
+            token is missing or invalid.
         """
-        return glossary_entries.get(session_id, [])
+        from fastapi.responses import JSONResponse
+
+        try:
+            user_id = _extract_user_id(authorization)
+        except AuthError as e:
+            return JSONResponse(status_code=401, content={"error": str(e)})
+
+        return glossary_entries.get(user_id, [])
 
     @modal.fastapi_endpoint(method="POST")
     async def warmup_endpoint(self):

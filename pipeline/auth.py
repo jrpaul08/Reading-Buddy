@@ -19,6 +19,12 @@ CLERK_JWKS_URL = f"{CLERK_ISSUER}/.well-known/jwks.json"
 _jwks_client = jwt.PyJWKClient(CLERK_JWKS_URL)
 
 
+class AuthError(Exception):
+    """Raised whenever a token can't be verified, for any reason —
+    missing, malformed, expired, or signed by the wrong key. Callers
+    only need to catch this one type, not know about PyJWT's internals."""
+
+
 def verify_clerk_token(token: str) -> str:
     """
     Purpose: Verifies a Clerk session token's signature and claims, and
@@ -36,16 +42,19 @@ def verify_clerk_token(token: str) -> str:
         str: The verified Clerk user id (the token's "sub" claim).
 
     Raises:
-        jwt.InvalidTokenError (or a subclass, e.g. ExpiredSignatureError,
-            InvalidSignatureError): If the token is expired, malformed,
-            signed by the wrong key, or otherwise invalid.
+        AuthError: If the token is expired, malformed, signed by the
+            wrong key, or otherwise invalid.
     """
-    signing_key = _jwks_client.get_signing_key_from_jwt(token)
-    payload = jwt.decode(
-        token,
-        signing_key.key,
-        algorithms=["RS256"],
-        issuer=CLERK_ISSUER,
-        options={"require": ["exp", "iat", "sub"]},
-    )
+    try:
+        signing_key = _jwks_client.get_signing_key_from_jwt(token)
+        payload = jwt.decode(
+            token,
+            signing_key.key,
+            algorithms=["RS256"],
+            issuer=CLERK_ISSUER,
+            options={"require": ["exp", "iat", "sub"]},
+        )
+    except jwt.InvalidTokenError as e:
+        raise AuthError(str(e)) from e
+
     return payload["sub"]
