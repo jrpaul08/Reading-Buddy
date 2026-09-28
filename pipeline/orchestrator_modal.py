@@ -57,6 +57,40 @@ def _extract_user_id(authorization: str) -> str:
     token = authorization[len("Bearer "):]
     return verify_clerk_token(token)
 
+
+def _resolve_identity(authorization: str | None, session_id: str | None) -> str:
+    """
+    Purpose: Resolves which id to store/read data under — the real,
+    verified user id if logged in, or a plain guest session_id if not.
+    Powers guest mode: someone can use saving/glossary without an
+    account, they just don't get a verified, permanent identity behind
+    it. Guest ids are never verified (there's nothing to verify — the
+    frontend just made one up), which is fine since guest data carries
+    no promise of persisting or being trustworthy long-term. Whether a
+    guest's data survives closing the app is entirely a frontend
+    decision (keep the id in memory only vs. in browser storage) — this
+    function doesn't know or care which.
+
+    Args:
+        authorization (str | None): "Bearer <Clerk token>" if logged in,
+            otherwise None.
+        session_id (str | None): A frontend-generated guest id, used
+            only when authorization isn't provided.
+
+    Returns:
+        str: The id to use for this request.
+
+    Raises:
+        AuthError: If authorization is provided but fails verification,
+            or if neither authorization nor session_id is provided.
+    """
+    if authorization:
+        return _extract_user_id(authorization)
+    if session_id:
+        return session_id
+    raise AuthError("Must provide either an Authorization header or a session_id")
+
+
 image = (
     modal.Image.debian_slim(python_version="3.11")
     .pip_install(
@@ -251,14 +285,17 @@ class Orchestrator:
         answer: str = Form(...),
         book_id: str = Form(...),
         chapter: int = Form(...),
-        authorization: str = Header(...),
+        authorization: str | None = Header(default=None),
+        session_id: str | None = Form(default=None),
     ):
         """
-        Purpose: Saves one question/answer pair to the logged-in user's
-        saved-responses list. The frontend calls this after a turn it
-        already has the text for (from s2s_endpoint's X-Question/
-        X-Answer-Text headers) — this endpoint does no transcription,
-        reasoning, or TTS work of its own, it's pure storage.
+        Purpose: Saves one question/answer pair to the caller's saved-
+        responses list — the real, permanent list if logged in, or a
+        throwaway guest list if not (see _resolve_identity). The
+        frontend calls this after a turn it already has the text for
+        (from s2s_endpoint's X-Question/X-Answer-Text headers) — this
+        endpoint does no transcription, reasoning, or TTS work of its
+        own, it's pure storage.
 
         Args:
             question (str): The question text to save.
@@ -267,20 +304,22 @@ class Orchestrator:
                 responses page.
             chapter (int): The chapter the reader was on when this was
                 asked, for display on the saved-responses page.
-            authorization (str): "Bearer <Clerk token>" — identifies who
-                this is being saved for. Verified, not trusted as-is.
+            authorization (str | None): "Bearer <Clerk token>" if logged
+                in. Takes priority over session_id if both are given.
+            session_id (str | None): Frontend-generated guest id, used
+                only if authorization isn't provided.
 
         Returns:
             dict: {"status": "saved", "count": N} where N is the total
-            number of items now saved for this user. 401 if the token
-            is missing or invalid.
+            number of items now saved for this caller. 401 if neither a
+            valid token nor a session_id is provided.
         """
         import time
 
         from fastapi.responses import JSONResponse
 
         try:
-            user_id = _extract_user_id(authorization)
+            user_id = _resolve_identity(authorization, session_id)
         except AuthError as e:
             return JSONResponse(status_code=401, content={"error": str(e)})
 
@@ -303,17 +342,20 @@ class Orchestrator:
         answer: str = Form(...),
         book_id: str = Form(...),
         chapter: int = Form(...),
-        authorization: str = Header(...),
+        authorization: str | None = Header(default=None),
+        session_id: str | None = Form(default=None),
     ):
         """
         Purpose: Powers the "add to glossary" voice command. Given the
         last question/answer the frontend already has, checks whether it
         was actually a vocabulary question (via
         ReasoningEngine.check_vocabulary) and only saves a glossary entry
-        for the logged-in user if so — otherwise nothing is stored. One
-        request handles both the check and the save, since there's no
-        fallback/retry flow: either this exchange was a definition, or
-        the caller is told it wasn't.
+        for the caller if so — otherwise nothing is stored. The entry
+        goes to the real, permanent list if logged in, or a throwaway
+        guest list if not (see _resolve_identity). One request handles
+        both the check and the save, since there's no fallback/retry
+        flow: either this exchange was a definition, or the caller is
+        told it wasn't.
 
         Args:
             question (str): The reader's original question.
@@ -322,21 +364,23 @@ class Orchestrator:
                 page.
             chapter (int): The chapter the reader was on, for display on
                 the glossary page.
-            authorization (str): "Bearer <Clerk token>" — identifies who
-                this is being saved for. Verified, not trusted as-is.
+            authorization (str | None): "Bearer <Clerk token>" if logged
+                in. Takes priority over session_id if both are given.
+            session_id (str | None): Frontend-generated guest id, used
+                only if authorization isn't provided.
 
         Returns:
             dict: {"status": "saved", "term": str, "definition": str,
             "count": N} if this was a vocabulary question, or
             {"status": "not_vocabulary"} if it wasn't (nothing saved).
-            401 if the token is missing or invalid.
+            401 if neither a valid token nor a session_id is provided.
         """
         import time
 
         from fastapi.responses import JSONResponse
 
         try:
-            user_id = _extract_user_id(authorization)
+            user_id = _resolve_identity(authorization, session_id)
         except AuthError as e:
             return JSONResponse(status_code=401, content={"error": str(e)})
 
@@ -363,53 +407,68 @@ class Orchestrator:
         }
 
     @modal.fastapi_endpoint(method="GET")
-    async def list_saved_responses_endpoint(self, authorization: str = Header(...)):
+    async def list_saved_responses_endpoint(
+        self,
+        authorization: str | None = Header(default=None),
+        session_id: str | None = None,
+    ):
         """
-        Purpose: Lists everything saved so far for the logged-in user,
-        for the frontend's saved-responses page. Read-only — items only
-        ever get added via save_response_endpoint, never through this one.
+        Purpose: Lists everything saved so far for the caller — the real,
+        permanent list if logged in, or a throwaway guest list if not
+        (see _resolve_identity) — for the frontend's saved-responses
+        page. Read-only — items only ever get added via
+        save_response_endpoint, never through this one.
 
         Args:
-            authorization (str): "Bearer <Clerk token>". Verified, not
-                trusted as-is.
+            authorization (str | None): "Bearer <Clerk token>" if logged
+                in. Takes priority over session_id if both are given.
+            session_id (str | None): Frontend-generated guest id (query
+                param), used only if authorization isn't provided.
 
         Returns:
             list[dict]: Each with keys "question", "answer", "book_id",
             "chapter", "saved_at" (unix timestamp), oldest first. Empty
-            list if nothing has been saved yet for this user. 401 if the
-            token is missing or invalid.
+            list if nothing has been saved yet for this caller. 401 if
+            neither a valid token nor a session_id is provided.
         """
         from fastapi.responses import JSONResponse
 
         try:
-            user_id = _extract_user_id(authorization)
+            user_id = _resolve_identity(authorization, session_id)
         except AuthError as e:
             return JSONResponse(status_code=401, content={"error": str(e)})
 
         return saved_responses.get(user_id, [])
 
     @modal.fastapi_endpoint(method="GET")
-    async def list_glossary_endpoint(self, authorization: str = Header(...)):
+    async def list_glossary_endpoint(
+        self,
+        authorization: str | None = Header(default=None),
+        session_id: str | None = None,
+    ):
         """
-        Purpose: Lists every glossary entry saved so far for the
-        logged-in user, for the frontend's glossary page. Read-only —
-        items only ever get added via add_to_glossary_endpoint, never
-        through this one.
+        Purpose: Lists every glossary entry saved so far for the caller —
+        the real, permanent list if logged in, or a throwaway guest list
+        if not (see _resolve_identity) — for the frontend's glossary
+        page. Read-only — items only ever get added via
+        add_to_glossary_endpoint, never through this one.
 
         Args:
-            authorization (str): "Bearer <Clerk token>". Verified, not
-                trusted as-is.
+            authorization (str | None): "Bearer <Clerk token>" if logged
+                in. Takes priority over session_id if both are given.
+            session_id (str | None): Frontend-generated guest id (query
+                param), used only if authorization isn't provided.
 
         Returns:
             list[dict]: Each with keys "term", "definition", "book_id",
             "chapter", "saved_at" (unix timestamp), oldest first. Empty
-            list if nothing has been saved yet for this user. 401 if the
-            token is missing or invalid.
+            list if nothing has been saved yet for this caller. 401 if
+            neither a valid token nor a session_id is provided.
         """
         from fastapi.responses import JSONResponse
 
         try:
-            user_id = _extract_user_id(authorization)
+            user_id = _resolve_identity(authorization, session_id)
         except AuthError as e:
             return JSONResponse(status_code=401, content={"error": str(e)})
 
