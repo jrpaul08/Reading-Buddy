@@ -18,13 +18,18 @@ at this app's endpoints.
 
 Complete: run_pipeline (the three stages chained, with per-stage timing),
 s2s_endpoint (the public HTTP wrapper, verified end to end against a
-real deployed URL — see pipeline/SOURCES.md), and warmup_endpoint (wakes
+real deployed URL — see pipeline/SOURCES.md), warmup_endpoint (wakes
 all three GPU containers in parallel via asyncio.gather, so a cold
-session pays for the slowest one, not the sum of all three).
+session pays for the slowest one, not the sum of all three), the
+save-response/glossary endpoints (save_response_endpoint,
+add_to_glossary_endpoint, list_saved_responses_endpoint,
+list_glossary_endpoint), and Clerk-based auth with a guest-mode
+fallback (_resolve_identity) shared across all four of those.
 """
 
 import modal
-from fastapi import File, Form, Header, UploadFile
+from fastapi import File, Form, Header, Response, UploadFile
+from fastapi.responses import JSONResponse
 
 from auth import AuthError, verify_clerk_token
 from modal_app import app, glossary_entries, saved_responses
@@ -249,9 +254,6 @@ class Orchestrator:
 
         from urllib.parse import quote
 
-        from fastapi import Response
-        from fastapi.responses import JSONResponse
-
         try:
             result = self.run_pipeline.local(audio_bytes, book_id, chapter)
         except ValueError as e:
@@ -316,8 +318,6 @@ class Orchestrator:
         """
         import time
 
-        from fastapi.responses import JSONResponse
-
         try:
             user_id = _resolve_identity(authorization, session_id)
         except AuthError as e:
@@ -377,8 +377,6 @@ class Orchestrator:
         """
         import time
 
-        from fastapi.responses import JSONResponse
-
         try:
             user_id = _resolve_identity(authorization, session_id)
         except AuthError as e:
@@ -431,8 +429,6 @@ class Orchestrator:
             list if nothing has been saved yet for this caller. 401 if
             neither a valid token nor a session_id is provided.
         """
-        from fastapi.responses import JSONResponse
-
         try:
             user_id = _resolve_identity(authorization, session_id)
         except AuthError as e:
@@ -465,8 +461,6 @@ class Orchestrator:
             list if nothing has been saved yet for this caller. 401 if
             neither a valid token nor a session_id is provided.
         """
-        from fastapi.responses import JSONResponse
-
         try:
             user_id = _resolve_identity(authorization, session_id)
         except AuthError as e:

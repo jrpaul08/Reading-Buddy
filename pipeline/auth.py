@@ -29,9 +29,11 @@ def verify_clerk_token(token: str) -> str:
     """
     Purpose: Verifies a Clerk session token's signature and claims, and
     returns the verified user id it belongs to. This is the only
-    trustworthy source of "who is this" in the backend — a client-
-    supplied id (like the old session_id) should never be used to
-    identify a user once this exists.
+    trustworthy source of "who is this logged-in user is" in the
+    backend — a client-supplied id like a guest session_id is never
+    verified this way, and is only ever trusted for guest mode, where
+    there's no identity claim being made in the first place (see
+    orchestrator_modal._resolve_identity).
 
     Args:
         token (str): The raw Clerk session token, as sent by the
