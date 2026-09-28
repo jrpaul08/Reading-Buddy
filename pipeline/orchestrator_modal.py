@@ -41,6 +41,9 @@ image = (
         # parsing multipart form uploads (the audio file).
         "fastapi",
         "python-multipart",
+        # Verifies Clerk auth tokens (see pipeline/auth.py) — "cryptography"
+        # extra is required for RS256 signature verification.
+        "pyjwt[crypto]",
     )
     # Importing the three component files (above) pulls in modal_app and,
     # via reasoning_modal, prompt_utils, so those must exist in the
@@ -51,6 +54,7 @@ image = (
     .add_local_file("pipeline/stt_modal.py", "/root/stt_modal.py")
     .add_local_file("pipeline/tts_modal.py", "/root/tts_modal.py")
     .add_local_file("pipeline/prompt_utils.py", "/root/prompt_utils.py")
+    .add_local_file("pipeline/auth.py", "/root/auth.py")
     # Book context is built here, at request time.
     .add_local_file("book_utils.py", "/root/book_utils.py")
     .add_local_dir("books", "/root/books")
